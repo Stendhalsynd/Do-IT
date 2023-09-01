@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스터디 목록</title>
+  </head>
+  <body>
+    <div id="studyList">
+      <% for (let i = 0; i < list.length; i++) { %>
+      <div>
+        <h4><%= list[i].title%></h4>
+        <p>관심 IT 분야</p>
+        <% if (list[i].memCurr >= list[i].memTotal) { %>
+        <span>모집완료</span>
+        <% } else { %>
+        <span>모집중</span>
+        <% } %>
+        <span><%= list[i].memCurr %> / <%= list[i].memTotal %></span>
+      </div>
+      <% } %>
+    </div>
+    <script></script>
+  </body>
+</html>
