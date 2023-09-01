@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>스터디 신규 신청</title>
+  </head>
+  <body>
+    <form name="study-form">
+      <fieldset>
+        모집인원 <input type="text" id="memTotal" /><br />
+        관심IT분야 <input type="text" id="themes" /><br />
+        시작일 <input type="text" id="startDate" /><br />
+        종료일 <input type="text" id="endDate" /><br />
+      </fieldset>
+      <fieldset>
+        제목 <input type="text" id="title" /><br />
+        소개 <input type="text" id="intro" /><br />
+      </fieldset>
+      <button type="button" onclick="cancel()">취소</button>
+      <button type="button" onclick="register()">등록</button>
+    </form>
+    <script>
+      function cancel() {
+        if (confirm("취소하시겠습니까?")) {
+          document.location.href = "/main";
+        } else {
+          return;
+        }
+      }
+      async function register() {
+        const studyform = document.forms["study-form"];
+        if (confirm("제출하시겠습니까?")) {
+          const res = await axios({
+            method: "POST",
+            url: "/studyregister",
+            data: {
+              memTotal: studyform.memTotal.value,
+              themes: studyform.themes.value,
+              startDate: studyform.startDate.value,
+              endDate: studyform.endDate.value,
+              title: studyform.title.value,
+              intro: studyform.intro.value,
+            },
+          });
+        } else {
+          return;
+        }
+      }
+    </script>
+  </body>
+</html>

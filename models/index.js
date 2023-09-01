@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
 );
 
 // model
+db.Study = require("./MStudy")(sequelize);
 db.User = require("./User")(sequelize);
 
 db.sequelize = sequelize;
