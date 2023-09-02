@@ -9,10 +9,26 @@
   <body>
     <form name="study-form">
       <fieldset>
-        모집인원 <input type="text" id="memTotal" /><br />
-        관심IT분야 <input type="text" id="themes" /><br />
-        시작일 <input type="text" id="startDate" /><br />
-        종료일 <input type="text" id="endDate" /><br />
+        모집인원 <input type="number" id="memTotal" /><br />
+        관심IT분야<br />
+        <div>
+          <input
+            type="checkbox"
+            name="category"
+            value="programming"
+          />개발·프로그래밍
+          <input
+            type="checkbox"
+            name="category"
+            value="security"
+          />보안·네트워크
+          <input type="checkbox" name="category" value="datascience" />데이터
+          사이언스 <input type="checkbox" name="category" value="gamedev" />게임
+          개발
+          <input type="checkbox" name="category" value="hardware" />하드웨어
+        </div>
+        시작일 <input type="date" id="startDate" /><br />
+        종료일 <input type="date" id="endDate" /><br />
       </fieldset>
       <fieldset>
         제목 <input type="text" id="title" /><br />
@@ -31,19 +47,37 @@
       }
       async function register() {
         const studyform = document.forms["study-form"];
+        const categoryChecked = [];
+        const category = document.getElementsByName("category");
+        for (let i = 0; i < category.length; i++) {
+          if (category[i].checked == true) {
+            categoryChecked.push(category[i].value);
+          }
+        }
+        console.log(categoryChecked);
+
+        // 폼 작성 조건 충족여부 확인하는 과정 필요
         if (confirm("제출하시겠습니까?")) {
           const res = await axios({
             method: "POST",
-            url: "/studyregister",
+            url: "/study/register",
             data: {
               memTotal: studyform.memTotal.value,
-              themes: studyform.themes.value,
+              category: categoryChecked,
               startDate: studyform.startDate.value,
               endDate: studyform.endDate.value,
               title: studyform.title.value,
               intro: studyform.intro.value,
             },
           });
+          if (res.data.result) {
+            alert("신규 스터디 개설 신청이 완료되었습니다.");
+            document.location.href = "/"; // 마이페이지로 변경할지
+          } else {
+            // CStudy 조건문에 따라 추가 수정 필요함.
+            alert("신규 스터디 개설 신청에 실패하였습니다.");
+          }
+          console.log(res.data.result);
         } else {
           return;
         }

@@ -3,8 +3,10 @@ const { DataTypes } = require("sequelize");
 const StudyModel = (sequelize) => {
   const Study = sequelize.define("Study", {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.UUID(50),
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV1,
+      allowNull: false,
     },
     title: {
       type: DataTypes.STRING(255),
@@ -30,6 +32,7 @@ const StudyModel = (sequelize) => {
     memCurr: {
       type: DataTypes.INTEGER(2),
       allowNull: false,
+      defaultValue: 0,
     },
     memTotal: {
       type: DataTypes.INTEGER(2),
@@ -38,6 +41,7 @@ const StudyModel = (sequelize) => {
     leaderId: {
       type: DataTypes.INTEGER(50),
       allowNull: false,
+      defaultValue: 1111,
     },
   });
   return Study;
