@@ -1,7 +1,7 @@
 const express = require("express");
+const db = require("./models");
 const app = express();
 const PORT = 8000;
-const db = require("./models");
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -13,16 +13,15 @@ const studyRouter = require("./routes/study");
 app.use("/study", studyRouter);
 
 // router 분리
-app.get("/", (req, res) => {
-  res.render("main");
-});
+const router = require("./routes/user");
+app.use("/", router);
 
-// 404
+// 오류 처리
 app.use("*", (req, res) => {
-  res.render("404");
+  res.status(404).render("404");
 });
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
   });

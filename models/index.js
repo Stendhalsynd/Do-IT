@@ -1,7 +1,8 @@
 "use strict";
 
 const Sequelize = require("sequelize");
-const config = require(__dirname + "/../config/config.js")["development"];
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
 const sequelize = new Sequelize(
@@ -14,7 +15,7 @@ const sequelize = new Sequelize(
 // model
 db.Study = require("./MStudy")(sequelize);
 db.Theme = require("./MTheme")(sequelize);
-db.User = require("./User")(sequelize);
+db.User = require("./MUser")(sequelize);
 
 // 관계형성
 // 스터디-IT카테고리 1대다

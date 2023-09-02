@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>DoIT</title>
+  </head>
+  <body>
+    <form name="userRegister-form">
+      <input
+        type="text"
+        id="id"
+        placeholder="아이디를 입력해주세요."
+        required
+      />
+      <br />
+      <input
+        type="text"
+        id="nickname"
+        placeholder="닉네임을 입력해주세요."
+        required
+      />
+      <br />
+      <input
+        type="password"
+        id="pw"
+        placeholder="비밀번호를 입력해주세요."
+        required
+      />
+      <br />
+      <input
+        type="text"
+        id="link"
+        placeholder="사용자에게 공유할 깃허브나 블로그 링크를 입력해주세요."
+        required
+      />
+      <br />
+      <button type="button" onclick="userRegister()">회원가입</button>
+    </form>
+
+    <script>
+      async function userRegister() {
+        const userForm = document.forms["userRegister-form"];
+        try {
+          const res = await axios({
+            method: "POST",
+            url: "/userRegister",
+            data: {
+              id: userForm.id.value,
+              nickname: userForm.nickname.value,
+              pw: userForm.pw.value,
+              link: userForm.link.value,
+            },
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </body>
+</html>
