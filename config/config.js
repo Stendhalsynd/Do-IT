@@ -5,7 +5,7 @@ const development = {
   username: env.MYSQL_USERNAME,
   password: env.MYSQL_PASSWORD,
   database: env.MYSQL_DATABASE,
-  host: "127.0.0.1",
+  host: env.MYSQL_HOST,
   dialect: "mysql",
 };
 
@@ -16,11 +16,12 @@ const test = {
   host: "127.0.0.1",
   dialect: "mysql",
 };
+
 const production = {
-  username: "root",
-  password: null,
-  database: "database_production",
-  host: "127.0.0.1",
+  username: env.RDS_USERNAME,
+  password: env.RDS_PASSWORD,
+  database: env.RDS_DATABASE,
+  host: env.RDS_HOST,
   dialect: "mysql",
 };
 

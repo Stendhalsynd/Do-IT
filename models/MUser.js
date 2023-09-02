@@ -6,17 +6,16 @@ const UserModel = (sequelize) => {
     "User",
     {
       id: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.UUID,
         allowNull: false, // NOT NULL
         primaryKey: true,
-        defaultValue: () => UUID.v4(), // UUID 생성 함수 사용
-      },
-      pw: {
-        type: DataTypes.STRING(256),
-        allowNull: false,
       },
       nickname: {
         type: DataTypes.STRING(15),
+        allowNull: false,
+      },
+      pw: {
+        type: DataTypes.STRING(256),
         allowNull: false,
       },
       point: {
