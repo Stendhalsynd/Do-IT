@@ -3,9 +3,10 @@ const { DataTypes } = require("sequelize");
 const StudyModel = (sequelize) => {
   const Study = sequelize.define("Study", {
     id: {
-      type: DataTypes.UUID(50),
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV1,
+      autoIncrement: true,
+      // defaultValue: DataTypes.UUIDV1,
       allowNull: false,
     },
     title: {

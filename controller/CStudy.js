@@ -8,8 +8,20 @@ exports.getRegister = (req, res) => {
 };
 exports.getList = async (req, res) => {
   const list = await Study.findAll({ where: { status: "WAITING" } });
-  // console.log("result", result);
+  for (let i = 0; i < list.length; i++) {
+    const theme = await Theme.findAll({ where: { StudyId: list[i].id } });
+    const arr = [];
+    theme.forEach((elem) => {
+      arr.push(elem.category);
+    });
+    list[i].category = arr;
+  }
   res.render("studylist", { list });
+};
+exports.getDetail = async (req, res) => {
+  const data = await Study.findOne({ where: { id: req.params.init } });
+  // console.log(data);
+  res.render("studydetail", { data });
 };
 
 // POST
@@ -31,6 +43,7 @@ exports.postRegister = async (req, res) => {
     //     include: [Theme],
     //   }
     // );
+    // console.log(memTotal);
     const result = await Study.create({
       memTotal,
       startDate,
@@ -63,7 +76,6 @@ exports.postRegister = async (req, res) => {
       blocks,
       text: "스터디 개설 요청",
     });
-
     res.json({ result: true });
   } catch (error) {
     console.log("err", error);

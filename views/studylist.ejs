@@ -3,14 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #studyList {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      #studyList div {
+        background-color: beige;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
     <title>스터디 목록</title>
   </head>
   <body>
     <div id="studyList">
       <% for (let i = 0; i < list.length; i++) { %>
-      <div>
+      <div onclick="studyDetail(<%= list[i].id %>)">
         <h4><%= list[i].title%></h4>
-        <p>관심 IT 분야</p>
+        <% list[i].category.forEach((elem)=> { %>
+        <span><%= elem %></span>
+        <% }) %>
+        <br />
         <% if (list[i].memCurr >= list[i].memTotal) { %>
         <span>모집완료</span>
         <% } else { %>
@@ -20,6 +35,10 @@
       </div>
       <% } %>
     </div>
-    <script></script>
+    <script>
+      function studyDetail(studyid) {
+        document.location.href = `/study/list/${studyid}`;
+      }
+    </script>
   </body>
 </html>
