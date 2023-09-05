@@ -4,64 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../style/css/header.css" />
     <title>스터디 신규 신청</title>
   </head>
   <body>
-    <form name="study-form">
-      <fieldset>
-        모집인원
-        <!-- <input type="number" id="memTotal" /><br /> -->
-        <select onchange="memberNum(this)" id="memTotal">
-          <option value="intro" selected disabled>2명 ~ 10명</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-        <br />
-        관심IT분야<br />
-        <div>
-          <input
-            type="checkbox"
-            name="category"
-            value="programming"
-          />개발·프로그래밍
-          <input
-            type="checkbox"
-            name="category"
-            value="security"
-          />보안·네트워크
-          <input type="checkbox" name="category" value="datascience" />데이터
-          사이언스 <input type="checkbox" name="category" value="gamedev" />게임
-          개발
-          <input type="checkbox" name="category" value="hardware" />하드웨어
-        </div>
-        시작일
-        <input type="date" id="startDate" onchange="limitEndDate(this)" /><br />
-        종료일 <input type="date" id="endDate" /><br />
-      </fieldset>
-      <fieldset>
-        제목 <br /><input
-          type="text"
-          id="title"
-          style="width: 80vw"
-          maxlength="20"
-          placeholder="20자 이내"
-        /><br />
-        소개 <br /><input
-          type="text"
-          id="intro"
-          style="height: 40vh; width: 80vw"
-        /><br />
-      </fieldset>
-      <button type="button" onclick="cancel()">취소</button>
-      <button type="button" onclick="checkForm()">제출</button>
-    </form>
+    <header class="header">
+      <img
+        src="../images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+      </div>
+    </header>
+    <div class="study">
+      <div class="study__menu">스터디 개설</div>
+      <div class="study__registerform">
+        <form name="study-form">
+          <div class="study__registerform--intro">
+            프로젝트의 기본 정보를 입력해주세요.
+          </div>
+          <fieldset class="study__registerform--content">
+            모집인원
+            <select onchange="memberNum(this)" id="memTotal">
+              <option value="intro" selected disabled>2명 ~ 10명</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <br />
+            관심IT분야<br />
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="programming"
+              />개발·프로그래밍
+              <input
+                type="checkbox"
+                name="category"
+                value="security"
+              />보안·네트워크
+              <input
+                type="checkbox"
+                name="category"
+                value="datascience"
+              />데이터 사이언스
+              <input type="checkbox" name="category" value="gamedev" />게임 개발
+              <input type="checkbox" name="category" value="hardware" />하드웨어
+            </div>
+            시작일
+            <input
+              type="date"
+              id="startDate"
+              onchange="limitEndDate(this)"
+            /><br />
+            종료일 <input type="date" id="endDate" /><br />
+          </fieldset>
+
+          <div class="study__registerform--intro">
+            스터디에 대해 소개해주세요.
+          </div>
+          <fieldset class="study__registerform--content">
+            제목 <br /><input
+              type="text"
+              id="title"
+              style="width: 80vw"
+              maxlength="20"
+              placeholder="20자 이내"
+            /><br />
+            소개 <br /><input
+              type="text"
+              id="intro"
+              style="height: 40vh; width: 80vw"
+            /><br />
+          </fieldset>
+          <div class="study__registerform--button">
+            <button type="button" onclick="cancel()">취소</button>
+            <button type="button" onclick="checkForm()">제출</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script>
       // 모집인원 선택
       let memTotal = 0;
