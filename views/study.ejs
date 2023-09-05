@@ -4,40 +4,176 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../style/css/header.css" />
     <title>스터디 신규 신청</title>
   </head>
   <body>
-    <form name="study-form">
-      <fieldset>
-        모집인원 <input type="number" id="memTotal" /><br />
-        관심IT분야<br />
-        <div>
-          <input
-            type="checkbox"
-            name="category"
-            value="programming"
-          />개발·프로그래밍
-          <input
-            type="checkbox"
-            name="category"
-            value="security"
-          />보안·네트워크
-          <input type="checkbox" name="category" value="datascience" />데이터
-          사이언스 <input type="checkbox" name="category" value="gamedev" />게임
-          개발
-          <input type="checkbox" name="category" value="hardware" />하드웨어
-        </div>
-        시작일 <input type="date" id="startDate" /><br />
-        종료일 <input type="date" id="endDate" /><br />
-      </fieldset>
-      <fieldset>
-        제목 <input type="text" id="title" /><br />
-        소개 <input type="text" id="intro" /><br />
-      </fieldset>
-      <button type="button" onclick="cancel()">취소</button>
-      <button type="button" onclick="register()">등록</button>
-    </form>
+    <header class="header">
+      <img
+        src="../images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+      </div>
+    </header>
+    <div class="study">
+      <div class="study__menu">스터디 개설</div>
+      <div class="study__registerform">
+        <form name="study-form">
+          <div class="study__registerform--intro">
+            프로젝트의 기본 정보를 입력해주세요.
+          </div>
+          <fieldset class="study__registerform--content">
+            모집인원
+            <select onchange="memberNum(this)" id="memTotal">
+              <option value="intro" selected disabled>2명 ~ 10명</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <br />
+            관심IT분야<br />
+            <div>
+              <input
+                type="checkbox"
+                name="category"
+                value="programming"
+              />개발·프로그래밍
+              <input
+                type="checkbox"
+                name="category"
+                value="security"
+              />보안·네트워크
+              <input
+                type="checkbox"
+                name="category"
+                value="datascience"
+              />데이터 사이언스
+              <input type="checkbox" name="category" value="gamedev" />게임 개발
+              <input type="checkbox" name="category" value="hardware" />하드웨어
+            </div>
+            시작일
+            <input
+              type="date"
+              id="startDate"
+              onchange="limitEndDate(this)"
+            /><br />
+            종료일 <input type="date" id="endDate" /><br />
+          </fieldset>
+
+          <div class="study__registerform--intro">
+            스터디에 대해 소개해주세요.
+          </div>
+          <fieldset class="study__registerform--content">
+            제목 <br /><input
+              type="text"
+              id="title"
+              style="width: 80vw"
+              maxlength="20"
+              placeholder="20자 이내"
+            /><br />
+            소개 <br /><input
+              type="text"
+              id="intro"
+              style="height: 40vh; width: 80vw"
+            /><br />
+          </fieldset>
+          <div class="study__registerform--button">
+            <button type="button" onclick="cancel()">취소</button>
+            <button type="button" onclick="checkForm()">제출</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script>
+      // 모집인원 선택
+      let memTotal = 0;
+      function memberNum(target) {
+        memTotal = target.value;
+      }
+      // 날짜 선택 제한
+      let now_utc = Date.now();
+      let timeOff = new Date().getTimezoneOffset() * 60000;
+      let today = new Date(now_utc - timeOff).toISOString().split("T")[0];
+      document.getElementById("startDate").setAttribute("min", today);
+      function limitEndDate(target) {
+        document.getElementById("endDate").setAttribute("min", target.value);
+      }
+      // 카테고리 배열 생성
+      const categoryChecked = [];
+      function getCategory() {
+        const category = document.getElementsByName("category");
+        for (let i = 0; i < category.length; i++) {
+          if (category[i].checked == true) {
+            categoryChecked.push(category[i].value);
+          }
+        }
+      }
+
+      function checkForm() {
+        getCategory();
+        let mem, cat, date, title, intro;
+        // 1) 모집인원 선택해야함
+        if (memTotal == 0) {
+          alert("모집인원을 선택해주세요");
+          mem = false;
+        } else {
+          mem = true;
+        }
+        // 2) 관심 IT분야 하나 이상 선택
+        if (categoryChecked.length > 0) {
+          cat = true;
+        } else {
+          alert("하나 이상의 관심IT 분야를 선택해주세요.");
+          cat = false;
+        }
+        // 3) 날짜입력
+        if (
+          document.querySelector("#startDate").value != "" &&
+          document.querySelector("#endDate").value != ""
+        ) {
+          date = true;
+        } else {
+          alert("시작일과 종료일을 모두 선택해주세요.");
+          date = false;
+        }
+        // 4) 제목 글자수 제한
+        if (document.querySelector("#title").value == "") {
+          alert("제목을 입력하세요");
+          title = false;
+        } else {
+          title = true;
+        }
+        // 5) 소개 글자수 제한
+        if (document.querySelector("#intro").value == "") {
+          alert("스터디를 소개해주세요");
+          intro = false;
+        } else {
+          intro = true;
+        }
+        // 모두 작성 시, register 함수 실행
+        if (
+          mem == true &&
+          cat == true &&
+          date == true &&
+          title == true &&
+          intro == true
+        ) {
+          register();
+        }
+      }
+
       function cancel() {
         if (confirm("취소하시겠습니까?")) {
           document.location.href = "/main";
@@ -47,22 +183,12 @@
       }
       async function register() {
         const studyform = document.forms["study-form"];
-        const categoryChecked = [];
-        const category = document.getElementsByName("category");
-        for (let i = 0; i < category.length; i++) {
-          if (category[i].checked == true) {
-            categoryChecked.push(category[i].value);
-          }
-        }
-        console.log(categoryChecked);
-
-        // 폼 작성 조건 충족여부 확인하는 과정 필요
         if (confirm("제출하시겠습니까?")) {
           const res = await axios({
             method: "POST",
-            url: "/study/register",
+            url: "/study",
             data: {
-              memTotal: studyform.memTotal.value,
+              memTotal,
               category: categoryChecked,
               startDate: studyform.startDate.value,
               endDate: studyform.endDate.value,
@@ -72,9 +198,8 @@
           });
           if (res.data.result) {
             alert("신규 스터디 개설 신청이 완료되었습니다.");
-            document.location.href = "/"; // 마이페이지로 변경할지
+            document.location.href = "/study/list";
           } else {
-            // CStudy 조건문에 따라 추가 수정 필요함.
             alert("신규 스터디 개설 신청에 실패하였습니다.");
           }
           console.log(res.data.result);

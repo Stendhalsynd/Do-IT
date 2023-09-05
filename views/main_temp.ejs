@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" onclick="mypage()">마이페이지</button>
+    <script>
+      // localStorage에 "userToken"으로 저장한다고 가정
+      async function mypage() {
+        if (localStorage.getItem("userToken") == null) {
+          alert("로그인이 필요합니다.");
+        } else {
+          const res = await axios({
+            method: "GET",
+            url: "/tokenVerify",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+            },
+          });
+          if (res.data.result) {
+            document.location.href = `/mypage/${res.data.id}`;
+          } else {
+            alert("잘못된 경로입니다.");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
