@@ -6,9 +6,14 @@ const UserModel = (sequelize) => {
     "User",
     {
       id: {
-        type: DataTypes.UUID,
-        allowNull: false, // NOT NULL
+        type: DataTypes.UUID(50),
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV1,
+        allowNull: false, // NOT NULL
+      },
+      userId: {
+        type: DataTypes.STRING(15),
+        allowNull: false,
       },
       nickname: {
         type: DataTypes.STRING(15),

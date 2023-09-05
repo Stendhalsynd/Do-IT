@@ -1,0 +1,69 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  &__content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+    animation-name: modal-animation;
+    animation-duration: 0.3s;
+  }
+  &__close {
+    float: right;
+    cursor: pointer;
+    &:hover {
+      color: #f44336;
+    }
+  }
+  &__title {
+    text-align: center;
+  }
+  &__form--sign-in,
+  &__form--sign-up {
+    display: flex;
+    flex-direction: column;
+  }
+  &__input {
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  &__button--sign-in {
+    width: 220px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: var(--other-dark-background-black, #161616);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: #d32f2f;
+    }
+  }
+  &__button--sign-up {
+    background-color: white;
+    border: none;
+    padding: 10px;
+  }
+}
+
+// 모달 애니메이션
+@keyframes modal-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
