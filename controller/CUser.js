@@ -10,9 +10,6 @@ const cookieConfig = {
 
 ///////////////////////////////////
 // GET
-exports.userRegister = (req, res) => {
-  res.render("userRegister");
-};
 
 ///////////////////////////////////
 // POST

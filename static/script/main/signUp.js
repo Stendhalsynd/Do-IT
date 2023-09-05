@@ -3,12 +3,12 @@ async function signUp() {
   try {
     const res = await axios({
       method: "POST",
-      url: "/",
+      url: "/user/register",
       data: {
-        userId: userForm.userId.value,
-        nickname: userForm.nickname.value,
-        pw: userForm.pw.value,
-        link: userForm.link.value,
+        userId: signUpForm.userIdForSignUp.value,
+        nickname: signUpForm.nickname.value,
+        pw: signUpForm.pwForSignUp.value,
+        link: signUpForm.link.value,
       },
     });
     if (res.data.result) {

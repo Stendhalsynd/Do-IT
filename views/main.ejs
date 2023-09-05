@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../style/css/header.css" />
-    <link rel="stylesheet" href="../style/css/modal.css" />
+    <link rel="stylesheet" href="../static/style/css/main/header.css" />
+    <link rel="stylesheet" href="../static/style/css/main/modal.css" />
     <title>Document</title>
   </head>
   <body>
     <header class="header">
       <img
-        src="../images/Do-IT logo.png"
+        src="../static/images/Do-IT logo.png"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -26,7 +26,7 @@
       <div class="modal__content">
         <span class="modal__close">&times;</span>
         <img
-          src="../images/Do-IT logo.png"
+          src="../static/images/Do-IT logo.png"
           alt="Do-IT logo"
           class="modal__logo"
         />
@@ -35,16 +35,16 @@
         <form class="modal__form--sign-in">
           <input
             class="modal__input"
-            id="userId"
+            id="userId__signIn"
             type="text"
             placeholder="아이디를 입력해주세요."
             required
           />
           <input
             class="modal__input"
-            id="pw"
+            id="pw__signIn"
             type="password"
-            placeholder="비밀번호를 앱력해주세요."
+            placeholder="비밀번호를 입력해주세요."
             required
           />
           <button
@@ -69,16 +69,16 @@
       <div class="modal__content">
         <span class="modal__close">&times;</span>
         <img
-          src="../images/Do-IT logo.png"
+          src="../static/images/Do-IT logo.png"
           alt="Do-IT logo"
           class="modal__logo"
         />
         <h2 class="modal__h2">환영합니다!</h2>
         <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
-        <form class="modal__form--sign-up">
+        <form class="modal__form--sign-up" name="modal__form--sign-up">
           <input
             class="modal__input"
-            id="userId"
+            id="userIdForSignUp"
             type="text"
             placeholder="아이디를 입력해주세요."
             required
@@ -92,9 +92,9 @@
           />
           <input
             class="modal__input"
-            id="pw"
+            id="pwForSignUp"
             type="password"
-            placeholder="비밀번호를 앱력해주세요."
+            placeholder="비밀번호를 입력해주세요."
             required
           />
           <input
@@ -115,8 +115,8 @@
       </div>
     </div>
 
-    <script src="../script/modal.js"></script>
-    <script src="../script/signIn.js"></script>
-    <script src="../script/signUp.js"></script>
+    <script src="../static/script/main/modal.js"></script>
+    <script src="../static/script/main/signIn.js"></script>
+    <script src="../static/script/main/signUp.js"></script>
   </body>
 </html>

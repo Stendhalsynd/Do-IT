@@ -1,12 +1,12 @@
 async function signIn() {
-  const userForm = document.forms["modal__form"];
+  const signInForm = document.forms["modal__form--sign-in"];
   try {
     const res = await axios({
       method: "POST",
       url: "/",
       data: {
-        userId: userForm.userId.value,
-        pw: userForm.pw.value,
+        userId: signInForm.userId__signIn.value,
+        pw: signInForm.pw__signIn.value,
       },
     }).then((res) => {
       if (res.data.result) {
