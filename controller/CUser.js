@@ -5,8 +5,9 @@ const jwt = require("jsonwebtoken");
 // 쿠키 설정
 const cookieConfig = {
   httpOnly: true,
-  maxAge: 60 * 1000,
+  maxAge: 60 * 1000, // 1분
 };
+const SECRET = "mySecret";
 
 ///////////////////////////////////
 // GET
@@ -26,14 +27,47 @@ exports.getMyPage = (req, res) => {
 ///////////////////////////////////
 // POST
 // 회원가입
-exports.post_userRegister = async (req, res) => {
+exports.post_userSignUp = async (req, res) => {
   const { userId, nickname, pw, link } = req.body;
   const hash = await bcryptPassword(pw);
   User.create({ userId, nickname, pw: hash, link }).then(() => {
     res.json({ result: true });
   });
 };
+// 로그인
+exports.post_userSignIn = async (req, res) => {
+  const { userId, pw } = req.body;
+  // step 1. 아이디를 찾아서 사용자 존재 유/무 체크
+  const user = await User.findOne({
+    where: { userId },
+  });
+  // console.log(user);
+
+  // 사용자가 존재한다면,
+  if (user) {
+    // step 2. 입력된 비밀번호와 기존 데이터와 비교
+    const result = await compareFunc(pw, user.pw);
+    // 비밀번호가 일치한다면,
+    if (result) {
+      res.cookie("isSignIn", true, cookieConfig);
+      const token = jwt.sign({ id: user.id }, SECRET);
+      res.json({ result: true, token, data: user });
+    } else {
+      // 비밀번호가 틀렸다면,
+      res.json({ result: false, message: "비밀번호가 틀렸습니다." });
+    }
+  } else {
+    // 사용자가 존재하지 않는다면,
+    res.json({
+      result: false,
+      message: "해당 계정의 사용자가 존재하지 않습니다.",
+    });
+  }
+};
 
 ///////////////////////////////////
 // 암호화
 const bcryptPassword = (password) => bcrypt.hash(password, 11);
+// 비교
+const compareFunc = (password, dbpassword) =>
+  bcrypt.compare(password, dbpassword);
