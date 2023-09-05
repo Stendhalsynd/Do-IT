@@ -1,0 +1,39 @@
+// main__mobile
+@media screen and (min-width: 330px) and (max-width: 767px) {
+  .header {
+    &__logo {
+      width: 80px;
+    }
+  }
+}
+
+// main__tablet
+@media screen and (min-width: 768px) and (max-width: 1011px) {
+}
+
+// main__desktop
+@media screen and (min-width: 1012px) {
+}
+
+.header {
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    &--practice,
+    &--study,
+    &--sign-in {
+      margin: 10px;
+      border: none;
+      background-color: white;
+      font-family: Roboto;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 18px;
+    }
+  }
+}

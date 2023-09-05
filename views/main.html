@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../style/css/header.css" />
+    <link rel="stylesheet" href="../style/css/modal.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <img
+        src="../images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+      </div>
+    </header>
+
+    <div class="modal modal__sign-in">
+      <div class="modal__content">
+        <span class="modal__close">&times;</span>
+        <img
+          src="../images/Do-IT logo.png"
+          alt="Do-IT logo"
+          class="modal__logo"
+        />
+        <h2 class="modal__h2">환영합니다!</h2>
+        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+        <form class="modal__form--sign-in">
+          <input
+            class="modal__input"
+            id="userId"
+            type="text"
+            placeholder="아이디를 입력해주세요."
+            required
+          />
+          <input
+            class="modal__input"
+            id="pw"
+            type="password"
+            placeholder="비밀번호를 앱력해주세요."
+            required
+          />
+          <button
+            class="modal__button--sign-in"
+            type="button"
+            onclick="signIn()"
+          >
+            로그인
+          </button>
+          <button
+            class="modal__button--sign-up"
+            type="button"
+            onclick="openSignUpModal()"
+          >
+            회원가입하기
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal modal__sign-up">
+      <div class="modal__content">
+        <span class="modal__close">&times;</span>
+        <img
+          src="../images/Do-IT logo.png"
+          alt="Do-IT logo"
+          class="modal__logo"
+        />
+        <h2 class="modal__h2">환영합니다!</h2>
+        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+        <form class="modal__form--sign-up">
+          <input
+            class="modal__input"
+            id="userId"
+            type="text"
+            placeholder="아이디를 입력해주세요."
+            required
+          />
+          <input
+            class="modal__input"
+            id="nickname"
+            type="text"
+            placeholder="닉네임을 입력해주세요."
+            required
+          />
+          <input
+            class="modal__input"
+            id="pw"
+            type="password"
+            placeholder="비밀번호를 앱력해주세요."
+            required
+          />
+          <input
+            class="modal__input"
+            id="link"
+            type="text"
+            placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요."
+            required
+          />
+          <button
+            class="modal__button--signup"
+            type="button"
+            onclick="signUp()"
+          >
+            회원가입하기
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../script/modal.js"></script>
+    <script src="../script/signIn.js"></script>
+    <script src="../script/signUp.js"></script>
+  </body>
+</html>

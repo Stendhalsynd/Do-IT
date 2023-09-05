@@ -1,0 +1,27 @@
+@media screen and (min-width: 330px) and (max-width: 767px) {
+  .header__logo {
+    width: 80px;
+  }
+}
+.header {
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__button {
+  display: flex;
+  justify-content: space-between;
+}
+.header__button--practice, .header__button--study, .header__button--sign-in {
+  margin: 10px;
+  border: none;
+  background-color: white;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+/*# sourceMappingURL=header.css.map */

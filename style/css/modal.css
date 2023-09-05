@@ -1,0 +1,69 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal__content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  animation-name: modal-animation;
+  animation-duration: 0.3s;
+}
+.modal__close {
+  float: right;
+  cursor: pointer;
+}
+.modal__close:hover {
+  color: #f44336;
+}
+.modal__title {
+  text-align: center;
+}
+.modal__form--sign-in, .modal__form--sign-up {
+  display: flex;
+  flex-direction: column;
+}
+.modal__input {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.modal__button--sign-in {
+  width: 220px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: var(--other-dark-background-black, #161616);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.modal__button--sign-in:hover {
+  background-color: #d32f2f;
+}
+.modal__button--sign-up {
+  background-color: white;
+  border: none;
+  padding: 10px;
+}
+
+@keyframes modal-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*# sourceMappingURL=modal.css.map */

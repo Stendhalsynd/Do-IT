@@ -7,10 +7,11 @@
     <title>DoIT</title>
   </head>
   <body>
+    <h1>회원가입</h1>
     <form name="userRegister-form">
       <input
         type="text"
-        id="id"
+        id="userId"
         placeholder="아이디를 입력해주세요."
         required
       />
@@ -47,12 +48,16 @@
             method: "POST",
             url: "/userRegister",
             data: {
-              id: userForm.id.value,
+              userId: userForm.userId.value,
               nickname: userForm.nickname.value,
               pw: userForm.pw.value,
               link: userForm.link.value,
             },
           });
+          if (res.data.result) {
+            alert("회원가입을 축하드립니다.");
+            document.location.href = "/";
+          }
         } catch (error) {
           console.log(error);
         }
