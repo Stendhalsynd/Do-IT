@@ -62,15 +62,28 @@ exports.post_userSignIn = async (req, res) => {
     if (result) {
       res.cookie("isSignIn", true, cookieConfig);
       const token = jwt.sign({ id: user.id }, SECRET);
-      res.json({ result: true, token, data: user });
+      res.json({
+        result: true,
+        userIdConfirm: true,
+        pwConfirm: true,
+        token,
+        data: user,
+      });
     } else {
       // 비밀번호가 틀렸다면,
-      res.json({ result: false, message: "비밀번호가 틀렸습니다." });
+      res.json({
+        result: false,
+        userIdConfirm: true,
+        pwConfirm: false,
+        message: "비밀번호가 틀렸습니다.",
+      });
     }
   } else {
     // 사용자가 존재하지 않는다면,
     res.json({
       result: false,
+      userIdConfirm: false,
+      pwConfirm: false,
       message: "해당 계정의 사용자가 존재하지 않습니다.",
     });
   }
