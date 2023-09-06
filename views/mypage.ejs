@@ -3,7 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style/css/common/header.css" />
+
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <img
+        src="/static/images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+        <button class="header__button--point">포인트</button>
+        <button class="header__button--profile">프로필</button>
+        <button class="header__button--sign-out">로그아웃</button>
+      </div>
+    </header>
+    <div>
+      <h4>기본정보</h4>
+      <p>아이디: <%= userinfo.userId %></p>
+      <p>닉네임: <%= userinfo.nickname %></p>
+      <p>내 포인트: <%= userinfo.point %></p>
+      <p>링크: <%= userinfo.link %></p>
+    </div>
+    <div>
+      <h4>내가 개설한 스터디</h4>
+      <% for (let i = 0; i < StudyAsLeader.length; i ++) { %>
+      <div>
+        <p><%= StudyAsLeader[i].title %></p>
+        <p><%= StudyAsLeader[i].intro %></p>
+      </div>
+      <% } %>
+    </div>
+    <div>
+      <h4>내가 참여한 스터디</h4>
+      <% for (let i = 0; i < StudyAsCrew.length; i ++) { %>
+      <div>
+        <p><%= StudyAsCrew[i].title %></p>
+        <p><%= StudyAsCrew[i].intro %></p>
+      </div>
+      <% } %>
+    </div>
+    <script></script>
+  </body>
 </html>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -10,20 +11,22 @@
     <script>
       // localStorage에 "userToken"으로 저장한다고 가정
       async function mypage() {
-        if (localStorage.getItem("userToken") == null) {
+        const userToken = localStorage.getItem("userToken");
+        if (!userToken) {
           alert("로그인이 필요합니다.");
         } else {
           const res = await axios({
-            method: "GET",
-            url: "/tokenVerify",
+            method: "POST",
+            url: "/user/verify",
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+              Authorization: `Bearer ${userToken}`,
             },
           });
           if (res.data.result) {
-            document.location.href = `/mypage/${res.data.id}`;
+            document.location.href = `/user/mypage/${res.data.nickname}`;
           } else {
-            alert("잘못된 경로입니다.");
+            alert(res.data.message);
+            return;
           }
         }
       }
