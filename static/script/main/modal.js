@@ -25,8 +25,8 @@ function closeModal() {
 }
 
 // header의 로그인 버튼에 클릭 이벤트 리스너 추가
-var signinButton = document.querySelector(".header__button--sign-in");
-signinButton.addEventListener("click", openSignInModal);
+var signInButton = document.querySelector(".header__button--sign-in");
+signInButton.addEventListener("click", openSignInModal);
 
 // 모달의 닫기 버튼에 클릭 이벤트 리스너 추가
 var closeButtons = document.querySelectorAll(".modal__close");

@@ -19,6 +19,9 @@
         <button class="header__button--practice">연습하기</button>
         <button class="header__button--study">스터디</button>
         <button class="header__button--sign-in">로그인</button>
+        <button class="header__button--point">포인트</button>
+        <button class="header__button--profile">프로필</button>
+        <button class="header__button--sign-out">로그아웃</button>
       </div>
     </header>
 
@@ -99,6 +102,13 @@
           />
           <input
             class="modal__input"
+            id="pwConfirmForSignUp"
+            type="password"
+            placeholder="입력한 비밀번호를 다시 입력해주세요."
+            required
+          />
+          <input
+            class="modal__input"
             id="link"
             type="text"
             placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요."
@@ -109,7 +119,14 @@
             type="button"
             onclick="signUp()"
           >
-            회원가입하기
+            회원가입
+          </button>
+          <button
+            class="modal__button--sign-in"
+            type="button"
+            onclick="openSignInModal()"
+          >
+            로그인하기
           </button>
         </form>
       </div>

@@ -29,6 +29,17 @@ exports.getMyPage = (req, res) => {
 // 회원가입
 exports.post_userSignUp = async (req, res) => {
   const { userId, nickname, pw, link } = req.body;
+  // userId가 User 데이터베이스에 이미 존재하는지 확인한다.
+  const existingUser = await User.findOne({ where: { userId } });
+  if (existingUser) {
+    // 이미 존재하는 아이디인 경우, 회원가입을 거부하고 에러 메시지를 반환한다.
+    return res.json({
+      result: false,
+      message: "아이디가 이미 존재합니다. 다른 아이디를 생성해주세요.",
+    });
+  }
+
+  // 아이디가 중복되지 않는 경우, 비밀번호를 해싱하고 새로운 회원을 생성한다.
   const hash = await bcryptPassword(pw);
   User.create({ userId, nickname, pw: hash, link }).then(() => {
     res.json({ result: true });
@@ -51,15 +62,28 @@ exports.post_userSignIn = async (req, res) => {
     if (result) {
       res.cookie("isSignIn", true, cookieConfig);
       const token = jwt.sign({ id: user.id }, SECRET);
-      res.json({ result: true, token, data: user });
+      res.json({
+        result: true,
+        userIdConfirm: true,
+        pwConfirm: true,
+        token,
+        data: user,
+      });
     } else {
       // 비밀번호가 틀렸다면,
-      res.json({ result: false, message: "비밀번호가 틀렸습니다." });
+      res.json({
+        result: false,
+        userIdConfirm: true,
+        pwConfirm: false,
+        message: "비밀번호가 틀렸습니다.",
+      });
     }
   } else {
     // 사용자가 존재하지 않는다면,
     res.json({
       result: false,
+      userIdConfirm: false,
+      pwConfirm: false,
       message: "해당 계정의 사용자가 존재하지 않습니다.",
     });
   }
