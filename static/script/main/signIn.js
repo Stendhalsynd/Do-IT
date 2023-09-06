@@ -3,16 +3,18 @@ async function signIn() {
   try {
     const res = await axios({
       method: "POST",
-      url: "/",
+      url: "/user/signIn",
       data: {
-        userId: signInForm.userId__signIn.value,
-        pw: signInForm.pw__signIn.value,
+        userId: signInForm.userIdForSignIn.value,
+        pw: signInForm.pwForSignIn.value,
       },
     }).then((res) => {
       if (res.data.result) {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userToken", res.data.token);
+        alert(`${res.data.data.nickname}님 로그인을 성공했습니다.`);
       } else {
-        alert(``);
+        alert(`${res.data.message}`);
+        document.location.reload();
       }
     });
   } catch (error) {

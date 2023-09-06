@@ -3,7 +3,7 @@ async function signUp() {
   try {
     const res = await axios({
       method: "POST",
-      url: "/user/register",
+      url: "/user/signUp",
       data: {
         userId: signUpForm.userIdForSignUp.value,
         nickname: signUpForm.nickname.value,
