@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../style/css/header.css" />
+    <link rel="stylesheet" href="../static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/main/studyregister.css" />
     <title>스터디 신규 신청</title>
   </head>
   <body>
     <header class="header">
       <img
-        src="../images/Do-IT logo.png"
+        src="../static/images/Do-IT logo.png"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -97,6 +98,12 @@
     </div>
 
     <script>
+      // localStorage 검증 후, 페이지로드
+      const userToken = localStorage.getItem("userToken");
+      if (!userToken) {
+        alert("로그인이 필요한 페이지입니다.");
+        document.location.href = "/";
+      }
       // 모집인원 선택
       let memTotal = 0;
       function memberNum(target) {
@@ -195,6 +202,7 @@
               title: studyform.title.value,
               intro: studyform.intro.value,
             },
+            headers: { Authorization: `Bearer ${userToken}` },
           });
           if (res.data.result) {
             alert("신규 스터디 개설 신청이 완료되었습니다.");

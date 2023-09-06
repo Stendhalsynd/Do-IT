@@ -8,7 +8,6 @@ const StudyModel = (sequelize) => {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        // defaultValue: DataTypes.UUIDV1,
         allowNull: false,
       },
       title: {
@@ -42,9 +41,9 @@ const StudyModel = (sequelize) => {
         allowNull: false,
       },
       leaderId: {
-        type: DataTypes.INTEGER(50),
+        type: DataTypes.UUID(50),
+        defaultValue: DataTypes.UUIDV1,
         allowNull: false,
-        defaultValue: 1111,
       },
     },
     {
