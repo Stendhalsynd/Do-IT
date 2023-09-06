@@ -20,7 +20,7 @@
   <body>
     <div id="studyList">
       <% for (let i = 0; i < list.length; i++) { %>
-      <div onclick="studyDetail(<%= list[i].id %>)">
+      <div onclick="studyDetail('<%= list[i].id %>')">
         <h4><%= list[i].title%></h4>
         <% list[i].category.forEach((elem)=> { %>
         <span><%= elem %></span>

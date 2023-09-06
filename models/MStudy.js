@@ -41,7 +41,7 @@ const StudyModel = (sequelize) => {
         allowNull: false,
       },
       leaderId: {
-        type: DataTypes.UUID(50),
+        type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV1,
         allowNull: false,
       },
