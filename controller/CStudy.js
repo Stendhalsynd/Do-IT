@@ -1,10 +1,12 @@
 const { Study, Theme } = require("../models");
 const boltApp = require("../slack");
 const definePayload = require("../utils/payload");
+const jwt = require("jsonwebtoken");
+const SECRET = "mySecret";
 
 // GET
 exports.getRegister = (req, res) => {
-  res.render("study");
+  res.render("studyregister");
 };
 exports.getList = async (req, res) => {
   const list = await Study.findAll({ where: { status: "WAITING" } });
@@ -28,33 +30,31 @@ exports.getDetail = async (req, res) => {
 exports.postRegister = async (req, res) => {
   try {
     console.log("req.body : ", req.body);
-
-    const { memTotal, category, startDate, endDate, title, intro } = req.body;
-    // const result = await Study.create(
-    //   {
-    //     memTotal,
-    //     startDate,
-    //     endDate,
-    //     title,
-    //     intro,
-    //     Themes: [{category}],
-    //   },
-    //   {
-    //     include: [Theme],
-    //   }
-    // );
-    // console.log(memTotal);
-    const result = await Study.create({
-      memTotal,
-      startDate,
-      endDate,
-      title,
-      intro,
+    const token = req.headers.authorization.split(" ")[1];
+    let leaderId;
+    jwt.verify(token, SECRET, (err, decoded) => {
+      if (err) {
+        res.send({ result: false });
+      }
+      leaderId = decoded.id;
     });
-    const StudyId = result.id;
-    for (let i = 0; i < category.length; i++) {
-      Theme.create({ category: category[i], StudyId });
-    }
+    const { memTotal, category, startDate, endDate, title, intro } = req.body;
+    const result = await Study.create(
+      {
+        memTotal,
+        startDate,
+        endDate,
+        title,
+        intro,
+        Themes: category.map((item) => ({ category: item })),
+        leaderId,
+      },
+      {
+        include: [Theme],
+      }
+    );
+
+    const studyId = result.id;
 
     const categoryStr = category.reduce((tot, item) => tot + ", " + item);
 
@@ -66,7 +66,7 @@ exports.postRegister = async (req, res) => {
       title,
       intro,
       categoryStr,
-      StudyId
+      studyId
     ).blocks;
 
     // slack team2-week4-bot 채널로 스터디 생성 요청 알림

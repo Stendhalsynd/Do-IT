@@ -1,0 +1,21 @@
+@media screen and (min-width: 330px) and (max-width: 767px) {
+  .header__logo {
+    width: 80px;
+  }
+}
+.study {
+  width: 80vw;
+  margin: 0 10vw;
+}
+.study__menu {
+  height: 40px;
+  text-align: center;
+  margin: 20px;
+  line-height: 40px;
+}
+.study__registerform {
+  margin: 20px 0px;
+  &--intro {
+    text-align: center;
+  }
+}
