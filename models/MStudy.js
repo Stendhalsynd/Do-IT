@@ -34,7 +34,7 @@ const StudyModel = (sequelize) => {
       memCurr: {
         type: DataTypes.INTEGER(2),
         allowNull: false,
-        defaultValue: 0,
+        defaultValue: 1,
       },
       memTotal: {
         type: DataTypes.INTEGER(2),

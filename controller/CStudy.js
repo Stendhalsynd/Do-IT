@@ -1,4 +1,5 @@
-const { Study, Theme, StudyUser } = require("../models");
+const { Study, Theme, StudyUser, User } = require("../models");
+const { Op } = require("sequelize");
 const boltApp = require("../slack");
 const definePayload = require("../utils/payload");
 const jwt = require("jsonwebtoken");
@@ -22,28 +23,63 @@ exports.getList = async (req, res) => {
   res.render("studylist", { list });
 };
 exports.getDetail = async (req, res) => {
-  const data = await Study.findOne({
-    where: { id: req.params.init },
-    include: [Theme],
-  });
+  try {
+    const studyId = req.params.init;
 
-  // console.log("data : ", data);
+    const [data, studyUsers] = await Promise.all([
+      Study.findOne({
+        where: { id: studyId },
+        include: [Theme],
+      }),
+      Study.findOne({
+        where: { id: studyId },
+        include: User,
+      }).then((study) => study.Users),
+    ]);
 
-  const startDate = dateConverter(data.startDate);
-  const endDate = dateConverter(data.endDate);
+    const startDate = dateConverter(data.startDate);
+    const endDate = dateConverter(data.endDate);
 
-  res.render("studydetail", {
-    data,
-    startDate,
-    endDate,
-    leaderId: data.leaderId,
-  });
+    const extractUserInfo = (user) => ({
+      id: user.dataValues.id,
+      nickname: user.dataValues.nickname,
+      link: user.dataValues.link,
+      status:
+        user.dataValues.StudyUser.dataValues.status === "LEADER"
+          ? "리더"
+          : user.dataValues.StudyUser.dataValues.status === "CREW"
+          ? "참여한 크루"
+          : "지원한 크루",
+    });
+
+    const members = studyUsers
+      .filter(
+        (user) => user.dataValues.StudyUser.dataValues.status !== "APPLIER"
+      )
+      .map(extractUserInfo);
+
+    const appliers = studyUsers
+      .filter(
+        (user) => user.dataValues.StudyUser.dataValues.status === "APPLIER"
+      )
+      .map(extractUserInfo);
+
+    res.render("studydetail", {
+      data,
+      startDate,
+      endDate,
+      members,
+      appliers,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
 };
 
 // POST
 exports.postRegister = async (req, res) => {
   try {
-    console.log("req.body : ", req.body);
     const token = req.headers.authorization.split(" ")[1];
     let leaderId;
     jwt.verify(token, SECRET, (err, decoded) => {
@@ -100,5 +136,35 @@ exports.postRegister = async (req, res) => {
   } catch (error) {
     console.log("err", error);
     res.json({ result: false });
+  }
+};
+
+exports.postDetail = async (req, res) => {
+  const { studyId } = req.body;
+  const token = req.headers?.authorization.split(" ")[1];
+
+  if (token !== "null") {
+    try {
+      const studyData = await Study.findOne({
+        where: { id: studyId },
+        include: [
+          {
+            model: StudyUser,
+            where: { status: "LEADER" },
+          },
+        ],
+      });
+
+      const { StudyUsers: [studyUser] = [] } = studyData;
+      const leaderId = studyUser?.UserId;
+      const userId = jwt.verify(token, SECRET).id;
+
+      const isLeader = leaderId === userId;
+
+      res.json({ isLeader, study: studyData });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ result: false, message: "Internal server error" });
+    }
   }
 };

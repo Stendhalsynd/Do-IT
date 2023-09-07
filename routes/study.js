@@ -11,5 +11,6 @@ router.get("/list", controller.getList);
 
 // 스터디별 페이지 관련
 router.get("/list/:init", controller.getDetail);
+router.post("/list/:init", controller.postDetail);
 
 module.exports = router;
