@@ -5,7 +5,7 @@ const ThemeModel = (sequelize) => {
     "Theme",
     {
       id: {
-        type: DataTypes.UUID(50),
+        type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV1,
         allowNull: false,

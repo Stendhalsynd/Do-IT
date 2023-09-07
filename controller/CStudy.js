@@ -1,8 +1,9 @@
-const { Study, Theme } = require("../models");
+const { Study, Theme, StudyUser } = require("../models");
 const boltApp = require("../slack");
 const definePayload = require("../utils/payload");
 const jwt = require("jsonwebtoken");
 const SECRET = "mySecret";
+const dateConverter = require("../utils/date");
 
 // GET
 exports.getRegister = (req, res) => {
@@ -21,9 +22,22 @@ exports.getList = async (req, res) => {
   res.render("studylist", { list });
 };
 exports.getDetail = async (req, res) => {
-  const data = await Study.findOne({ where: { id: req.params.init } });
-  // console.log(data);
-  res.render("studydetail", { data });
+  const data = await Study.findOne({
+    where: { id: req.params.init },
+    include: [Theme],
+  });
+
+  // console.log("data : ", data);
+
+  const startDate = dateConverter(data.startDate);
+  const endDate = dateConverter(data.endDate);
+
+  res.render("studydetail", {
+    data,
+    startDate,
+    endDate,
+    leaderId: data.leaderId,
+  });
 };
 
 // POST
@@ -48,9 +62,15 @@ exports.postRegister = async (req, res) => {
         intro,
         Themes: category.map((item) => ({ category: item })),
         leaderId,
+        StudyUsers: [
+          {
+            status: "LEADER",
+            UserId: leaderId,
+          },
+        ],
       },
       {
-        include: [Theme],
+        include: [Theme, StudyUser],
       }
     );
 

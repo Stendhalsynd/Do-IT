@@ -5,15 +5,15 @@ const StudyUserModel = (sequelize) => {
     "StudyUser",
     {
       id: {
-        type: DataTypes.UUID(50),
+        type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV1,
         allowNull: false,
       },
       status: {
-        type: DataTypes.ENUM("WAITING", "ALLOWED", "REJECTED"),
+        type: DataTypes.ENUM("LEADER", "CREW", "APPLIER"),
         allowNull: false,
-        defaultValue: "WAITING",
+        defaultValue: "LEADER",
       },
     },
     {
