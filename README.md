@@ -18,3 +18,4 @@
 - bcrypt
 - jsonwebtoken
 - sass
+- axios

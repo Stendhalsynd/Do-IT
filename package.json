@@ -21,6 +21,7 @@
   "homepage": "https://github.com/dawncoding/Do-IT#readme",
   "dependencies": {
     "@slack/bolt": "^3.13.3",
+    "axios": "^1.5.0",
     "bcrypt": "^5.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
@@ -30,7 +31,8 @@
     "mysql2": "^3.6.0",
     "sass": "^1.66.1",
     "sequelize": "^6.32.1",
-    "sequelize-cli": "^6.6.1"
+    "sequelize-cli": "^6.6.1",
+    "socket.io": "^4.7.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
