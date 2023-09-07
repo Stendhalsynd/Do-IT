@@ -15,7 +15,7 @@ const QuestionListModel = (sequelize) => {
         allowNull: false,
       },
       CsSubjectId: {
-        type: DataTypes.UUID(50),
+        type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV1,
         allowNull: false,
