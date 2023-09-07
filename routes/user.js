@@ -9,6 +9,11 @@ router.post("/signUp", controller.post_userSignUp);
 router.post("/signIn", controller.post_userSignIn);
 
 router.get("/", controller.getMain);
-router.get("/mypage:init", controller.getMyPage);
+
+// 마이페이지
+router.post("/verify", controller.tokenVerify);
+router.get("/mypage/:nickname", controller.getMyPage);
+// 임시 - 메인페이지 상에 마이페이지 뜨도록 설정되면 합치기.
+router.get("/temp", controller.getTemp);
 
 module.exports = router;

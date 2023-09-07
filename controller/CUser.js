@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Study, StudyUser } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -87,6 +87,48 @@ exports.post_userSignIn = async (req, res) => {
       message: "해당 계정의 사용자가 존재하지 않습니다.",
     });
   }
+};
+
+// 마이페이지
+// 토큰 검증 (id(UUID) 반환)
+let verifiedId;
+function tokenVerifier(auth) {
+  const token = auth.split(" ")[1];
+  jwt.verify(token, SECRET, (err, decoded) => {
+    if (err) {
+      res.send({ result: false, message: "잘못된 접근 경로입니다." });
+    }
+    verifiedId = decoded.id;
+  });
+}
+exports.tokenVerify = async (req, res) => {
+  await tokenVerifier(req.headers.authorization);
+  const user = await User.findOne({ where: { id: verifiedId } });
+  res.send({ result: true, nickname: user.nickname });
+};
+exports.getMyPage = async (req, res) => {
+  const nickname = req.params.nickname;
+  const userinfo = await User.findOne({ where: { nickname } });
+  console.log(userinfo);
+  // 스터디 정보
+  const StudyAsLeader = await Study.findAll({
+    where: { leaderId: userinfo.id },
+  });
+  const StudyAsCrew = await StudyUser.findAll({
+    where: { UserId: userinfo.id },
+  });
+  // url 입력하여 접근하는 것 방지하기 위해, 아래 조건 추가
+  if (userinfo.id === verifiedId) {
+    res.render("mypage", { userinfo, StudyAsCrew, StudyAsLeader });
+  } else {
+    res.send(
+      "<script>alert('잘못된 경로입니다.'); document.location.href='/';</script>"
+    );
+  }
+};
+// 임시
+exports.getTemp = (req, res) => {
+  res.render("main_temp");
 };
 
 ///////////////////////////////////
