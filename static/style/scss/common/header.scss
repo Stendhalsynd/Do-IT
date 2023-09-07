@@ -25,17 +25,7 @@
     justify-content: space-between;
     &--practice,
     &--study,
-    &--sign-in {
-      margin: 10px;
-      border: none;
-      background-color: white;
-      font-family: Roboto;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 18px;
-      display: block;
-    }
+    &--sign-in,
     &--point,
     &--profile,
     &--sign-out {
@@ -47,7 +37,7 @@
       font-style: normal;
       font-weight: 700;
       line-height: 18px;
-      display: none;
+      display: block;
     }
   }
 }
