@@ -3,19 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/common/reset.css" />
     <title>Document</title>
     <style>
       .my_div {
-        width: 150px;
-        height: 150px;
-        background-color: pink;
+        border: 1px;
+        margin: 18px;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
     </style>
   </head>
   <body>
+    <header class="header">
+      <img
+        src="/static/images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+        <button class="header__button--point">포인트</button>
+        <button class="header__button--profile">프로필</button>
+        <button class="header__button--sign-out">로그아웃</button>
+      </div>
+    </header>
+
     <h1>과목 선택</h1>
-    <div class="my_div" onclick="selectSubject('Algorithm')">알고리즘</div>
+    <div class="my_div" onclick="selectSubject('Algorithm')">
+      <div
+        style="
+          width: 295px;
+          height: 57px;
+          flex-shrink: 0;
+          border-radius: 20px 20px 0px 0px;
+          border-top: 1px solid var(--secondary-default, #6b6b6b);
+          border-right: 1px solid var(--secondary-default, #6b6b6b);
+          border-left: 1px solid var(--secondary-default, #6b6b6b);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <span
+          style="
+            display: inline-flex;
+            height: 30px;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 30px;
+          "
+        >
+          알고리즘
+        </span>
+      </div>
+      <div
+        style="
+          width: 295px;
+          height: 161px;
+          flex-shrink: 0;
+          border-radius: 0px 0px 20px 20px;
+          border: 1px solid var(--secondary-default, #6b6b6b);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <p style="display: flex; align-items: center; gap: 10px">부연 설명</p>
+      </div>
+    </div>
     <br />
     <div class="my_div" onclick="selectSubject('DataStructure')">자료구조</div>
     <br />
