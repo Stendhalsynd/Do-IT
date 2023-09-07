@@ -13,7 +13,12 @@
   display: flex;
   justify-content: space-between;
 }
-.header__button--practice, .header__button--study, .header__button--sign-in {
+.header__button--practice,
+.header__button--study,
+.header__button--sign-in,
+.header__button--point,
+.header__button--profile,
+.header__button--sign-out {
   margin: 10px;
   border: none;
   background-color: white;
@@ -23,15 +28,4 @@
   font-weight: 700;
   line-height: 18px;
   display: block;
-}
-.header__button--point, .header__button--profile, .header__button--sign-out {
-  margin: 10px;
-  border: none;
-  background-color: white;
-  font-family: Roboto;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px;
-  display: none;
 }

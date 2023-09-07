@@ -1,18 +1,31 @@
 const token = localStorage.getItem("userToken");
 if (token) {
   // 로그인 성공 시 포인트, 프로필, 로그아웃 버튼 표시
-  const pointButton = document.querySelector(".header__button--point");
-  const profileButton = document.querySelector(".header__button--profile");
-  const signOutButton = document.querySelector(".header__button--sign-out");
-  pointButton.style.display = "block";
-  profileButton.style.display = "block";
-  signOutButton.style.display = "block";
+  const headerButton = document.querySelector(".header__button");
+  // 포인트 버튼 추가
+  const pointButton = document.createElement("button");
+  pointButton.classList.add("header__button--point");
+  pointButton.innerText = "포인트";
+  headerButton.appendChild(pointButton);
+  // 프로필 버튼 추가
+  const profileButton = document.createElement("button");
+  profileButton.classList.add("header__button--profile");
+  profileButton.innerText = "프로필";
+  headerButton.appendChild(profileButton);
+  // 로그아웃 버튼 추가
+  const signOutButton = document.createElement("button");
+  signOutButton.classList.add("header__button--sign-out");
+  signOutButton.innerText = "로그아웃";
+  headerButton.appendChild(signOutButton);
   // 로그인 성공 시 로그인 버튼 없애기
-  signInButton.style.display = "none";
+  // 로그인 버튼 엘리먼트 가져오기
+  const signInButton = document.querySelector(".header__button--sign-in");
+  // 로그인 버튼이 존재하는 경우에만 삭제
+  if (signInButton) {
+    signInButton.parentNode.removeChild(signInButton);
+  }
   // 클릭 이벤트 제거
   signInButton.removeEventListener("click", openSignInModal);
-  // 새로운 클릭 이벤트 추가
-  // profileButton.addEventListener("click", openProfile);
   // 로그인 모달 닫기
   closeModal(".modal__sign-in");
 }
