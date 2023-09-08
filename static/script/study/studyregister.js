@@ -1,11 +1,12 @@
 // localStorage 검증 후, 페이지로드
 const userToken = localStorage.getItem("userToken");
+
 if (!userToken) {
+  // document.querySelector(".study").style.visibility = "hidden";
   alert("로그인이 필요한 페이지입니다.");
   document.location.href = "/";
-  document.querySelector(".study").style.visibility = "hidden";
 } else {
-  document.querySelector(".study").style.visibility = "visible";
+  document.querySelector(".study").hidden = false;
 }
 // 모집인원 선택
 let memTotal = 0;
@@ -38,6 +39,7 @@ function checkForm() {
   if (memTotal == 0) {
     alert("모집인원을 선택해주세요");
     mem = false;
+    return;
   } else {
     mem = true;
   }
@@ -47,6 +49,7 @@ function checkForm() {
   } else {
     alert("하나 이상의 관심IT 분야를 선택해주세요.");
     cat = false;
+    return;
   }
   // 3) 날짜입력
   if (
@@ -57,11 +60,13 @@ function checkForm() {
   } else {
     alert("시작일과 종료일을 모두 선택해주세요.");
     date = false;
+    return;
   }
   // 4) 제목 글자수 제한
   if (document.querySelector("#title").value == "") {
     alert("제목을 입력하세요");
     title = false;
+    return;
   } else {
     title = true;
   }
@@ -69,6 +74,7 @@ function checkForm() {
   if (document.querySelector("#intro").value == "") {
     alert("스터디를 소개해주세요");
     intro = false;
+    return;
   } else {
     intro = true;
   }
@@ -111,7 +117,7 @@ async function register() {
       alert("신규 스터디 개설 신청이 완료되었습니다.");
       document.location.href = "/study/list";
     } else {
-      alert("신규 스터디 개설 신청에 실패하였습니다.");
+      alert(res.data.message);
     }
     console.log(res.data.result);
   } else {

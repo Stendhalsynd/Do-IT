@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/style/css/common/reset.css" />
     <link rel="stylesheet" href="/static/style/css/common/modal.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -22,48 +23,15 @@
         <button class="header__button--sign-in">로그인</button>
       </div>
     </header>
-    <div>
-      <h4>기본정보</h4>
-      <p>아이디: <%= userinfo.userId %></p>
-      <p>닉네임: <%= userinfo.nickname %></p>
-      <p>내 포인트: <%= userinfo.point %></p>
-      <p>링크: <%= userinfo.link %></p>
-    </div>
-    <div>
-      <h4>내가 개설한 스터디</h4>
-      <% for (let i = 0; i < asLeader.length; i ++) { %>
-      <div>
-        <% if (asLeader[i].status === "WAITING") { %>
-        <p>대기 중</p>
-        <% } else if (asLeader[i].status === "ALLOWED") { %>
-        <p>승인 완료</p>
-        <% } else { %>
-        <p>거절</p>
-        <% } %>
-        <p><%= asLeader[i].title %></p>
-        <p><%= asLeader[i].intro %></p>
-      </div>
-      <% } %>
-    </div>
-    <div>
-      <h4>내가 참여 중인 스터디</h4>
-      <% for (let i = 0; i < asCrew.length; i ++) { %>
-      <div>
-        <p><%= asCrew[i].title %></p>
-        <p><%= asCrew[i].intro %></p>
-      </div>
-      <% } %> <% for (let i = 0; i < asApplier.length; i ++) { %>
-      <div>
-        <p><%= asApplier[i].title %></p>
-        <p><%= asApplier[i].intro %></p>
-      </div>
-      <% } %>
-    </div>
+
     <script src="/static/script/common/modal.js"></script>
     <script src="/static/script/common/signIn.js"></script>
     <script src="/static/script/common/signUp.js"></script>
     <script src="/static/script/common/signOut.js"></script>
     <script src="/static/script/common/studyList.js"></script>
     <script src="/static/script/common/profile.js"></script>
+
+    <div id="nicknameHidden" hidden><%= nickname %></div>
+    <script src="/static/script/mypage/mypage.js"></script>
   </body>
 </html>

@@ -13,6 +13,7 @@ router.get("/", controller.getMain);
 // 마이페이지
 router.post("/verify", controller.tokenVerify);
 router.get("/mypage/:nickname", controller.getMyPage);
+router.post("/mypage/:nickname", controller.postMyPage);
 // 임시 - 메인페이지 상에 마이페이지 뜨도록 설정되면 합치기.
 router.get("/temp", controller.getTemp);
 

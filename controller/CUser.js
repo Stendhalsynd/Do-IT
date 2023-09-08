@@ -18,10 +18,11 @@ exports.getMain = (req, res) => {
   res.render("main_temp");
 };
 
-exports.getMyPage = async (req, res) => {
+exports.postMyPage = async (req, res) => {
   let asLeader = [];
   let asCrew = [];
   let asApplier = [];
+  let asRejected = [];
   const userinfo = await User.findByPk(verifiedId, {
     include: [
       {
@@ -32,7 +33,6 @@ exports.getMyPage = async (req, res) => {
       },
     ],
   });
-  console.log("userinfo", userinfo);
   for (let i = 0; i < userinfo.StudyUsers.length; i++) {
     switch (userinfo.StudyUsers[i].status) {
       case "LEADER":
@@ -44,18 +44,33 @@ exports.getMyPage = async (req, res) => {
       case "APPLIER":
         asApplier.push(userinfo.StudyUsers[i].Study);
         break;
+      case "REJECTED":
+        asRejected.push(userinfo.StudyUsers[i].Study);
+        break;
     }
   }
-  // console.log("asLeader", asLeader, "asCrew", asCrew, "asApplier", asApplier);
+  console.log(req.params.nickname);
   // url 입력하여 접근하는 것 방지하기 위해, 아래 조건 추가
-  if (userinfo.id === verifiedId) {
+  if (userinfo.id === verifiedId && req.params.nickname === verifiedNickname) {
     // console.log(StudyAsLeader[0]);
-    res.render("mypage", { userinfo, asLeader, asCrew, asApplier });
+    res.json({
+      result: true,
+      userinfo,
+      asLeader,
+      asCrew,
+      asApplier,
+      asRejected,
+    });
   } else {
+    // res.json({ result: false });
     res.send(
       "<script>alert('잘못된 경로입니다.'); document.location.href='/';</script>"
     );
   }
+};
+
+exports.getMyPage = (req, res) => {
+  res.render("mypage", { nickname: req.params.nickname });
 };
 
 ///////////////////////////////////
@@ -124,20 +139,19 @@ exports.post_userSignIn = async (req, res) => {
 
 // 마이페이지
 // 토큰 검증 (id(UUID) 반환)
-let verifiedId;
+let verifiedId, verifiedNickname;
 function tokenVerifier(auth) {
   const token = auth.split(" ")[1];
   jwt.verify(token, SECRET, (err, decoded) => {
     if (err) {
       res.send({ result: false, message: "잘못된 접근 경로입니다." });
     }
-    verifiedId = decoded.id;
+    (verifiedId = decoded.id), (verifiedNickname = decoded.nickname);
   });
 }
 exports.tokenVerify = async (req, res) => {
   await tokenVerifier(req.headers.authorization);
-  const user = await User.findOne({ where: { id: verifiedId } });
-  res.send({ result: true, nickname: user.nickname });
+  res.send({ result: true, nickname: verifiedNickname });
 };
 // 임시
 exports.getTemp = (req, res) => {

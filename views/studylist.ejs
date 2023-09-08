@@ -22,6 +22,9 @@
         <button class="header__button--sign-out">로그아웃</button>
       </div>
     </header>
+    <div>
+      <button id="studyRegister">스터디 개설하기</button>
+    </div>
     <div id="studyList">
       <% for (let i = 0; i < list.length; i++) { %>
       <div onclick="studyDetail('<%= list[i].id %>')">
