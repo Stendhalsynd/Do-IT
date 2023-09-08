@@ -1,22 +1,12 @@
 const token = localStorage.getItem("userToken");
 if (token) {
-  // 로그인 성공 시 포인트, 프로필, 로그아웃 버튼 표시
+  // 로그인 성공 시 프로필 버튼 표시
   const headerButton = document.querySelector(".header__button");
-  // 포인트 버튼 추가
-  const pointButton = document.createElement("button");
-  pointButton.classList.add("header__button--point");
-  pointButton.innerText = "포인트";
-  headerButton.appendChild(pointButton);
   // 프로필 버튼 추가
   const profileButton = document.createElement("button");
   profileButton.classList.add("header__button--profile");
   profileButton.innerText = "프로필";
   headerButton.appendChild(profileButton);
-  // 로그아웃 버튼 추가
-  const signOutButton = document.createElement("button");
-  signOutButton.classList.add("header__button--sign-out");
-  signOutButton.innerText = "로그아웃";
-  headerButton.appendChild(signOutButton);
   // 로그인 성공 시 로그인 버튼 없애기
   // 로그인 버튼 엘리먼트 가져오기
   const signInButton = document.querySelector(".header__button--sign-in");
@@ -32,10 +22,22 @@ if (token) {
 
 async function signIn() {
   const signInForm = document.forms["modal__form--sign-in"];
+  // 비밀번호를 잘못 입력했을 때, 비밀번호 입력 필드 초기화를 위한 변수 생성
   const pwField = signInForm.pwForSignIn;
+  // 비밀번호의 필드에 입력한 값
+  const pw = pwField.value;
+  const userId = signInForm.userIdForSignIn.value;
 
-  // 비밀번호의 필드 값을 가져온다.
-  const password = pwField.value;
+  // 입력 필드 중 아이디의 필드가 빈 값인 경우 알림 표시
+  if (!userId) {
+    alert("아이디를 입력해주세요.");
+    return;
+  }
+  // 입력 필드 중 비밀번호의 필드가 빈 값인 경우 알림 표시
+  if (!pw) {
+    alert("비밀번호를 입력해주세요.");
+    return;
+  }
 
   // 로그인 요청을 보내고 로그인 성공 여부를 확인하는 코드
   try {
@@ -43,8 +45,8 @@ async function signIn() {
       method: "POST",
       url: "/user/signIn",
       data: {
-        userId: signInForm.userIdForSignIn.value,
-        pw: password,
+        userId,
+        pw,
       },
     });
     if (res.data.result) {

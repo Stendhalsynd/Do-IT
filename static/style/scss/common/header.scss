@@ -1,10 +1,5 @@
 // main__mobile
 @media screen and (min-width: 330px) and (max-width: 767px) {
-  .header {
-    &__logo {
-      width: 80px;
-    }
-  }
 }
 
 // main__tablet
@@ -20,6 +15,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &__logo {
+    width: 80px;
+  }
   &__button {
     display: flex;
     justify-content: space-between;
@@ -28,6 +26,7 @@
     &--sign-in,
     &--point,
     &--profile,
+    &--my-page,
     &--sign-out {
       margin: 10px;
       border: none;

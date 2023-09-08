@@ -61,7 +61,7 @@ exports.post_userSignIn = async (req, res) => {
     // 비밀번호가 일치한다면,
     if (result) {
       res.cookie("isSignIn", true, cookieConfig);
-      const token = jwt.sign({ id: user.id }, SECRET);
+      const token = jwt.sign({ id: user.id, nickname: user.nickname }, SECRET);
       res.json({
         result: true,
         userIdConfirm: true,

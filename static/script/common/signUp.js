@@ -3,12 +3,35 @@ async function signUp() {
   const pwField = signUpForm.pwForSignUp;
   const pwConfirmField = signUpForm.pwConfirmForSignUp;
 
-  // 비밀번호와 비밀번호 확인 필드의 값을 가져옵니다.
-  const password = pwField.value;
-  const confirmPassword = pwConfirmField.value;
+  // 비밀번호와 비밀번호 확인 필드의 값을 가져온다.
+  const pw = pwField.value;
+  const confirmPw = pwConfirmField.value;
+  const userId = signUpForm.userIdForSignUp.value;
+  const nickname = signUpForm.nickname.value;
+  const link = signUpForm.link.value;
+
+  if (!userId.trim()) {
+    alert("아이디를 입력하세요.");
+    return;
+  }
+
+  if (!nickname.trim()) {
+    alert("닉네임을 입력하세요.");
+    return;
+  }
+
+  if (!pw.trim()) {
+    alert("비밀번호를 입력하세요.");
+    return;
+  }
+
+  if (!link.trim()) {
+    alert("링크를 입력하세요.");
+    return;
+  }
 
   // 비밀번호와 비밀번호 확인이 일치하는지 검사한다.
-  if (password !== confirmPassword) {
+  if (pw !== confirmPw) {
     alert("입력한 비밀번호가 서로 일치하지 않습니다.");
     // 필드 초기화
     pwField.value = "";
@@ -23,10 +46,10 @@ async function signUp() {
       method: "POST",
       url: "/user/signUp",
       data: {
-        userId: signUpForm.userIdForSignUp.value,
-        nickname: signUpForm.nickname.value,
-        pw: password,
-        link: signUpForm.link.value,
+        userId,
+        nickname,
+        pw,
+        link,
       },
     });
     if (res.data.result) {
