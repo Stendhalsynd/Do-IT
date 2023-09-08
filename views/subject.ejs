@@ -3,28 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/style/css/common/reset.css" />
+    <link rel="stylesheet" href="../static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/interview/subject.css" />
     <title>Document</title>
-    <style>
-      .my_div {
-        width: 150px;
-        height: 150px;
-        background-color: pink;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body>
-    <h1>과목 선택</h1>
-    <div class="my_div" onclick="selectSubject('Algorithm')">알고리즘</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('DataStructure')">자료구조</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('Database')">데이터베이스</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('Network')">네트워크</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('OS')">운영체제</div>
-    <br />
+    <header class="header">
+      <img
+        src="/static/images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+        <button class="header__button--point">포인트</button>
+        <button class="header__button--profile">프로필</button>
+        <!-- <button class="header__button--sign-out">로그아웃</button> -->
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="content__title">CS 면접 연습</div>
+      <div class="content__description">면접 주제를 선택해주세요.</div>
+      <div class="content__divider"></div>
+      <div class="content__subject-box" onclick="selectSubject('Algorithm')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">알고리즘</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div
+        class="content__subject-box"
+        onclick="selectSubject('DataStructure')"
+      >
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">자료구조</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div class="content__subject-box" onclick="selectSubject('Database')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">데이터베이스</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div class="content__subject-box" onclick="selectSubject('Network')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">네트워크</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div class="content__subject-box" onclick="selectSubject('OS')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">운영체제</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="../static/script/interview/subject.js"></script>
 </html>

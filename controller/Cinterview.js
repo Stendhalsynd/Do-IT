@@ -7,7 +7,7 @@ const SECRET = "mySecret";
 
 // interview 페이지 가져오기
 exports.getInterviewTest = (req, res) => {
-  res.render("interview", { key: env.OPENAI_APIKEY });
+  res.render("chat", { key: env.OPENAI_APIKEY });
 };
 
 // 과목 선택 페이지 가져오기
