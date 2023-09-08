@@ -3,20 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/style/css/common/header.css" />
     <link rel="stylesheet" href="../static/style/css/common/reset.css" />
+    <link rel="stylesheet" href="../static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/interview/subject.css" />
     <title>Document</title>
-    <style>
-      .my_div {
-        border: 1px;
-        margin: 18px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    </style>
   </head>
   <body>
     <header class="header">
@@ -31,66 +21,58 @@
         <button class="header__button--sign-in">로그인</button>
         <button class="header__button--point">포인트</button>
         <button class="header__button--profile">프로필</button>
-        <button class="header__button--sign-out">로그아웃</button>
+        <!-- <button class="header__button--sign-out">로그아웃</button> -->
       </div>
     </header>
 
-    <h1>과목 선택</h1>
-    <div class="my_div" onclick="selectSubject('Algorithm')">
-      <div
-        style="
-          width: 295px;
-          height: 57px;
-          flex-shrink: 0;
-          border-radius: 20px 20px 0px 0px;
-          border-top: 1px solid var(--secondary-default, #6b6b6b);
-          border-right: 1px solid var(--secondary-default, #6b6b6b);
-          border-left: 1px solid var(--secondary-default, #6b6b6b);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        "
-      >
-        <span
-          style="
-            display: inline-flex;
-            height: 30px;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 30px;
-          "
-        >
-          알고리즘
-        </span>
+    <div class="content">
+      <div class="content__title">CS 면접 연습</div>
+      <div class="content__description">면접 주제를 선택해주세요.</div>
+      <div class="content__divider"></div>
+      <div class="content__subject-box" onclick="selectSubject('Algorithm')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">알고리즘</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
       </div>
       <div
-        style="
-          width: 295px;
-          height: 161px;
-          flex-shrink: 0;
-          border-radius: 0px 0px 20px 20px;
-          border: 1px solid var(--secondary-default, #6b6b6b);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        "
+        class="content__subject-box"
+        onclick="selectSubject('DataStructure')"
       >
-        <p style="display: flex; align-items: center; gap: 10px">부연 설명</p>
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">자료구조</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div class="content__subject-box" onclick="selectSubject('Database')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">데이터베이스</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div class="content__subject-box" onclick="selectSubject('Network')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">네트워크</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
+      </div>
+      <div class="content__subject-box" onclick="selectSubject('OS')">
+        <div class="content__subject-title">
+          <p class="content__subject-title--text">운영체제</p>
+        </div>
+        <div class="content__subject-description">
+          <p class="content__subject-description--text">부연 설명</p>
+        </div>
       </div>
     </div>
-    <br />
-    <div class="my_div" onclick="selectSubject('DataStructure')">자료구조</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('Database')">데이터베이스</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('Network')">네트워크</div>
-    <br />
-    <div class="my_div" onclick="selectSubject('OS')">운영체제</div>
-    <br />
   </body>
   <script src="../static/script/interview/subject.js"></script>
 </html>

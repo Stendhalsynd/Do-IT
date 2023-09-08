@@ -10,39 +10,75 @@
 @media screen and (min-width: 1012px) {
 }
 
-.header {
-  height: 52px;
+.content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &__button {
+  flex-direction: column;
+  margin-bottom: 3vh;
+  &__title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    margin: 8vh 0vh 2vh 0vh;
+    text-align: center;
+  }
+  &__description {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 3vh;
+    text-align: center;
+  }
+  &__divider {
+    height: 6px;
+    background-color: lightgray;
+    border-radius: 20px;
+    margin: 2vh 7.5vw;
+  }
+  &__subject-box {
+    border: 1px;
+    margin: 2vh;
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
-    &--practice,
-    &--study,
-    &--sign-in {
-      margin: 10px;
-      border: none;
-      background-color: white;
-      font-family: Roboto;
-      font-size: 14px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__subject-title {
+    width: 82vw;
+    height: 57px;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    border-top: 1px solid var(--secondary-default, #6b6b6b);
+    border-right: 1px solid var(--secondary-default, #6b6b6b);
+    border-left: 1px solid var(--secondary-default, #6b6b6b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--text {
+      height: 30px;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      font-size: 24px;
       font-style: normal;
       font-weight: 700;
-      line-height: 18px;
-      display: block;
+      line-height: 30px;
     }
-    &--point,
-    &--profile,
-    &--sign-out {
-      margin: 10px;
-      border: none;
-      background-color: white;
-      font-family: Roboto;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 18px;
-      display: none;
+  }
+  &__subject-description {
+    width: 82vw;
+    height: 161px;
+    flex-shrink: 0;
+    border-radius: 0px 0px 20px 20px;
+    border: 1px solid var(--secondary-default, #6b6b6b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--text {
+      align-items: center;
+      gap: 10px;
     }
   }
 }

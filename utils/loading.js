@@ -11,11 +11,6 @@ function LoadingWithMask() {
   mask.id = "mask";
   mask.style.cssText = `position:absolute; background-color:#000000; display:none; left:0; top:0; width:${maskWidth}; height:${maskHeight}; opacity: 0.3`;
 
-  // console.log(
-  //   document.documentElement.clientWidth,
-  //   document.documentElement.clientHeight
-  // );
-
   // 로딩 이미지 div 생성
   const loadingImg = document.createElement("div");
   loadingImg.id = "loadingImg";

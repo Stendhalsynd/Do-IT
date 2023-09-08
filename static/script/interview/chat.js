@@ -1,6 +1,6 @@
 const socket = io();
 const chatForm = document.querySelector("#chat");
-const msg = document.querySelector("#msg");
+const msg = document.querySelector(".content_msg");
 
 let questionList = [];
 let answerList = [];
@@ -9,8 +9,6 @@ let evalList = [];
 let interviewCount = 0;
 let answer = "";
 let point = 0;
-
-console.log("open api...");
 
 // 페이지 로드되자마자 면접 질문을 보여줄 수 있도록 즉시 실행 함수 호출
 (async function () {
@@ -30,9 +28,11 @@ socket.on("newMessage", (message, nick) => {
   const p = document.createElement("p");
 
   if (nick === "interviewee") {
-    div.classList.add("my-chat");
+    div.classList.add("content__msg-my-chat");
+    p.classList.add("content__msg-my-chat--text");
   } else {
-    div.classList.add("other-chat");
+    div.classList.add("content__msg-other-chat");
+    p.classList.add("content__msg-other-chat--text");
   }
 
   p.textContent = `${message}`;
@@ -122,7 +122,7 @@ async function runApi() {
 chatForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const message = document.querySelector("#message");
-  const msg = document.querySelector("#msg");
+  const msg = document.querySelector(".content_msg");
 
   const answerMsg = {
     nick: "interviewee",
@@ -154,7 +154,8 @@ chatForm.addEventListener("submit", async (e) => {
   } else {
     const div = document.createElement("div");
     const p = document.createElement("p");
-    div.classList.add("end-chat");
+    div.classList.add("content__msg-end-chat");
+    p.classList.add("content__msg-end-chat--text");
 
     for (let i = 0; i < 3; i++) {
       p.innerHTML += `<b>질문 ${i + 1}:</b> ${questionList[i]}<br/><b>답변 ${
@@ -184,9 +185,5 @@ chatForm.addEventListener("submit", async (e) => {
         point,
       },
     });
-
-    console.log(res.data.result);
   }
-
-  console.log(interviewCount);
 });
