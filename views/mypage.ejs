@@ -31,19 +31,31 @@
     </div>
     <div>
       <h4>내가 개설한 스터디</h4>
-      <% for (let i = 0; i < StudyAsLeader.length; i ++) { %>
+      <% for (let i = 0; i < asLeader.length; i ++) { %>
       <div>
-        <p><%= StudyAsLeader[i].title %></p>
-        <p><%= StudyAsLeader[i].intro %></p>
+        <% if (asLeader[i].status === "WAITING") { %>
+        <p>대기 중</p>
+        <% } else if (asLeader[i].status === "ALLOWED") { %>
+        <p>승인 완료</p>
+        <% } else { %>
+        <p>거절</p>
+        <% } %>
+        <p><%= asLeader[i].title %></p>
+        <p><%= asLeader[i].intro %></p>
       </div>
       <% } %>
     </div>
     <div>
-      <h4>내가 참여한 스터디</h4>
-      <% for (let i = 0; i < StudyAsCrew.length; i ++) { %>
+      <h4>내가 참여 중인 스터디</h4>
+      <% for (let i = 0; i < asCrew.length; i ++) { %>
       <div>
-        <p><%= StudyAsCrew[i].title %></p>
-        <p><%= StudyAsCrew[i].intro %></p>
+        <p><%= asCrew[i].title %></p>
+        <p><%= asCrew[i].intro %></p>
+      </div>
+      <% } %> <% for (let i = 0; i < asApplier.length; i ++) { %>
+      <div>
+        <p><%= asApplier[i].title %></p>
+        <p><%= asApplier[i].intro %></p>
       </div>
       <% } %>
     </div>

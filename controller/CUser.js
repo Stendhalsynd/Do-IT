@@ -17,11 +17,45 @@ exports.userRegister = (req, res) => {
 exports.getMain = (req, res) => {
   res.render("main_temp");
 };
-exports.getMyPage = (req, res) => {
-  // 마이페이지 클릭 시, localStorage의 jwt 함께 보내줘야 함
-  // 1) 해당 토큰 검증 완료된 경우에만 mypage 렌더되도록 코드 수정 필요
-  // 2) 사용자 정보 가져와서(findAll), 렌더링 될 때 데이터도 함께 보내줘야 함.
-  res.render("mypage");
+
+exports.getMyPage = async (req, res) => {
+  let asLeader = [];
+  let asCrew = [];
+  let asApplier = [];
+  const userinfo = await User.findByPk(verifiedId, {
+    include: [
+      {
+        model: StudyUser,
+        include: {
+          model: Study,
+        },
+      },
+    ],
+  });
+  console.log("userinfo", userinfo);
+  for (let i = 0; i < userinfo.StudyUsers.length; i++) {
+    switch (userinfo.StudyUsers[i].status) {
+      case "LEADER":
+        asLeader.push(userinfo.StudyUsers[i].Study);
+        break;
+      case "CREW":
+        asCrew.push(userinfo.StudyUsers[i].Study);
+        break;
+      case "APPLIER":
+        asApplier.push(userinfo.StudyUsers[i].Study);
+        break;
+    }
+  }
+  // console.log("asLeader", asLeader, "asCrew", asCrew, "asApplier", asApplier);
+  // url 입력하여 접근하는 것 방지하기 위해, 아래 조건 추가
+  if (userinfo.id === verifiedId) {
+    // console.log(StudyAsLeader[0]);
+    res.render("mypage", { userinfo, asLeader, asCrew, asApplier });
+  } else {
+    res.send(
+      "<script>alert('잘못된 경로입니다.'); document.location.href='/';</script>"
+    );
+  }
 };
 
 ///////////////////////////////////
@@ -104,26 +138,6 @@ exports.tokenVerify = async (req, res) => {
   await tokenVerifier(req.headers.authorization);
   const user = await User.findOne({ where: { id: verifiedId } });
   res.send({ result: true, nickname: user.nickname });
-};
-exports.getMyPage = async (req, res) => {
-  const nickname = req.params.nickname;
-  const userinfo = await User.findOne({ where: { nickname } });
-  console.log(userinfo);
-  // 스터디 정보
-  const StudyAsLeader = await Study.findAll({
-    where: { leaderId: userinfo.id },
-  });
-  const StudyAsCrew = await StudyUser.findAll({
-    where: { UserId: userinfo.id },
-  });
-  // url 입력하여 접근하는 것 방지하기 위해, 아래 조건 추가
-  if (userinfo.id === verifiedId) {
-    res.render("mypage", { userinfo, StudyAsCrew, StudyAsLeader });
-  } else {
-    res.send(
-      "<script>alert('잘못된 경로입니다.'); document.location.href='/';</script>"
-    );
-  }
 };
 // 임시
 exports.getTemp = (req, res) => {
