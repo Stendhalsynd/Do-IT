@@ -10,7 +10,7 @@ router.post("/", controller.postRegister);
 router.get("/list", controller.getList);
 
 // 스터디별 페이지 관련
-router.get("/list/:init", controller.getDetail);
-router.post("/list/:init", controller.postDetail);
+router.get("/list/:studyid", controller.getDetail);
+router.post("/list/:studyid", controller.postDetail);
 
 module.exports = router;
