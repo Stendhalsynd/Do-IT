@@ -1,25 +1,20 @@
-@media screen and (min-width: 330px) and (max-width: 767px) {
-  .header__logo {
-    width: 80px;
-  }
-}
 .header {
   height: 52px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.header__logo {
+  width: 80px;
+  margin: 16px 15px;
+}
 .header__button {
   display: flex;
   justify-content: space-between;
 }
-.header__button--practice,
-.header__button--study,
-.header__button--sign-in,
-.header__button--point,
-.header__button--profile,
-.header__button--sign-out {
-  margin: 10px;
+.header__button--practice, .header__button--study, .header__button--sign-in, .header__button--profile, .header__button--sign-out {
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: none;
   background-color: white;
   font-family: Roboto;
@@ -28,4 +23,8 @@
   font-weight: 700;
   line-height: 18px;
   display: block;
+}
+.header__button--profile img {
+  width: 24px;
+  height: 24px;
 }
