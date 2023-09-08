@@ -2,11 +2,19 @@ const token = localStorage.getItem("userToken");
 if (token) {
   // 로그인 성공 시 프로필 버튼 표시
   const headerButton = document.querySelector(".header__button");
+
+  // 로그아웃 버튼 추가
+  const signOutButton = document.createElement("button");
+  signOutButton.classList.add("header__button--sign-out");
+  signOutButton.innerText = "로그아웃";
+  headerButton.appendChild(signOutButton);
   // 프로필 버튼 추가
   const profileButton = document.createElement("button");
   profileButton.classList.add("header__button--profile");
-  profileButton.innerText = "프로필";
+  profileButton.innerHTML =
+    '<img src="/static/images/person-circle.svg" alt="프로필 아이콘">';
   headerButton.appendChild(profileButton);
+
   // 로그인 성공 시 로그인 버튼 없애기
   // 로그인 버튼 엘리먼트 가져오기
   const signInButton = document.querySelector(".header__button--sign-in");
@@ -16,6 +24,7 @@ if (token) {
   }
   // 클릭 이벤트 제거
   signInButton.removeEventListener("click", openSignInModal);
+
   // 로그인 모달 닫기
   closeModal(".modal__sign-in");
 }

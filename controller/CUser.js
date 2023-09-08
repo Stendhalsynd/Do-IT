@@ -53,7 +53,6 @@ exports.post_userSignIn = async (req, res) => {
     where: { userId },
   });
   // console.log(user);
-
   // 사용자가 존재한다면,
   if (user) {
     // step 2. 입력된 비밀번호와 기존 데이터와 비교

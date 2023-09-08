@@ -17,6 +17,7 @@
   align-items: center;
   &__logo {
     width: 80px;
+    margin: 16px 15px;
   }
   &__button {
     display: flex;
@@ -24,11 +25,10 @@
     &--practice,
     &--study,
     &--sign-in,
-    &--point,
     &--profile,
-    &--my-page,
     &--sign-out {
-      margin: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       border: none;
       background-color: white;
       font-family: Roboto;
@@ -37,6 +37,10 @@
       font-weight: 700;
       line-height: 18px;
       display: block;
+    }
+    &--profile img {
+      width: 24px;
+      height: 24px;
     }
   }
 }
