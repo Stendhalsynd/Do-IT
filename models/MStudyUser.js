@@ -11,7 +11,7 @@ const StudyUserModel = (sequelize) => {
         allowNull: false,
       },
       status: {
-        type: DataTypes.ENUM("LEADER", "CREW", "APPLIER"),
+        type: DataTypes.ENUM("LEADER", "CREW", "APPLIER", "REJECTED"),
         allowNull: false,
         defaultValue: "LEADER",
       },
