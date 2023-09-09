@@ -1,0 +1,195 @@
+// main__mobile
+@media screen and (min-width: 330px) and (max-width: 767px) {
+}
+
+// main__tablet
+@media screen and (min-width: 768px) and (max-width: 1011px) {
+}
+
+// main__desktop
+@media screen and (min-width: 1012px) {
+}
+
+.content {
+  &__msg {
+    width: 100%;
+    height: 83vh;
+    position: relative;
+    background: #d3e3fd;
+    overflow: overlay;
+  }
+  &__msg::-webkit-scrollbar {
+    width: 18px;
+  }
+  &__msg::-webkit-scrollbar-thumb {
+    height: 10px;
+    background-color: hsla(0, 0%, 42%, 0.49);
+    border-radius: 100px;
+  }
+  &__notice-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+    margin: 7vh 5vh 0 5vh;
+    &--text {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px;
+    }
+  }
+  &__notice-description {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+    margin: 3vh 0 3.5vh 0;
+    &--text {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+  &__divider {
+    height: 6px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 2vh 4.5vw;
+  }
+  &__other-chat {
+    display: flex;
+    justify-content: start;
+    padding: 2px 0px;
+    margin: 1vh 0;
+    &--text {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      padding: 10px;
+      border-radius: 15px;
+      border: 0.5px solid var(--figma-black-3, #828282);
+      background: var(--background-white, #fff);
+      margin-left: 4.5vw;
+      max-width: 70%;
+    }
+  }
+  &__my-chat {
+    display: flex;
+    justify-content: end;
+    padding: 2px 0px;
+    margin: 1vh 0;
+    &--text {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin: 0;
+      padding: 10px;
+      border-radius: 15px;
+      border: 0.5px solid var(--figma-black-3, #828282);
+      background: #fef01b;
+      margin-right: 4.5vw;
+      max-width: 70%;
+    }
+  }
+  &__end-chat {
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    margin: 1vh 0;
+    &--text {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      padding: 10px;
+      border-radius: 15px;
+      border: 0.5px solid var(--figma-black-3, #828282);
+      background: var(--background-white, #fff);
+      margin: 0 4.5vw;
+
+      b {
+        font-weight: bold;
+      }
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin: 2vh 0;
+    &--end {
+      width: 40vw;
+      height: 32px;
+      border-radius: 25px;
+      border: 0;
+      background: var(--common-black, #000);
+      color: var(--text-light-on-color, #fff);
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 20px;
+      margin: 2vw;
+    }
+    &--one-more {
+      width: 40vw;
+      height: 32px;
+      border-radius: 25px;
+      border: 0;
+      background: var(--figma-blue, #2f80ed);
+      color: var(--text-light-on-color, #fff);
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 20px;
+      margin: 2vw;
+    }
+  }
+  &__form {
+    display: flex;
+    margin-top: 1.7vh;
+    justify-content: center;
+  }
+  &__textarea {
+    width: 84.5vw;
+    height: 6vh;
+    border: 0;
+    padding: 0;
+    margin: 0 0 1vh 4.5vw;
+    resize: none;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  &__textarea:focus {
+    outline: none;
+  }
+  &__textarea::-webkit-scrollbar {
+    display: none;
+  }
+  &__send-button {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0 4.5vw 1vh 0;
+    border: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+
+    i {
+      font-size: 20px;
+      color: black;
+    }
+  }
+  &__chat-divider {
+    height: 1.5px;
+    background-color: #c6c6c6;
+    border-radius: 20px;
+    margin: 0 4.5vw;
+  }
+}

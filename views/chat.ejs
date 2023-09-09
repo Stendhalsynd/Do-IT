@@ -8,79 +8,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/style/css/common/reset.css" />
     <link rel="stylesheet" href="../static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/interview/chat.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
     <title>Document</title>
-    <style>
-      #body {
-        width: 100%;
-        height: 85.3vh;
-        position: relative;
-        background: #8ae4bc;
-        overflow: auto;
-      }
-      #chat {
-        position: fixed;
-        bottom: 1%;
-        display: flex;
-        justify-content: space-between;
-        width: 99%;
-        height: 42px;
-      }
-      #chat input {
-        width: 97%;
-      }
-      .my-chat {
-        display: flex;
-        justify-content: end;
-        padding: 2px 0px;
-      }
-      .my-chat p {
-        margin: 0;
-        padding: 10px;
-        background: yellow;
-        border-radius: 10px;
-        margin-right: 10px;
-        max-width: 80%;
-      }
-      .other-chat {
-        display: flex;
-        justify-content: start;
-        padding: 2px 0px;
-      }
-      .other-chat p {
-        margin: 0;
-        padding: 10px;
-        background: white;
-        border-radius: 10px;
-        margin-left: 10px;
-        max-width: 80%;
-      }
-      .end-chat {
-        display: flex;
-        justify-content: center;
-        padding: 2px;
-      }
-      .end-chat p {
-        margin: 0;
-        padding: 10px;
-        background: white;
-        border-radius: 10px;
-        margin: 15px;
-      }
-      #notice {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        color: gray;
-      }
-      #notice p {
-        margin: 5px;
-      }
-    </style>
   </head>
   <body>
     <header class="header">
       <img
-        src="/static/images/Do-IT logo.png"
+        src="../static/images/Do-IT logo.png"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -88,32 +26,43 @@
         <button class="header__button--practice">연습하기</button>
         <button class="header__button--study">스터디</button>
         <button class="header__button--sign-in">로그인</button>
-        <button class="header__button--point">포인트</button>
-        <button class="header__button--profile">프로필</button>
-        <!-- <button class="header__button--sign-out">로그아웃</button> -->
       </div>
     </header>
+
     <div class="content">
       <div class="content__msg">
-        <div class="content__msg-notice">
-          <p class="content__msg-notice--text">
-            면접을 시작하겠습니다.<br />면접은 총 3개의 질문으로 구성됩니다.
+        <div class="content__notice-title">
+          <p class="content__notice-title--text">
+            면접을 시작하겠습니다.<br />
           </p>
         </div>
+        <div class="content__notice-description">
+          <p class="content__notice-description--text">
+            면접은 총 3개의 질문으로 구성됩니다.<br />
+          </p>
+        </div>
+        <div class="content__divider"></div>
+        <div class="content__button"></div>
       </div>
       <form class="content__form" id="chat">
-        <input
-          type="text"
-          class="content__input"
+        <textarea
+          class="content__textarea"
           id="message"
           placeholder="답변을 입력해주세요"
-        />
-        <button class="content__button">입력</button>
+        ></textarea>
+        <button class="content__send-button">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
       </form>
+      <div class="content__chat-divider"></div>
     </div>
-    <script>
-      const key = "<%= key %>";
-    </script>
+    <script src="../static/script/common/modal.js"></script>
+    <script src="../static/script/common/signIn.js"></script>
+    <script src="../static/script/common/signUp.js"></script>
+    <script src="../static/script/common/signOut.js"></script>
+    <script src="../static/script/common/studyList.js"></script>
+    <script src="../static/script/common/profile.js"></script>
+    <script src="../static/script/common/practice.js"></script>
     <script src="../utils/loading.js"></script>
     <script src="../static/script/interview/chat.js"></script>
   </body>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../static/style/css/common/reset.css" />
     <link rel="stylesheet" href="../static/style/css/common/header.css" />
     <link rel="stylesheet" href="../static/style/css/interview/subject.css" />
@@ -11,7 +12,7 @@
   <body>
     <header class="header">
       <img
-        src="/static/images/Do-IT logo.png"
+        src="../static/images/Do-IT logo.png"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -19,9 +20,6 @@
         <button class="header__button--practice">연습하기</button>
         <button class="header__button--study">스터디</button>
         <button class="header__button--sign-in">로그인</button>
-        <button class="header__button--point">포인트</button>
-        <button class="header__button--profile">프로필</button>
-        <!-- <button class="header__button--sign-out">로그아웃</button> -->
       </div>
     </header>
 
@@ -74,5 +72,12 @@
       </div>
     </div>
   </body>
+  <script src="../static/script/common/modal.js"></script>
+  <script src="../static/script/common/signIn.js"></script>
+  <script src="../static/script/common/signUp.js"></script>
+  <script src="../static/script/common/signOut.js"></script>
+  <script src="../static/script/common/studyList.js"></script>
+  <script src="../static/script/common/profile.js"></script>
+  <script src="../static/script/common/practice.js"></script>
   <script src="../static/script/interview/subject.js"></script>
 </html>

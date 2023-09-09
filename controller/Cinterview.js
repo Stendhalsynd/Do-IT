@@ -73,12 +73,12 @@ exports.callApi = async (req, res) => {
 
 // 획득한 포인트 DB에 저장
 exports.addPoint = async (req, res) => {
-  const { token, point } = req.body;
+  const { userToken, point } = req.body;
   let userId = "";
 
   // JWT 인증을 통해 user 테이블의 id(uuid 값) 가져오기
   try {
-    userId = jwt.verify(token, SECRET).id;
+    userId = jwt.verify(userToken, SECRET).id;
   } catch (error) {
     console.log(error);
     res.send({ result: false });
