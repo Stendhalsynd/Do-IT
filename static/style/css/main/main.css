@@ -1,9 +1,9 @@
-/* Error: Undefined mixin.
- *    ,
- * 60 |       @include font;
- *    |       ^^^^^^^^^^^^^
- *    '
- *   scss/main/main.scss 60:7  root stylesheet */
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import "_mixin";
+ *   |         ^^^^^^^^
+ *   '
+ *   scss/main/main.scss 1:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a    \2577 \a 60 \2502        @include font;\a    \2502        ^^^^^^^^^^^^^\a    \2575 \a   scss/main/main.scss 60:7  root stylesheet";
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"_mixin\";\a   \2502          ^^^^^^^^\a   \2575 \a   scss/main/main.scss 1:9  root stylesheet";
 }
