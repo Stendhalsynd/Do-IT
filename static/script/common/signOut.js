@@ -1,6 +1,6 @@
 const signOutButton = document.querySelector(".header__button--sign-out");
 
-signOutButton.addEventListener("click", () => {
+signOutButton?.addEventListener("click", () => {
   // 로그아웃 버튼을 클릭했을 때 수행할 동작을 정의한다.
 
   // 확인 메시지를 표시하고 사용자가 확인을 누를 경우 로그아웃 수행

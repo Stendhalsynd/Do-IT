@@ -1,6 +1,6 @@
 const profileButton = document.querySelector(".header__button--profile");
 
-profileButton.addEventListener("click", async () => {
+profileButton?.addEventListener("click", async () => {
   // 마이페이지로 이동하기
   const userToken = localStorage.getItem("userToken");
   if (!userToken) {

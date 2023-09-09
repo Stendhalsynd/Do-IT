@@ -1,9 +1,104 @@
+@import url(/static/style/scss/helper/_mixin.scss);
+
+// main__mobile
+@media screen and (min-width: 330px) and (max-width: 767px) {
+  .main {
+    &__img {
+      &--logo {
+        img {
+          max-width: 269.419px;
+          max-height: 70px;
+        }
+      }
+    }
+  }
+}
+
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  gap: 30px;
+  &__title {
+    display: inline-flex;
+    height: 16px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+
+    color: var(--figma-black-3, #828282);
+    /* Headline 3 */
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 120% */
+  }
   &__img {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     &--logo {
-      width: 165.5px;
-      height: 43px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 55.1667vw;
+        height: 14.3333vw;
+      }
+    }
+  }
+
+  &__content {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    &--text1 {
+      font-size: 20px;
+      @include font;
+    }
+    &--text2 {
+      text-align: center;
+      font-size: 24px;
+      @include font;
+    }
+  }
+  &__practice {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    &--title {
+      display: flex;
+      padding: 0px 5px;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 20px;
+      @include font;
+      // line-height: 24px; /* 120% */
+    }
+    &--body {
+      display: flex;
+      width: 260px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--common-black, #000);
+      /* Body 1 */
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px; /* 175% */
+    }
+    &--img {
+      width: 260px;
+      height: 173px;
+      border-radius: 15px;
     }
   }
 }
