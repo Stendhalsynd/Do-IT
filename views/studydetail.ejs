@@ -42,7 +42,8 @@
   <br />
   <div class="container__button"></div>
   <br />
-  <div>모집현황<span><%= data.memCurr%>/<%= data.memTotal %></span></div>
+  <div>모집현황 <span><%= data.memCurr%>/<%= data.memTotal %></span>
+  </div>
   <% data.Themes.forEach(theme => { %>
   <span><%= theme.dataValues.category %></span>
   <% }); %>
@@ -69,8 +70,8 @@
         <h2><%= applier.status %></h2>
         <p>Nickname: <%= applier.nickname %></p>
         <p>Link: <%= applier.link %></p>
-        <button>수락</button>
-        <button>거절</button>
+        <button class="container__list--approve">수락</button>
+        <button class="container__list--reject">거절</button>
       </li>
       <% }); %>
     </ul>
@@ -79,66 +80,16 @@
 </body>
 
 <script>
-  // 개설자 혹은 참여자 여부를 확인하기 위해 즉시 실행함수 생성
-  (async function() {
-    const studyId = "<%= data.id %>";
-
-    /** 모집하기 / 지원하기 버튼 */
-    // 지원하기 혹은 모집완료 버튼이 들어갈 컨테이너 생성
-    const btnContainer = document.querySelector(".container__button");
-
-    // 지원하기 버튼 생성
-    const applyBtn = document.createElement("button");
-    applyBtn.classList.add("container__button--apply");
-    applyBtn.textContent = "지원하기";
-
-    // 모집완료 버튼 생성
-    const doneBtn = document.createElement("button");
-    doneBtn.classList.add("container__button--done");
-    doneBtn.textContent = "모집완료";
-
-    /** 지원한 크루 */
-    const appliers = document.querySelector('.list--leader');
-
-    // 개설자 혹은 참여자 여부에 따른 로직 실행
-    try {
-      const res = await axios({
-        method: "post",
-        url: `/study/list/${studyId}`,
-        data: {
-          studyId
-        },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-        },
-      });
-
-      const {
-        isLeader,
-        study,
-        isCrew = !isLeader
-      } = res.data;
-      const isAccepting = study.memCurr < study.memTotal;
-
-      // 크루원일때 모집상황에 따라 버튼 append
-      if (isCrew) {
-        const innerBtn = isAccepting ? applyBtn : doneBtn;
-        btnContainer.appendChild(innerBtn);
-      }
-
-      // 리더일때 지원한 크루 목록 조회
-      if (isLeader) {
-        appliers.style.display = 'block'
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+  const studyId = "<%= data.id %>";
 </script>
 
+<script src="/static/script/study/studyDetail.js"></script>
 <script src="/static/script/common/modal.js"></script>
 <script src="/static/script/common/signIn.js"></script>
 <script src="/static/script/common/signUp.js"></script>
+<script src="/static/script/common/signOut.js"></script>
+<script src="/static/script/common/studyList.js"></script>
+<script src="/static/script/common/profile.js"></script>
+<script src="/static/script/common/practice.js"></script>
 
 </html>

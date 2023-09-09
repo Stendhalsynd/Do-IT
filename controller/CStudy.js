@@ -24,7 +24,7 @@ exports.getList = async (req, res) => {
 };
 exports.getDetail = async (req, res) => {
   try {
-    const studyId = req.params.init;
+    const studyId = req.params.studyid;
 
     const [data, studyUsers] = await Promise.all([
       Study.findOne({
@@ -54,7 +54,9 @@ exports.getDetail = async (req, res) => {
 
     const members = studyUsers
       .filter(
-        (user) => user.dataValues.StudyUser.dataValues.status !== "APPLIER"
+        (user) =>
+          user.dataValues.StudyUser.dataValues.status === "LEADER" ||
+          user.dataValues.StudyUser.dataValues.status === "CREW"
       )
       .map(extractUserInfo);
 
@@ -154,21 +156,126 @@ exports.postDetail = async (req, res) => {
     try {
       const studyData = await Study.findOne({
         where: { id: studyId },
+        include: [StudyUser],
+      });
+
+      const userId = jwt.verify(token, SECRET).id;
+      let status;
+
+      status = (
+        await StudyUser.findOne({
+          where: {
+            UserId: userId,
+            StudyId: studyId,
+          },
+        })
+      )?.dataValues.status;
+
+      res.json({ study: studyData, status });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ result: false, message: "Internal server error" });
+    }
+  }
+};
+
+exports.postApplication = async (req, res) => {
+  const { studyId: StudyId } = req.body;
+  const token = req.headers?.authorization.split(" ")[1];
+
+  if (token !== "null") {
+    try {
+      const UserId = jwt.verify(token, SECRET).id;
+      const user = await User.findByPk(UserId);
+      const hasPoint = user.dataValues.point >= 30;
+
+      // 충분한 포인트가 없으면 경고창 띄우기
+      if (!hasPoint) {
+        return res.json({ result: false });
+      }
+
+      const rejectedUser = await StudyUser.findOne({
+        where: {
+          status: "REJECTED",
+          UserId,
+          StudyId,
+        },
+      });
+      const applierData = {
+        status: "APPLIER",
+        StudyId,
+        UserId,
+      };
+      // console.log("rejectedUser : ", rejectedUser);
+
+      // 충분한 포인트가 있으면 30 포인트를 소모해서 스터디 지원
+      if (!rejectedUser) {
+        console.log("test");
+
+        await StudyUser.create(applierData);
+      } else {
+        console.log("test2");
+
+        await StudyUser.update(
+          { status: "APPLIER" },
+          { where: { StudyId, UserId } }
+        );
+      }
+
+      user.decrement("point", { by: 30 });
+
+      res.json({ result: true });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ result: false, message: "Internal server error" });
+    }
+  }
+};
+
+exports.postPermission = async (req, res) => {
+  const { studyId, result: isApprove } = req.body;
+  const token = req.headers?.authorization.split(" ")[1];
+
+  if (token !== "null") {
+    try {
+      const studyData = await Study.findOne({
+        where: { id: studyId },
         include: [
           {
             model: StudyUser,
-            where: { status: "LEADER" },
+            where: { status: "APPLIER" },
           },
         ],
       });
 
-      const { StudyUsers: [studyUser] = [] } = studyData;
-      const leaderId = studyUser?.UserId;
-      const userId = jwt.verify(token, SECRET).id;
+      const { memCurr, memTotal } = studyData.dataValues;
+      const isFull = memCurr === memTotal;
 
-      const isLeader = leaderId === userId;
+      if (isFull) {
+        await StudyUser.update(
+          { status: "REJECTED" },
+          { where: { status: "APPLIER" } }
+        );
+        return res.json({ result: true });
+      }
 
-      res.json({ isLeader, study: studyData });
+      // 승인시 스터디의 현재 멤버수를 1 증가하고 상태를 CREW 로 변경
+      if (isApprove) {
+        studyData.increment("memCurr", { by: 1 });
+        await StudyUser.update(
+          { status: "CREW" },
+          { where: { StudyId: studyId, status: "APPLIER" } }
+        );
+      }
+
+      if (!isApprove) {
+        await StudyUser.update(
+          { status: "REJECTED" },
+          { where: { StudyId: studyId, status: "APPLIER" } }
+        );
+      }
+
+      res.json({ result: true });
     } catch (error) {
       console.error(error);
       res.status(500).json({ result: false, message: "Internal server error" });
