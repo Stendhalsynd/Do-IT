@@ -17,11 +17,60 @@ exports.userRegister = (req, res) => {
 exports.getMain = (req, res) => {
   res.render("main_temp");
 };
+
+exports.postMyPage = async (req, res) => {
+  let asLeader = [];
+  let asCrew = [];
+  let asApplier = [];
+  let asRejected = [];
+  const userinfo = await User.findByPk(verifiedId, {
+    include: [
+      {
+        model: StudyUser,
+        include: {
+          model: Study,
+        },
+      },
+    ],
+  });
+  for (let i = 0; i < userinfo.StudyUsers.length; i++) {
+    switch (userinfo.StudyUsers[i].status) {
+      case "LEADER":
+        asLeader.push(userinfo.StudyUsers[i].Study);
+        break;
+      case "CREW":
+        asCrew.push(userinfo.StudyUsers[i].Study);
+        break;
+      case "APPLIER":
+        asApplier.push(userinfo.StudyUsers[i].Study);
+        break;
+      case "REJECTED":
+        asRejected.push(userinfo.StudyUsers[i].Study);
+        break;
+    }
+  }
+  console.log(req.params.nickname);
+  // url 입력하여 접근하는 것 방지하기 위해, 아래 조건 추가
+  if (userinfo.id === verifiedId && req.params.nickname === verifiedNickname) {
+    // console.log(StudyAsLeader[0]);
+    res.json({
+      result: true,
+      userinfo,
+      asLeader,
+      asCrew,
+      asApplier,
+      asRejected,
+    });
+  } else {
+    // res.json({ result: false });
+    res.send(
+      "<script>alert('잘못된 경로입니다.'); document.location.href='/';</script>"
+    );
+  }
+};
+
 exports.getMyPage = (req, res) => {
-  // 마이페이지 클릭 시, localStorage의 jwt 함께 보내줘야 함
-  // 1) 해당 토큰 검증 완료된 경우에만 mypage 렌더되도록 코드 수정 필요
-  // 2) 사용자 정보 가져와서(findAll), 렌더링 될 때 데이터도 함께 보내줘야 함.
-  res.render("mypage");
+  res.render("mypage", { nickname: req.params.nickname });
 };
 
 ///////////////////////////////////
@@ -90,40 +139,19 @@ exports.post_userSignIn = async (req, res) => {
 
 // 마이페이지
 // 토큰 검증 (id(UUID) 반환)
-let verifiedId;
+let verifiedId, verifiedNickname;
 function tokenVerifier(auth) {
   const token = auth.split(" ")[1];
   jwt.verify(token, SECRET, (err, decoded) => {
     if (err) {
       res.send({ result: false, message: "잘못된 접근 경로입니다." });
     }
-    verifiedId = decoded.id;
+    (verifiedId = decoded.id), (verifiedNickname = decoded.nickname);
   });
 }
 exports.tokenVerify = async (req, res) => {
   await tokenVerifier(req.headers.authorization);
-  const user = await User.findOne({ where: { id: verifiedId } });
-  res.send({ result: true, nickname: user.nickname });
-};
-exports.getMyPage = async (req, res) => {
-  const nickname = req.params.nickname;
-  const userinfo = await User.findOne({ where: { nickname } });
-  console.log(userinfo);
-  // 스터디 정보
-  const StudyAsLeader = await Study.findAll({
-    where: { leaderId: userinfo.id },
-  });
-  const StudyAsCrew = await StudyUser.findAll({
-    where: { UserId: userinfo.id },
-  });
-  // url 입력하여 접근하는 것 방지하기 위해, 아래 조건 추가
-  if (userinfo.id === verifiedId) {
-    res.render("mypage", { userinfo, StudyAsCrew, StudyAsLeader });
-  } else {
-    res.send(
-      "<script>alert('잘못된 경로입니다.'); document.location.href='/';</script>"
-    );
-  }
+  res.send({ result: true, nickname: verifiedNickname });
 };
 // 임시
 exports.getTemp = (req, res) => {

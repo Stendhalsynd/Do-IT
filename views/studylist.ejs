@@ -3,21 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      #studyList {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-      }
-      #studyList div {
-        background-color: beige;
-        width: 200px;
-        height: 200px;
-      }
-    </style>
+    <link rel="stylesheet" href="../static/style/css/common/header.css" />
     <title>스터디 목록</title>
   </head>
   <body>
+    <header class="header">
+      <img
+        src="../static/images/Do-IT logo.png"
+        alt="Do-IT logo"
+        class="header__logo"
+      />
+      <div class="header__button">
+        <button class="header__button--practice">연습하기</button>
+        <button class="header__button--study">스터디</button>
+        <button class="header__button--sign-in">로그인</button>
+        <button class="header__button--point">포인트</button>
+        <button class="header__button--profile">프로필</button>
+        <button class="header__button--sign-out">로그아웃</button>
+      </div>
+    </header>
+    <div>
+      <button id="studyRegister">스터디 개설하기</button>
+    </div>
     <div id="studyList">
       <% for (let i = 0; i < list.length; i++) { %>
       <div onclick="studyDetail('<%= list[i].id %>')">
@@ -35,10 +42,6 @@
       </div>
       <% } %>
     </div>
-    <script>
-      function studyDetail(studyid) {
-        document.location.href = `/study/list/${studyid}`;
-      }
-    </script>
+    <script src="../static/script/study/studylist.js"></script>
   </body>
 </html>
