@@ -1,0 +1,7 @@
+.main__img {
+  display: flex;
+}
+.main__img--logo {
+  width: 165.5px;
+  height: 43px;
+}
