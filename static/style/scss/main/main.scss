@@ -1,104 +1,285 @@
-@import "_mixin";
+@use "../helper/" as *;
 
-// main__mobile
-@media screen and (min-width: 330px) and (max-width: 767px) {
-  .main {
-    &__img {
-      &--logo {
-        img {
+// Font color
+$gray: var(--figma-black-3, #828282);
+$white: var(--background-white, #fff);
+
+.main {
+  // Display
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+
+  &__title {
+    // Display
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+
+    // Font
+    @include mixin-font-style;
+    color: $gray;
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+  }
+
+  &__img {
+    // Display
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    &--logo {
+      // Display
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 50vw;
+        height: 13.0303vw;
+
+        @include mixin-res--mobile {
           max-width: 269.419px;
           max-height: 70px;
         }
       }
     }
-  }
-}
 
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-  gap: 30px;
-  &__title {
-    display: inline-flex;
-    height: 16px;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-
-    color: var(--figma-black-3, #828282);
-    /* Headline 3 */
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px; /* 120% */
-  }
-  &__img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &--logo {
+    &--phones {
       display: flex;
       justify-content: center;
       align-items: center;
+
       img {
-        width: 55.1667vw;
-        height: 14.3333vw;
+        width: 90.9091vw;
+
+        @include mixin-res--mobile {
+          max-width: 615.5px;
+          max-height: 603px;
+        }
       }
     }
   }
 
   &__content {
+    // Display
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+
+    width: 255px;
     gap: 10px;
+
     &--text1 {
+      // Font
+      @include mixin-font-style;
       font-size: 20px;
-      @include font;
     }
+
     &--text2 {
+      // Font
+      @include mixin-font-style;
       text-align: center;
       font-size: 24px;
-      @include font;
     }
   }
+
   &__practice {
+    // Display
     display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 20px;
+
+    width: 78.7879vw;
+
+    @include mixin-res--mobile {
+      max-width: 500px;
+    }
+
     &--title {
+      // Display
       display: flex;
       padding: 0px 5px;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
 
+      // Font
+      @include mixin-font-style;
       font-size: 20px;
-      @include font;
-      // line-height: 24px; /* 120% */
+      line-height: 24px; /* 120% */
     }
+
     &--body {
+      // Display
       display: flex;
-      width: 260px;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
 
-      color: var(--common-black, #000);
-      /* Body 1 */
-      font-family: Roboto;
+      // Font
+      @include mixin-font-style;
       font-size: 16px;
-      font-style: normal;
       font-weight: 400;
       line-height: 28px; /* 175% */
     }
+
     &--img {
-      width: 260px;
-      height: 173px;
-      border-radius: 15px;
+      img {
+        width: 78.7879vw;
+        height: 52.4242vw;
+
+        @include mixin-res--mobile {
+          max-width: 500px;
+          max-height: 332.317px;
+        }
+
+        border-radius: 15px;
+      }
+    }
+
+    &--button {
+      // Display
+      padding: 10px 20px;
+      align-items: center;
+
+      background-color: white;
+      border-radius: 12px;
+      border: 0.5px solid var(--common-black, #000);
+
+      // Font
+      @include mixin-font-style;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+
+  //////////////////////////////////////////////// 스터디 참여하기
+  &__study {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    background-color: var(--material-theme-ref-primary-primary-95, #ecf3fe);
+
+    &--section {
+      display: flex;
+      flex-direction: column;
+      margin-top: 38px;
+      width: 78.7879vw;
+
+      @include mixin-res--mobile {
+        max-width: 500px;
+      }
+
+      gap: 10px;
+
+      &-title {
+        @include mixin-font-style;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+      }
+
+      &-body-first,
+      &-body-second,
+      &-body-third {
+        @include mixin-font-style;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+      }
+    }
+
+    &--img {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      gap: 30px;
+      &-first,
+      &-second {
+        display: flex;
+        width: 100vw;
+        height: 68.1818vw;
+        @include mixin-res--mobile {
+          max-width: 218.02vw;
+          max-height: 350px;
+        }
+      }
+    }
+
+    &--button {
+      width: 77.8788vw;
+      height: 40px;
+      @include mixin-res--mobile {
+        max-width: 500px;
+      }
+      border-radius: 12px;
+      border: 0.5px solid var(--common-black, #000);
+      background: var(--common-black, #000);
+      @include mixin-font-style;
+      color: $white;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 20px;
+    }
+  }
+
+  //////////////////////////////////////////////// 최근에 개설된 스터디
+  &__recent {
+    width: 100vw;
+    background-color: var(
+      --material-theme-sys-light-primary-container,
+      #d3e3fd
+    );
+    &--section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      &-title {
+        @include mixin-font-style;
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &-list {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+
+        // 부모 scroll snap 컨테이너
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        &-box {
+          width: 230px;
+          height: 230px;
+          margin: 10px;
+          background: $white;
+          border-radius: 15px;
+          border: 0.5px solid var(--secondary-default, #6b6b6b);
+
+          // 자식 scroll snap
+          scroll-snap-align: center;
+        }
+        &-title {
+          @include mixin-font-style;
+          font-size: 20px;
+          line-height: 24px;
+        }
+        &-theme {
+          @include mixin-font-style;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 28px;
+        }
+      }
     }
   }
 }

@@ -24,11 +24,11 @@ $tabletPlus: v.$tablet + 1;
 }
 
 // 메인 페이지
-// 폰트
-@mixin font {
+// 폰트 스타일
+@mixin font-style {
   color: var(--common-black, #000);
   font-family: Roboto;
   font-style: normal;
-  font-width: 700;
+  font-weight: 700;
   line-height: normal;
 }
