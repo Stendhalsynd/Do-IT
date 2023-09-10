@@ -22,6 +22,54 @@
     </div>
   </header>
 
+  <div class="modal modal__sign-in">
+    <div class="modal__content">
+      <span class="modal__close">&times;</span>
+      <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="modal__logo" />
+      <h2 class="modal__h2">환영합니다!</h2>
+      <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+      <form class="modal__form--sign-in" name="modal__form--sign-in">
+        <label for="userIdForSignIn" class="modal__label">ID</label>
+        <input class="modal__input" id="userIdForSignIn" type="text" placeholder="아이디를 입력해주세요." required />
+        <label for="pwForSignIn" class="modal__label">Password</label>
+        <input class="modal__input" id="pwForSignIn" type="password" placeholder="비밀번호를 입력해주세요." required />
+        <button class="modal__button--sign-in" type="button" onclick="signIn()">
+          로그인
+        </button>
+        <button class="modal__button--sign-up" type="button" onclick="openSignUpModal()">
+          회원가입하기
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal modal__sign-up">
+    <div class="modal__content">
+      <span class="modal__close">&times;</span>
+      <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="modal__logo" />
+      <h2 class="modal__h2">환영합니다!</h2>
+      <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+      <form class="modal__form--sign-up" name="modal__form--sign-up">
+        <label for="userIdForSignUp" class="modal__label">ID</label>
+        <input class="modal__input" id="userIdForSignUp" type="text" placeholder="아이디를 입력해주세요." required />
+        <label for="nickname" class="modal__label">Nickname</label>
+        <input class="modal__input" id="nickname" type="text" placeholder="닉네임을 입력해주세요." required />
+        <label for="pwForSignUp" class="modal__label">Password</label>
+        <input class="modal__input" id="pwForSignUp" type="password" placeholder="비밀번호를 입력해주세요." required />
+        <label for="pwConfirmForSignUp" class="modal__label">Check Password</label>
+        <input class="modal__input" id="pwConfirmForSignUp" type="password" placeholder="입력한 비밀번호를 다시 입력해주세요." required />
+        <label for="link" class="modal__label">Link</label>
+        <input class="modal__input" id="link" type="text" placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요." required />
+        <button class="modal__button--sign-up" type="button" onclick="signUp()">
+          회원가입
+        </button>
+        <button class="modal__button--sign-in" type="button" onclick="openSignInModal()">
+          로그인하기
+        </button>
+      </form>
+    </div>
+  </div>
+
   <main class="content">
     <section class="content__title">
       <h2 class="section__title"><%= data.title %></h2>
@@ -114,5 +162,9 @@
 <script src="/static/script/common/studyList.js"></script>
 <script src="/static/script/common/profile.js"></script>
 <script src="/static/script/common/practice.js"></script>
+<script src="/static/script/common/logo.js"></script>
+<script src="/static/script/main/main.js"></script>
+<script type="module" src="/static/script/main/aos.js"></script>
+<script src="node_modules/aos/dist/aos.js"></script>
 
 </html>

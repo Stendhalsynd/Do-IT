@@ -107,6 +107,7 @@
   color: var(--figma-black-6, #f2f2f2);
   padding: 0 15px;
   margin: 0 2px;
+  line-height: 1.5;
 }
 .content__info .section__item--sub {
   flex-shrink: 0;
