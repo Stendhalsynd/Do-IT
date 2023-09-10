@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="/static/style/css/common/header.css" />
   <link rel="stylesheet" href="/static/style/css/common/modal.css" />
   <link rel="stylesheet" href="/static/style/css/common/reset.css" />
@@ -14,7 +15,7 @@
 
 <body>
   <header class="header">
-    <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="header__logo" />
+    <img src="/static/images/header-logo.svg" alt="Do-IT logo" class="header__logo" />
     <div class="header__button">
       <button class="header__button--practice">연습하기</button>
       <button class="header__button--study">스터디</button>
@@ -25,7 +26,7 @@
   <div class="modal modal__sign-in">
     <div class="modal__content">
       <span class="modal__close">&times;</span>
-      <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="modal__logo" />
+      <img src="/static/images/Do-IT logo3.png" alt="Do-IT logo" class="modal__logo" />
       <h2 class="modal__h2">환영합니다!</h2>
       <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
       <form class="modal__form--sign-in" name="modal__form--sign-in">
@@ -46,7 +47,7 @@
   <div class="modal modal__sign-up">
     <div class="modal__content">
       <span class="modal__close">&times;</span>
-      <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="modal__logo" />
+      <img src="/static/images/Do-IT logo3.png" alt="Do-IT logo" class="modal__logo" />
       <h2 class="modal__h2">환영합니다!</h2>
       <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
       <form class="modal__form--sign-up" name="modal__form--sign-up">
@@ -88,7 +89,7 @@
           <span class="section__item--sub">관심 IT 분야 :</span>
           <span>
             <% data.Themes.forEach(theme => { %>
-            <span class="section__item--theme"><%= theme.dataValues.category %></span>
+            <div class="section__item--theme"><%= theme.dataValues.category %></div>
             <% }); %>
           </span>
         </div>
@@ -163,8 +164,5 @@
 <script src="/static/script/common/profile.js"></script>
 <script src="/static/script/common/practice.js"></script>
 <script src="/static/script/common/logo.js"></script>
-<script src="/static/script/main/main.js"></script>
-<script type="module" src="/static/script/main/aos.js"></script>
-<script src="node_modules/aos/dist/aos.js"></script>
 
 </html>
