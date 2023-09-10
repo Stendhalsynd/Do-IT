@@ -21,6 +21,7 @@
   "homepage": "https://github.com/dawncoding/Do-IT#readme",
   "dependencies": {
     "@slack/bolt": "^3.13.3",
+    "aos": "^2.3.4",
     "axios": "^1.5.0",
     "bcrypt": "^5.1.1",
     "cross-env": "^7.0.3",

@@ -1,3 +1,5 @@
+@use "../helper/" as *;
+
 .modal {
   display: none;
   position: fixed;
@@ -37,22 +39,23 @@
     border: 1px solid #ccc;
     border-radius: 3px;
   }
-  &__button--sign-in {
-    width: 220px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    background-color: var(--other-dark-background-black, #161616);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      background-color: #d32f2f;
-    }
+}
+
+.modal__sign-in {
+  .modal__button--sign-up {
+    @include mixin-modal-white-button;
   }
-  &__button--sign-up {
-    background-color: white;
-    border: none;
-    padding: 10px;
+  .modal__button--sign-in {
+    @include mixin-modal-black-button;
+  }
+}
+
+.modal__sign-up {
+  .modal__button--sign-up {
+    @include mixin-modal-black-button;
+  }
+  .modal__button--sign-in {
+    @include mixin-modal-white-button;
   }
 }
 
