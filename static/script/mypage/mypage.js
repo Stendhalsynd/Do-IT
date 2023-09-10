@@ -39,6 +39,9 @@
       studyasLeaderList.appendChild(asLeaderHeader);
       for (let i = 0; i < asLeader.length; i++) {
         const studyAsLeader = document.createElement("div");
+        studyAsLeader.addEventListener("click", () => {
+          studyDetail(asLeader[i].id);
+        });
         if (asLeader[i].status === "WAITING") {
           studyAsLeader.innerHTML = `<p>대기 중</p><p>${asLeader[i].title}</p><p>${asLeader[i].intro}</p>`;
         } else if (asLeader[i].status === "ALLOWED") {
@@ -55,19 +58,32 @@
       studyasMembList.appendChild(asCrewHeader);
       for (let i = 0; i < asCrew.length; i++) {
         const studyAsCrew = document.createElement("div");
+        studyAsCrew.addEventListener("click", () => {
+          studyDetail(asCrew[i].id);
+        });
         studyAsCrew.innerHTML = `<p>승인</p><p>${asCrew[i].title}</p><p>${asCrew[i].intro}</p>`;
         studyasMembList.appendChild(studyasCrew);
       }
       for (let i = 0; i < asApplier.length; i++) {
         const studyAsApplier = document.createElement("div");
+        studyAsApplier.addEventListener("click", () => {
+          studyDetail(asApplier[i].id);
+        });
         studyAsApplier.innerHTML = `<p>대기 중</p><p>${asApplier[i].title}</p><p>${asApplier[i].intro}</p>`;
         studyasMembList.appendChild(studyasApplier);
       }
       for (let i = 0; i < asRejected.length; i++) {
         const studyAsRejected = document.createElement("div");
+        studyAsRejected.addEventListener("click", () => {
+          studyDetail(asRejected[i].id);
+        });
         studyAsRejected.innerHTML = `<p>거절</p><p>${asRejected[i].title}</p><p>${asRejected[i].intro}</p>`;
         studyasMembList.appendChild(studyAsRejected);
       }
     }
   }
 })();
+
+function studyDetail(studyid) {
+  document.location.href = `/study/list/${studyid}`;
+}

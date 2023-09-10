@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/common/reset.css" />
+    <link rel="stylesheet" href="../static/style/css/common/modal.css" />
+    <link rel="stylesheet" href="../static/style/css/study/studylist.css" />
     <title>스터디 목록</title>
   </head>
   <body>
@@ -17,31 +21,62 @@
         <button class="header__button--practice">연습하기</button>
         <button class="header__button--study">스터디</button>
         <button class="header__button--sign-in">로그인</button>
-        <button class="header__button--point">포인트</button>
-        <button class="header__button--profile">프로필</button>
-        <button class="header__button--sign-out">로그아웃</button>
       </div>
     </header>
-    <div>
-      <button id="studyRegister">스터디 개설하기</button>
-    </div>
-    <div id="studyList">
-      <% for (let i = 0; i < list.length; i++) { %>
-      <div onclick="studyDetail('<%= list[i].id %>')">
-        <h4><%= list[i].title%></h4>
-        <% list[i].category.forEach((elem)=> { %>
-        <span><%= elem %></span>
-        <% }) %>
-        <br />
-        <% if (list[i].memCurr >= list[i].memTotal) { %>
-        <span>모집완료</span>
-        <% } else { %>
-        <span>모집중</span>
-        <% } %>
-        <span><%= list[i].memCurr %> / <%= list[i].memTotal %></span>
+    <div class="studypage">
+      <div class="studypage__register">
+        <span class="studypage__register-text">찾고있는 스터디가 없다면?</span>
+        <div class="studypage__register-go">
+          <span class="studypage__register-go--header"> 스터디 개설하기</span>
+          <button id="studyRegister" class="studypage__register-go--button">
+            GO
+          </button>
+        </div>
       </div>
-      <% } %>
+      <div id="studyList" class="studypage__lists">
+        <div class="studypage__lists-header">
+          <p>스터디 목록</p>
+        </div>
+        <% for (let i = 0; i < list.length; i++) { %>
+        <div
+          class="studypage__lists-divider studypage__lists-divider--bold"
+        ></div>
+        <div
+          onclick="studyDetail('<%= list[i].id %>')"
+          class="studypage__lists-element"
+        >
+          <h4 class="studypage__lists-title"><%= list[i].title%></h4>
+          <div class="studypage__lists-intro"><%= list[i].intro %></div>
+          <br />
+          <% list[i].category.forEach((elem)=> { %>
+          <span class="studypage__lists-category"><%= elem %></span>
+          <% }) %>
+          <br />
+          <div
+            class="studypage__lists-divider studypage__lists-divider--light"
+          ></div>
+          <% if (list[i].memCurr >= list[i].memTotal) { %>
+          <span class="studypage__lists-status studypage__lists-status--done"
+            >모집완료</span
+          >
+          <% } else { %>
+          <span class="studypage__lists-status studypage__lists-status--ing"
+            >모집중</span
+          >
+          <% } %>
+          <span class="studypage__lists-member"
+            ><%= list[i].memCurr %> / <%= list[i].memTotal %></span
+          >
+        </div>
+        <% } %>
+      </div>
     </div>
     <script src="../static/script/study/studylist.js"></script>
+    <script src="../static/script/common/modal.js"></script>
+    <script src="../static/script/common/signIn.js"></script>
+    <script src="../static/script/common/signUp.js"></script>
+    <script src="../static/script/common/signOut.js"></script>
+    <script src="../static/script/common/studyList.js"></script>
+    <script src="../static/script/common/profile.js"></script>
   </body>
 </html>

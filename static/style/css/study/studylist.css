@@ -1,0 +1,116 @@
+.studypage {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+  align-items: center;
+}
+.studypage__register {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 90px;
+  background-color: aliceblue;
+  align-items: center;
+}
+.studypage__register-text {
+  margin-right: 10px;
+  margin-top: 10px;
+  line-height: 30px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+.studypage__register-go {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 10px;
+}
+.studypage__register-go--header {
+  width: 150px;
+  margin-right: 10px;
+  line-height: 40px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+.studypage__register-go--button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background: var(--figma-blue, #2f80ed);
+  color: var(--text-light-on-color, #fff);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px;
+}
+.studypage__lists {
+  width: 80%;
+  margin: 0 10%;
+}
+.studypage__lists-divider {
+  width: 100%;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+.studypage__lists-divider--bold {
+  height: 6px;
+}
+.studypage__lists-divider--light {
+  height: 1.5px;
+}
+.studypage__lists-header {
+  margin: 30px 75px;
+  text-align: center;
+}
+.studypage__lists-header > p {
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+.studypage__lists-element {
+  padding-left: 11.5px;
+  padding: 20px 14px;
+}
+.studypage__lists-title {
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  padding-bottom: 14px;
+}
+.studypage__lists-intro {
+  height: 107px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+.studypage__lists-category {
+  background-color: antiquewhite;
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+.studypage__lists-status {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}

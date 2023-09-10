@@ -95,6 +95,7 @@ exports.postRegister = async (req, res) => {
     if (user.point >= 100) {
       await user.update({ point: user.point - 100 });
       const { memTotal, category, startDate, endDate, title, intro } = req.body;
+      console.log(category);
       const result = await Study.create(
         {
           memTotal,

@@ -11,6 +11,11 @@ if (!userToken) {
 // 모집인원 선택
 let memTotal = 0;
 function memberNum(target) {
+  console.log(target);
+  const select = document.querySelector(
+    ".study__registerform-content-input--memb"
+  );
+  select.style.color = "black";
   memTotal = target.value;
 }
 // 날짜 선택 제한
@@ -30,6 +35,7 @@ function getCategory() {
       categoryChecked.push(category[i].value);
     }
   }
+  console.log(categoryChecked);
 }
 
 function checkForm() {
@@ -123,4 +129,12 @@ async function register() {
   } else {
     return;
   }
+}
+
+function multiSelect(value) {
+  const div = document.querySelector(
+    ".study__registerform-content-input--category"
+  );
+  if (value == "OPEN") div.hidden = false;
+  else div.hidden = true;
 }
