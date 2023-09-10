@@ -10,19 +10,48 @@
 .modal__content {
   background-color: #fff;
   margin: 10% auto;
-  padding: 20px;
+  padding: 1vh 2vh;
   border-radius: 5px;
   width: 80%;
   max-width: 400px;
   animation-name: modal-animation;
   animation-duration: 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 .modal__close {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 1vh 0;
   cursor: pointer;
 }
 .modal__close:hover {
   color: #f44336;
+}
+.modal__h2 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 4vh;
+}
+.modal__h3 {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  display: flex;
+  justify-content: center;
+  margin: 1vh 0 3vh 0;
+}
+.modal__label {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 1vh;
 }
 .modal__title {
   text-align: center;
@@ -41,37 +70,39 @@
 .modal__sign-in .modal__button--sign-up {
   background-color: white;
   border: none;
-  padding: 10px;
+  margin: 1vh 0 4vh 0;
+  cursor: pointer;
+}
+.modal__sign-in .modal__button--sign-up:hover {
+  color: #f44336;
 }
 .modal__sign-in .modal__button--sign-in {
-  width: 220px;
-  padding: 10px 20px;
+  padding: 1vh;
   border-radius: 25px;
   background-color: var(--other-dark-background-black, #161616);
   color: #fff;
   border: none;
+  margin-top: 6vh;
   cursor: pointer;
-}
-.modal__sign-in .modal__button--sign-in:hover {
-  background-color: #d32f2f;
 }
 
 .modal__sign-up .modal__button--sign-up {
-  width: 220px;
-  padding: 10px 20px;
+  padding: 1vh;
   border-radius: 25px;
   background-color: var(--other-dark-background-black, #161616);
   color: #fff;
   border: none;
+  margin-top: 6vh;
   cursor: pointer;
-}
-.modal__sign-up .modal__button--sign-up:hover {
-  background-color: #d32f2f;
 }
 .modal__sign-up .modal__button--sign-in {
   background-color: white;
   border: none;
-  padding: 10px;
+  margin: 1vh 0 4vh 0;
+  cursor: pointer;
+}
+.modal__sign-up .modal__button--sign-in:hover {
+  color: #f44336;
 }
 
 @keyframes modal-animation {
