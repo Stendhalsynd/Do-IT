@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../static/style/css/common/header.css" />
+    <link rel="stylesheet" href="../static/style/css/common/reset.css" />
+    <link rel="stylesheet" href="../static/style/css/common/modal.css" />
     <link rel="stylesheet" href="../static/style/css/study/studyregister.css" />
-    <!-- <link rel="stylesheet" href="../static/style/css/main/modal.css" /> -->
 
     <title>스터디 신규 신청</title>
   </head>
@@ -21,22 +22,24 @@
         <button class="header__button--practice">연습하기</button>
         <button class="header__button--study">스터디</button>
         <button class="header__button--sign-in">로그인</button>
-        <button class="header__button--point">포인트</button>
-        <button class="header__button--profile">프로필</button>
-        <button class="header__button--sign-out">로그아웃</button>
       </div>
     </header>
     <div class="study" hidden>
       <div class="study__menu">스터디 개설</div>
       <div class="study__registerform">
         <form name="study-form">
-          <div class="study__registerform--intro">
+          <div class="study__registerform-intro">
             프로젝트의 기본 정보를 입력해주세요.
           </div>
-          <fieldset class="study__registerform--content">
-            모집인원
-            <select onchange="memberNum(this)" id="memTotal">
-              <option value="intro" selected disabled>2명 ~ 10명</option>
+          <div class="study__registerform-divider"></div>
+          <fieldset class="study__registerform-content">
+            모집인원<br />
+            <select
+              onchange="memberNum(this)"
+              id="memTotal"
+              class="study__registerform-content-input study__registerform-content-input--memb"
+            >
+              <option value="intro" selected disabled hidden>2명 ~ 10명</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -49,61 +52,108 @@
             </select>
             <br />
             관심IT분야<br />
-            <div>
-              <input
-                type="checkbox"
-                name="category"
-                value="programming"
-              />개발·프로그래밍
-              <input
-                type="checkbox"
-                name="category"
-                value="security"
-              />보안·네트워크
-              <input
-                type="checkbox"
-                name="category"
-                value="datascience"
-              />데이터 사이언스
-              <input type="checkbox" name="category" value="gamedev" />게임 개발
-              <input type="checkbox" name="category" value="hardware" />하드웨어
+            <div
+              class="study__registerform-content-input study__registerform-content-input--category"
+            >
+              <div>
+                <input
+                  type="checkbox"
+                  name="category"
+                  value="개발·프로그래밍"
+                />개발·프로그래밍
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  name="category"
+                  value="보안·네트워크"
+                />보안·네트워크
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  name="category"
+                  value="데이터 사이언스"
+                />데이터 사이언스
+              </div>
+              <div>
+                <input type="checkbox" name="category" value="게임 개발" />게임
+                개발
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  name="category"
+                  value="하드웨어"
+                />하드웨어
+              </div>
             </div>
             시작일
             <input
               type="date"
               id="startDate"
               onchange="limitEndDate(this)"
+              class="study__registerform-content-input study__registerform-content-input--date"
+              data-placeholder="시작일을 선택해주세요."
+              required
+              aria-required="true"
             /><br />
-            종료일 <input type="date" id="endDate" /><br />
+            종료일
+            <input
+              type="date"
+              id="endDate"
+              class="study__registerform-content-input study__registerform-content-input--date"
+              data-placeholder="종료일을 선택해주세요."
+              required
+              aria-required="true"
+            /><br />
           </fieldset>
 
-          <div class="study__registerform--intro">
+          <div class="study__registerform-intro study__registerform-intro--2nd">
             스터디에 대해 소개해주세요.
           </div>
-          <fieldset class="study__registerform--content">
+          <div class="study__registerform-divider"></div>
+          <fieldset class="study__registerform-content">
             제목 <br /><input
               type="text"
               id="title"
-              style="width: 80vw"
               maxlength="20"
-              placeholder="20자 이내"
+              placeholder="스터디명 (20자 이내)"
+              class="study__registerform-content-input study__registerform-content-input--title"
             /><br />
             소개 <br /><input
               type="text"
               id="intro"
-              style="height: 40vh; width: 80vw"
+              style="height: 40vh"
+              class="study__registerform-content-input study__registerform-content-input--intro"
+              placeholder="어떤 방식으로 스터디를 진행할 것인지 소개해주세요."
             /><br />
           </fieldset>
-          <div class="study__registerform--button">
-            <button type="button" onclick="cancel()">취소</button>
-            <button type="button" onclick="checkForm()">제출</button>
+          <div class="study__registerform-button">
+            <button
+              type="button"
+              onclick="cancel()"
+              class="study__registerform-button--cancel"
+            >
+              취소
+            </button>
+            <button
+              type="button"
+              onclick="checkForm()"
+              class="study__registerform-button--submit"
+            >
+              제출
+            </button>
           </div>
         </form>
       </div>
     </div>
     <script src="../static/script/study/studyregister.js"></script>
-    <!-- <script src="../static/script/common/signIn.js"></script>
-    <script src="../static/script/common/signUp.js"></script> -->
-    <script></script>
+    <script src="../static/script/common/modal.js"></script>
+    <script src="../static/script/common/signIn.js"></script>
+    <script src="../static/script/common/signUp.js"></script>
+    <script src="../static/script/common/signOut.js"></script>
+    <script src="../static/script/common/studyList.js"></script>
+    <script src="../static/script/common/profile.js"></script>
   </body>
 </html>
