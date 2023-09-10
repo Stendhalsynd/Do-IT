@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
     <link rel="stylesheet" href="/static/style/css/common/header.css" />
     <link rel="stylesheet" href="/static/style/css/common/modal.css" />
     <link rel="stylesheet" href="/static/style/css/common/reset.css" />
@@ -36,6 +35,7 @@
         <h2 class="modal__h2">환영합니다!</h2>
         <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
         <form class="modal__form--sign-in" name="modal__form--sign-in">
+          <label for="userIdForSignIn" class="modal__label">ID</label>
           <input
             class="modal__input"
             id="userIdForSignIn"
@@ -43,6 +43,7 @@
             placeholder="아이디를 입력해주세요."
             required
           />
+          <label for="pwForSignIn" class="modal__label">Password</label>
           <input
             class="modal__input"
             id="pwForSignIn"
@@ -79,6 +80,7 @@
         <h2 class="modal__h2">환영합니다!</h2>
         <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
         <form class="modal__form--sign-up" name="modal__form--sign-up">
+          <label for="userIdForSignUp" class="modal__label">ID</label>
           <input
             class="modal__input"
             id="userIdForSignUp"
@@ -86,6 +88,7 @@
             placeholder="아이디를 입력해주세요."
             required
           />
+          <label for="nickname" class="modal__label">Nickname</label>
           <input
             class="modal__input"
             id="nickname"
@@ -93,6 +96,7 @@
             placeholder="닉네임을 입력해주세요."
             required
           />
+          <label for="pwForSignUp" class="modal__label">Password</label>
           <input
             class="modal__input"
             id="pwForSignUp"
@@ -100,6 +104,9 @@
             placeholder="비밀번호를 입력해주세요."
             required
           />
+          <label for="pwConfirmForSignUp" class="modal__label"
+            >Check Password</label
+          >
           <input
             class="modal__input"
             id="pwConfirmForSignUp"
@@ -107,6 +114,7 @@
             placeholder="입력한 비밀번호를 다시 입력해주세요."
             required
           />
+          <label for="link" class="modal__label">Link</label>
           <input
             class="modal__input"
             id="link"
@@ -234,6 +242,6 @@
     <script src="/static/script/common/logo.js"></script>
     <script src="/static/script/main/main.js"></script>
     <script type="module" src="/static/script/main/aos.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>
   </body>
 </html>
