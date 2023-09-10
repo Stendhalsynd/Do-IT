@@ -6,10 +6,9 @@
   overflow: overlay;
 }
 .content__msg::-webkit-scrollbar {
-  width: 18px;
+  width: 8px;
 }
 .content__msg::-webkit-scrollbar-thumb {
-  height: 10px;
   background-color: hsla(0, 0%, 42%, 0.49);
   border-radius: 100px;
 }
@@ -107,12 +106,11 @@
   justify-content: center;
   margin: 2vh 0;
 }
-.content__button--end {
+.content__button--end, .content__button--one-more {
   width: 40vw;
-  height: 32px;
+  height: 4vh;
   border-radius: 25px;
   border: 0;
-  background: var(--common-black, #000);
   color: var(--text-light-on-color, #fff);
   text-align: center;
   font-size: 14px;
@@ -121,31 +119,22 @@
   line-height: 20px;
   margin: 2vw;
 }
+.content__button--end {
+  background: var(--common-black, #000);
+}
 .content__button--one-more {
-  width: 40vw;
-  height: 32px;
-  border-radius: 25px;
-  border: 0;
   background: var(--figma-blue, #2f80ed);
-  color: var(--text-light-on-color, #fff);
-  text-align: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 20px;
-  margin: 2vw;
 }
 .content__form {
   display: flex;
-  margin-top: 1.7vh;
   justify-content: center;
+  margin: 1.7vh 4.5vw 0 4.5vw;
 }
 .content__textarea {
-  width: 84.5vw;
+  width: 98.5%;
   height: 6vh;
   border: 0;
   padding: 0;
-  margin: 0 0 1vh 4.5vw;
   resize: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -160,11 +149,11 @@
   display: flex;
   align-items: flex-start;
   padding: 0;
-  margin: 0 4.5vw 1vh 0;
   border: none;
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
+  cursor: pointer;
 }
 .content__send-button i {
   font-size: 20px;
