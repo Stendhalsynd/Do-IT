@@ -141,7 +141,7 @@ textarea {
   flex-direction: column;
   gap: 18px;
 }
-@media (768px <= width <= 1011px) {
+@media (768px <= width) {
   .container__list {
     flex-wrap: wrap;
     flex-direction: row;
@@ -223,7 +223,7 @@ textarea {
   padding: 0px 10px;
   background: var(--figma-blue, #2f80ed);
 }
-@media (768px <= width <= 1011px) {
+@media (768px <= width) {
   .container__item {
     width: calc(50% - 70px);
   }

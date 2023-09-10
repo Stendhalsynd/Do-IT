@@ -12,7 +12,7 @@ $tabletPlus: v.$tablet + 1;
 
 // Web
 @mixin res--web {
-  @media (#{$mobilePlus}px <= width <= #{v.$tablet}px) {
+  @media (#{$mobilePlus}px <= width) {
     @content;
   }
 }
