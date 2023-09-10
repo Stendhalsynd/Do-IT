@@ -4,27 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/static/style/css/common/header.css" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="/static/style/css/common/header.css" />
+  <link rel="stylesheet" href="/static/style/css/common/modal.css" />
+  <link rel="stylesheet" href="/static/style/css/common/reset.css" />
+  <link rel="stylesheet" href="/static/style/css/study/studydetail.css" />
   <title>스터디 상세보기</title>
-  <style>
-    .divider--thick {
-      width: 95vw;
-      height: 6px;
-      background-color: lightgray;
-      border-radius: 20px;
-    }
-
-    .divider--thin {
-      width: 95vw;
-      height: 1.5px;
-      background-color: lightgray;
-    }
-
-    .list--leader {
-      display: none;
-    }
-  </style>
 </head>
 
 <body>
@@ -37,45 +22,83 @@
     </div>
   </header>
 
-  <h4><%= data.title %></h4>
-  <div class="divider--thick"></div>
-  <br />
-  <div class="container__button"></div>
-  <br />
-  <div>모집현황 <span><%= data.memCurr%>/<%= data.memTotal %></span>
-  </div>
-  <% data.Themes.forEach(theme => { %>
-  <span><%= theme.dataValues.category %></span>
-  <% }); %>
-  <div><%= startDate %> ~ <%= endDate %></div>
-  <div><%= data.intro %></div>
-  <div class="divider--thin"></div>
-  <br />
-  <ul class="container__list">
-    <% members.forEach((member) => { %>
-    <li class="container__list--member">
-      <h2><%= member.status %></h2>
-      <p>Nickname: <%= member.nickname %></p>
-      <p>Link: <%= member.link %></p>
-    </li>
-    <% }); %>
-  </ul>
-  <div class="list--leader">
-    <br />
-    <div class="divider--thick"></div>
-    <br>
-    <ul class="container__list">
-      <% appliers.forEach((applier) => { %>
-      <li class="container__list--applier">
-        <h2><%= applier.status %></h2>
-        <p>Nickname: <%= applier.nickname %></p>
-        <p>Link: <%= applier.link %></p>
-        <button class="container__list--approve">수락</button>
-        <button class="container__list--reject">거절</button>
-      </li>
-      <% }); %>
-    </ul>
-  </div>
+  <main class="content">
+    <section class="content__title">
+      <h2 class="section__title"><%= data.title %></h2>
+      <div class="section__divider--thick"></div>
+    </section>
+
+    <section class="content__info">
+      <div class="section__btn-container"></div>
+      <div class="section__info-container">
+        <div class="section__item">
+          <span class="section__item--sub">모집현황 :</span>
+          <span class="section__member--detail"><%= data.memCurr%>/<%= data.memTotal %></span>
+        </div>
+        <div class="section__divider--thin"></div>
+        <div class="section__item">
+          <span class="section__item--sub">관심 IT 분야 :</span>
+          <span>
+            <% data.Themes.forEach(theme => { %>
+            <span class="section__item--theme"><%= theme.dataValues.category %></span>
+            <% }); %>
+          </span>
+        </div>
+        <div class="section__divider--thin"></div>
+        <div class="section__item">
+          <span class="section__item--sub">스터디 기간 :</span>
+          <span><%= startDate %> ~ <%= endDate %></span>
+        </div>
+        <div class="section__divider--thin"></div>
+        <div class="section__item--intro">
+          <div class="section__item--sub">스터디 소개 :</div>
+          <span class="section__item--detail"><%= data.intro %></span>
+          <div class="section__divider--thin"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content__list">
+      <ul class="container__list">
+        <% members.forEach((member) => { %>
+        <li class="container__item">
+          <h2 class="container__item--status"><%= member.status %></h2>
+          <span class="container__item--nickname">
+            <img src="/static/images/person.png" alt="사람 이미지" class="logo--default" />
+            <%= member.nickname %>
+          </span>
+          <span class="container__item--link">
+            <img src="/static/images/link.png" alt="링크 이미지" class="logo--default" />
+            <a href="<%= member.link %>"><%= member.link %></a>
+          </span>
+        </li>
+        <% }); %>
+      </ul>
+    </section>
+
+    <section class="content__leader">
+      <div class="section__divider--thick"></div>
+      <ul class="container__list">
+        <% appliers.forEach((applier) => { %>
+        <li class="container__item">
+          <h2 class="container__item--status"><%= applier.status %></h2>
+          <span class="container__item--nickname">
+            <img src="/static/images/person.png" alt="사람 이미지" class="logo--default" />
+            <%= applier.nickname %>
+          </span>
+          <span class="container__item--link">
+            <img src="/static/images/link.png" alt="링크 이미지" class="logo--default" />
+            <a href="<%= applier.link %>"><%= applier.link %></a>
+          </span>
+          <div class="btn-container">
+            <button class="container__list--approve">수락</button>
+            <button class="container__list--reject">거절</button>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </section>
+  </main>
 
 </body>
 

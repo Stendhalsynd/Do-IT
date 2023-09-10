@@ -1,10 +1,10 @@
 // 개설자 혹은 참여자 여부를 확인하기 위해 즉시 실행함수 생성
 (async function () {
-  const appliers = document.querySelector(".list--leader");
+  const appliers = document.querySelector(".content__leader-list");
 
   /** 버튼 및 컨테이너 생성 */
   // 지원하기 혹은 모집완료 버튼이 들어갈 컨테이너 생성
-  const btnContainer = document.querySelector(".container__button");
+  const btnContainer = document.querySelector(".section__btn-container");
 
   // 지원하기 버튼 생성
   const applyBtn = document.createElement("button");
