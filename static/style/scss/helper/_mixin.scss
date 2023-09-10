@@ -2,6 +2,7 @@
 $mobilePlus: v.$mobile + 1;
 $tabletPlus: v.$tablet + 1;
 
+// 반응형
 // Mobile
 @mixin res--mobile {
   @media (width <= #{v.$mobile}px) {
@@ -9,18 +10,48 @@ $tabletPlus: v.$tablet + 1;
   }
 }
 
-// Tablet
-@mixin res--tablet {
+// Web
+@mixin res--web {
   @media (#{$mobilePlus}px <= width <= #{v.$tablet}px) {
     @content;
   }
 }
 
-// Desktop
-@mixin res--desktop {
-  @media (#{$tabletPlus}px <= width) {
+// 구분선
+@mixin divider($status: thick) {
+  width: 100%;
+  height: 6px;
+  background-color: #{v.$divider};
+  border-radius: 20px;
+  @content;
+
+  @if $status == thin {
+    width: 100%;
+    height: 1.5px;
+    background-color: #{v.$divider};
     @content;
   }
+}
+
+// 폰트
+// 공용
+// Headline 2
+@mixin headline2 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+}
+// Headline 3
+@mixin headline3 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 120% */
 }
 
 // 메인 페이지
@@ -50,4 +81,118 @@ $tabletPlus: v.$tablet + 1;
   background-color: white;
   border: none;
   padding: 10px;
+}
+
+// 스터디 상세 페이지
+@mixin font-button {
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 20px;
+  color: var(--text-light-on-color, #fff);
+}
+
+// flex
+// 세로 방향 중앙정렬
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// 가로세로 중앙정렬
+@mixin flex-all-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 버튼
+@mixin btn($status) {
+  border-width: 0;
+  width: 80vw;
+  padding: 10px 20px;
+  border-radius: 25px;
+
+  @if $status == apply {
+    background: var(--figma-blue, #2f80ed);
+    @content;
+  }
+
+  @if $status == waiting {
+    background: var(--figma-light-green, #6fcf97);
+    @content;
+  }
+
+  @if $status == done {
+    background: var(--common-black, #000);
+    @content;
+  }
+}
+@mixin btn-leader($status) {
+  display: flex;
+  height: 31px;
+  padding: 10px 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 25px;
+  color: white;
+
+  @if $status == approve {
+    background: var(--figma-blue, #2f80ed);
+  }
+
+  @if $status == reject {
+    background: var(--common-black, #000);
+  }
+}
+
+// 테마
+@mixin theme($status) {
+  border-radius: 20px;
+  background: var(--material-theme-ref-error-error-70, #ec928e);
+  color: var(--figma-black-6, #f2f2f2);
+
+  @if $status == thin {
+    padding: 0 15px;
+    margin: 0 2px;
+  }
+}
+
+// 정보
+@mixin info($status) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  border-radius: 30px;
+
+  @if $status == nickname {
+    padding: 0px 10px;
+    background: var(--figma-light-green, #6fcf97);
+  }
+
+  @if $status == link {
+    padding: 0px 10px;
+    background: var(--figma-blue, #2f80ed);
+  }
+
+  @if $status == empty {
+    border-radius: 0;
+  }
+}
+
+// 모서리가 둥근 영역
+@mixin area {
+  padding: 32px 28px;
+  border-radius: 15px;
+  border: 0.5px solid var(--secondary-default, #6b6b6b);
+  background: var(--background-white, #fff);
+  display: grid;
+  gap: 6px;
 }
