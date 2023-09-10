@@ -15,12 +15,15 @@
   align-items: center;
 }
 .studypage__register-text {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   margin-right: 10px;
   margin-top: 10px;
   line-height: 30px;
-  font-family: Roboto;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
 }
 .studypage__register-go {
@@ -29,15 +32,22 @@
   padding-bottom: 10px;
 }
 .studypage__register-go--header {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   width: 150px;
   margin-right: 10px;
   line-height: 40px;
-  font-family: Roboto;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
 }
 .studypage__register-go--button {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   width: 40px;
   height: 40px;
   border: none;
@@ -45,9 +55,7 @@
   background: var(--figma-blue, #2f80ed);
   color: var(--text-light-on-color, #fff);
   text-align: center;
-  font-family: Roboto;
   font-size: 14px;
-  font-style: normal;
   font-weight: 800;
   line-height: 40px;
 }
@@ -55,13 +63,41 @@
   width: 80%;
   margin: 0 10%;
 }
+@media (768px <= width) {
+  .studypage__lists-contentbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
+.studypage__lists-webdivider {
+  width: 110%;
+  position: relative;
+  right: 5%;
+  height: 6px;
+  background-color: lightgray;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+@media (width <= 767px) {
+  .studypage__lists-webdivider {
+    display: none;
+  }
+}
 .studypage__lists-divider {
-  width: 100%;
   background-color: lightgray;
   border-radius: 20px;
 }
 .studypage__lists-divider--bold {
+  width: 110%;
+  position: relative;
+  right: 5%;
   height: 6px;
+}
+@media (768px <= width) {
+  .studypage__lists-divider--bold {
+    display: none;
+  }
 }
 .studypage__lists-divider--light {
   height: 1.5px;
@@ -71,46 +107,83 @@
   text-align: center;
 }
 .studypage__lists-header > p {
+  color: var(--common-black, #000);
   font-family: Roboto;
-  font-size: 20px;
   font-style: normal;
   font-weight: 700;
+  line-height: normal;
+  font-size: 20px;
   line-height: 24px;
 }
 .studypage__lists-element {
-  padding-left: 11.5px;
-  padding: 20px 14px;
+  height: 300px;
+  width: 90%;
+  margin: 0% 5%;
+}
+@media (768px <= width) {
+  .studypage__lists-element {
+    box-sizing: border-box;
+    border: 5px solid rgb(108, 109, 139);
+    border-radius: 20px;
+    width: 48%;
+    padding: 15px;
+    margin: 0% 2% 2% 0%;
+  }
 }
 .studypage__lists-title {
+  color: var(--common-black, #000);
   font-family: Roboto;
-  font-size: 20px;
   font-style: normal;
   font-weight: 700;
+  line-height: normal;
+  height: 48px;
+  font-size: 20px;
   line-height: 24px;
-  padding-bottom: 14px;
+  padding: 10px 0px 5px;
 }
 .studypage__lists-intro {
-  height: 107px;
+  color: var(--common-black, #000);
   font-family: Roboto;
-  font-size: 16px;
   font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 40%;
   font-weight: 400;
+  font-size: 12px;
   line-height: 28px;
+  overflow: hidden;
 }
 .studypage__lists-category {
-  background-color: antiquewhite;
-  padding: 2px 5px;
-  border-radius: 10px;
-  font-family: Roboto;
+  height: 38px;
+  display: flex;
+  overflow-x: auto;
+  margin: 10px 0px;
+}
+.studypage__lists-category::-webkit-scrollbar {
+  display: none;
+}
+.studypage__lists-category--elem {
+  border-radius: 20px;
+  background: var(--material-theme-ref-error-error-70, #ec928e);
+  color: var(--figma-black-6, #f2f2f2);
+  padding: 0 15px;
+  margin: 2px 2px;
+  line-height: 1.5;
+  display: inline-block;
+  padding: 3px 10px;
+  height: 32px;
+  width: fit-content;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 32px;
+  flex-shrink: 0;
 }
 .studypage__lists-status {
+  color: var(--common-black, #000);
   font-family: Roboto;
-  font-size: 16px;
   font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   font-weight: 400;
+  font-size: 16px;
   line-height: 28px;
 }

@@ -23,6 +23,121 @@
         <button class="header__button--sign-in">로그인</button>
       </div>
     </header>
+    <div class="modal modal__sign-in">
+      <div class="modal__content">
+        <span class="modal__close">&times;</span>
+        <img
+          src="../static/images/Do-IT logo.png"
+          alt="Do-IT logo"
+          class="modal__logo"
+        />
+        <h2 class="modal__h2">환영합니다!</h2>
+        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+        <form class="modal__form--sign-in" name="modal__form--sign-in">
+          <label for="userIdForSignIn" class="modal__label">ID</label>
+          <input
+            class="modal__input"
+            id="userIdForSignIn"
+            type="text"
+            placeholder="아이디를 입력해주세요."
+            required
+          />
+          <label for="pwForSignIn" class="modal__label">Password</label>
+          <input
+            class="modal__input"
+            id="pwForSignIn"
+            type="password"
+            placeholder="비밀번호를 입력해주세요."
+            required
+          />
+          <button
+            class="modal__button--sign-in"
+            type="button"
+            onclick="signIn()"
+          >
+            로그인
+          </button>
+          <button
+            class="modal__button--sign-up"
+            type="button"
+            onclick="openSignUpModal()"
+          >
+            회원가입하기
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal modal__sign-up">
+      <div class="modal__content">
+        <span class="modal__close">&times;</span>
+        <img
+          src="../static/images/Do-IT logo.png"
+          alt="Do-IT logo"
+          class="modal__logo"
+        />
+        <h2 class="modal__h2">환영합니다!</h2>
+        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+        <form class="modal__form--sign-up" name="modal__form--sign-up">
+          <label for="userIdForSignUp" class="modal__label">ID</label>
+          <input
+            class="modal__input"
+            id="userIdForSignUp"
+            type="text"
+            placeholder="아이디를 입력해주세요."
+            required
+          />
+          <label for="nickname" class="modal__label">Nickname</label>
+          <input
+            class="modal__input"
+            id="nickname"
+            type="text"
+            placeholder="닉네임을 입력해주세요."
+            required
+          />
+          <label for="pwForSignUp" class="modal__label">Password</label>
+          <input
+            class="modal__input"
+            id="pwForSignUp"
+            type="password"
+            placeholder="비밀번호를 입력해주세요."
+            required
+          />
+          <label for="pwConfirmForSignUp" class="modal__label"
+            >Check Password</label
+          >
+          <input
+            class="modal__input"
+            id="pwConfirmForSignUp"
+            type="password"
+            placeholder="입력한 비밀번호를 다시 입력해주세요."
+            required
+          />
+          <label for="link" class="modal__label">Link</label>
+          <input
+            class="modal__input"
+            id="link"
+            type="text"
+            placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요."
+            required
+          />
+          <button
+            class="modal__button--sign-up"
+            type="button"
+            onclick="signUp()"
+          >
+            회원가입
+          </button>
+          <button
+            class="modal__button--sign-in"
+            type="button"
+            onclick="openSignInModal()"
+          >
+            로그인하기
+          </button>
+        </form>
+      </div>
+    </div>
     <div class="studypage">
       <div class="studypage__register">
         <span class="studypage__register-text">찾고있는 스터디가 없다면?</span>
@@ -37,38 +152,42 @@
         <div class="studypage__lists-header">
           <p>스터디 목록</p>
         </div>
-        <% for (let i = 0; i < list.length; i++) { %>
-        <div
-          class="studypage__lists-divider studypage__lists-divider--bold"
-        ></div>
-        <div
-          onclick="studyDetail('<%= list[i].id %>')"
-          class="studypage__lists-element"
-        >
-          <h4 class="studypage__lists-title"><%= list[i].title%></h4>
-          <div class="studypage__lists-intro"><%= list[i].intro %></div>
-          <br />
-          <% list[i].category.forEach((elem)=> { %>
-          <span class="studypage__lists-category"><%= elem %></span>
-          <% }) %>
-          <br />
+        <div class="studypage__lists-webdivider"></div>
+        <div class="studypage__lists-contentbox">
+          <% for (let i = 0; i < list.length; i++) { %>
           <div
-            class="studypage__lists-divider studypage__lists-divider--light"
-          ></div>
-          <% if (list[i].memCurr >= list[i].memTotal) { %>
-          <span class="studypage__lists-status studypage__lists-status--done"
-            >모집완료</span
+            onclick="studyDetail('<%= list[i].id %>')"
+            class="studypage__lists-element"
           >
-          <% } else { %>
-          <span class="studypage__lists-status studypage__lists-status--ing"
-            >모집중</span
-          >
+            <div
+              class="studypage__lists-divider studypage__lists-divider--bold"
+            ></div>
+            <h4 class="studypage__lists-title"><%= list[i].title%></h4>
+            <div class="studypage__lists-intro"><%= list[i].intro %></div>
+
+            <div class="studypage__lists-category">
+              <% list[i].category.forEach((elem)=> { %>
+              <div class="studypage__lists-category--elem"><%= elem %></div>
+              <% }) %>
+            </div>
+            <div
+              class="studypage__lists-divider studypage__lists-divider--light"
+            ></div>
+            <% if (list[i].memCurr >= list[i].memTotal) { %>
+            <span class="studypage__lists-status studypage__lists-status--done"
+              >모집완료</span
+            >
+            <% } else { %>
+            <span class="studypage__lists-status studypage__lists-status--ing"
+              >모집중</span
+            >
+            <% } %>
+            <span class="studypage__lists-member"
+              ><%= list[i].memCurr %> / <%= list[i].memTotal %></span
+            >
+          </div>
           <% } %>
-          <span class="studypage__lists-member"
-            ><%= list[i].memCurr %> / <%= list[i].memTotal %></span
-          >
         </div>
-        <% } %>
       </div>
     </div>
     <script src="../static/script/study/studylist.js"></script>
@@ -78,5 +197,7 @@
     <script src="../static/script/common/signOut.js"></script>
     <script src="../static/script/common/studyList.js"></script>
     <script src="../static/script/common/profile.js"></script>
+    <script src="../static/script/common/logo.js"></script>
+    <script src="../static/script/common/practice.js"></script>
   </body>
 </html>

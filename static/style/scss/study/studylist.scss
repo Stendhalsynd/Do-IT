@@ -1,14 +1,4 @@
-// main__mobile
-@media screen and (min-width: 330px) and (max-width: 767px) {
-}
-
-// main__tablet
-@media screen and (min-width: 768px) and (max-width: 1011px) {
-}
-
-// main__desktop
-@media screen and (min-width: 1012px) {
-}
+@use "../helper/" as *;
 
 .studypage {
   display: flex;
@@ -25,12 +15,11 @@
     background-color: aliceblue;
     align-items: center;
     &-text {
+      @include mixin-font-style;
       margin-right: 10px;
       margin-top: 10px;
       line-height: 30px;
-      font-family: Roboto;
       font-size: 16px;
-      font-style: normal;
       font-weight: 400;
     }
     &-go {
@@ -38,15 +27,14 @@
       flex-wrap: nowrap;
       padding-bottom: 10px;
       &--header {
+        @include mixin-font-style;
         width: 150px;
         margin-right: 10px;
         line-height: 40px;
-        font-family: Roboto;
         font-size: 20px;
-        font-style: normal;
-        font-weight: 700;
       }
       &--button {
+        @include mixin-font-style;
         width: 40px;
         height: 40px;
         border: none;
@@ -54,9 +42,7 @@
         background: var(--figma-blue, #2f80ed);
         color: var(--text-light-on-color, #fff);
         text-align: center;
-        font-family: Roboto;
         font-size: 14px;
-        font-style: normal;
         font-weight: 800;
         line-height: 40px;
       }
@@ -65,12 +51,36 @@
   &__lists {
     width: 80%;
     margin: 0 10%;
+    &-contentbox {
+      @include mixin-res--web {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+      }
+    }
+    &-webdivider {
+      width: 110%;
+      position: relative;
+      right: 5%;
+      height: 6px;
+      background-color: lightgray;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      @include mixin-res--mobile {
+        display: none;
+      }
+    }
     &-divider {
-      width: 100%;
       background-color: lightgray;
       border-radius: 20px;
       &--bold {
+        width: 110%;
+        position: relative;
+        right: 5%;
         height: 6px;
+        @include mixin-res--web {
+          display: none;
+        }
       }
       &--light {
         height: 1.5px;
@@ -80,48 +90,64 @@
       margin: 30px 75px;
       text-align: center;
       > p {
-        font-family: Roboto;
+        @include mixin-font-style;
         font-size: 20px;
-        font-style: normal;
-        font-weight: 700;
         line-height: 24px;
       }
     }
     &-element {
-      padding-left: 11.5px;
-      padding: 20px 14px;
+      height: 300px;
+      width: 90%;
+      margin: 0% 5%;
+      @include mixin-res--web {
+        box-sizing: border-box;
+        border: 5px solid rgb(108, 109, 139);
+        border-radius: 20px;
+        width: 48%;
+        padding: 15px;
+        margin: 0% 2% 2% 0%;
+      }
     }
     &-title {
-      font-family: Roboto;
+      @include mixin-font-style;
+      height: 48px;
       font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
       line-height: 24px;
-      padding-bottom: 14px;
+      padding: 10px 0px 5px;
     }
     &-intro {
-      height: 107px;
-      font-family: Roboto;
-      font-size: 16px;
-      font-style: normal;
+      @include mixin-font-style;
+      height: 40%;
       font-weight: 400;
+      font-size: 12px;
       line-height: 28px;
+      overflow: hidden;
+      // text-overflow: ellipsis;
     }
     &-category {
-      background-color: antiquewhite;
-      padding: 2px 5px;
-      border-radius: 10px;
-      font-family: Roboto;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 32px;
+      height: 38px;
+      display: flex;
+      overflow-x: auto;
+      margin: 10px 0px;
+      // flex-wrap: wrap;
+      // align-items: end;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &--elem {
+        @include mixin-theme("thin");
+        padding: 3px 10px;
+        height: 32px;
+        width: fit-content;
+        font-size: 16px;
+        line-height: 32px;
+        flex-shrink: 0;
+      }
     }
     &-status {
-      font-family: Roboto;
-      font-size: 16px;
-      font-style: normal;
+      @include mixin-font-style;
       font-weight: 400;
+      font-size: 16px;
       line-height: 28px;
     }
   }

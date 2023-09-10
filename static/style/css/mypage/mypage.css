@@ -1,0 +1,146 @@
+.contents {
+  width: 100%;
+}
+
+.userdata {
+  width: 80%;
+  margin: 30px 10%;
+}
+.userdata__h4 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.userdata__title {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+.userdata__title p {
+  margin: 20px 0px 15px;
+}
+.userdata__title input {
+  width: 100%;
+  height: 40px;
+  line-height: 20px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.studyList {
+  width: 80%;
+  margin: 30px 10%;
+}
+.studyList__h4 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.studyList__menu {
+  margin: 27px 0px;
+  display: flex;
+  height: 22px;
+}
+.studyList__menu--divider {
+  height: 22px;
+  width: 2px;
+  margin: 0px 5px;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+.studyList__menu button {
+  border: none;
+  background-color: transparent;
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  padding: 0px;
+}
+.studyList__lists {
+  width: 80%;
+  margin: 0px 10% 30px;
+}
+.studyList__lists-divider {
+  width: 100%;
+  height: 6px;
+  background: #c6c6c6;
+  border-radius: 20px;
+}
+.studyList__lists-elem {
+  height: 200px;
+  position: relative;
+}
+.studyList__lists-elem div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.studyList__lists-elem--title {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+}
+.studyList__lists-elem--status {
+  padding: 10px 20px;
+  width: 100px;
+  line-height: 14px;
+  position: relative;
+  right: 10px;
+  border-radius: 20px;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+}
+.studyList__lists-elem--status-allowed {
+  background: var(--figma-blue, #2f80ed);
+  color: var(--text-light-on-color, #fff);
+}
+.studyList__lists-elem--status-waiting {
+  background: rgb(96, 185, 108);
+  color: var(--text-light-on-color, #fff);
+}
+.studyList__lists-elem--status-rejected {
+  background: rgb(242, 100, 100);
+  color: var(--text-light-on-color, #fff);
+}
+.studyList__lists-elem--intro {
+  margin-top: 14px;
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  height: 80px;
+}
+.studyList__lists-category {
+  position: absolute;
+  bottom: 10px;
+}
+.studyList__lists-category span {
+  background-color: antiquewhite;
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  margin-right: 5px;
+}

@@ -1,4 +1,4 @@
-const { User, Study, StudyUser } = require("../models");
+const { User, Study, StudyUser, Theme, Sequelize } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -29,6 +29,9 @@ exports.postMyPage = async (req, res) => {
         model: StudyUser,
         include: {
           model: Study,
+          include: {
+            model: Theme,
+          },
         },
       },
     ],
@@ -37,6 +40,7 @@ exports.postMyPage = async (req, res) => {
     switch (userinfo.StudyUsers[i].status) {
       case "LEADER":
         asLeader.push(userinfo.StudyUsers[i].Study);
+        // asLeader.push(userinfo.StudyUsers[i].Study.Themes);
         break;
       case "CREW":
         asCrew.push(userinfo.StudyUsers[i].Study);
