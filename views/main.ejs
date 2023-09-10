@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/node_modules/aos/dist/aos.css" />
     <link rel="stylesheet" href="/static/style/css/common/header.css" />
     <link rel="stylesheet" href="/static/style/css/common/modal.css" />
     <link rel="stylesheet" href="/static/style/css/common/reset.css" />
@@ -151,7 +152,9 @@
       </div>
 
       <div class="main__practice">
-        <div class="main__practice--title">CS 면접 연습하기</div>
+        <div class="main__practice--title" data-aos="fade-down">
+          CS 면접 연습하기
+        </div>
         <div class="main__practice--body">
           연습하고 싶은 CS 면접 주제를 선정 후, ChatGPT가 생성해준 면접 질문에
           답변을 주시면 GPT로부터 평가받고 개선점을 알 수 있어요
@@ -203,9 +206,16 @@
                 <div class="main__recent--section-list-title">
                   <%= recentList[i].title %>
                 </div>
-                <% recentList[i].category.forEach((elem)=> { %>
-                <div class="main__recent--section-list-theme"><%= elem %></div>
-                <% }) %>
+                <div class="main__recent--section-list-body">
+                  <div class="main__recent--section-list-body-title">
+                    스터디 테마
+                  </div>
+                  <% recentList[i].category.forEach((elem)=> { %>
+                  <div class="main__recent--section-list-body-theme">
+                    <%= elem %>
+                  </div>
+                  <% }) %>
+                </div>
               </div>
             </div>
             <% } %>
@@ -223,5 +233,7 @@
     <script src="/static/script/common/practice.js"></script>
     <script src="/static/script/common/logo.js"></script>
     <script src="/static/script/main/main.js"></script>
+    <script src="/static/script/main/aos.js"></script>
+    <script src="/node_modules/aos/dist/aos.js"></script>
   </body>
 </html>

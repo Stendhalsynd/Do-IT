@@ -9,14 +9,12 @@ $white: var(--background-white, #fff);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
   margin-top: 40px;
-
   &__title {
     // Display
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    margin: 30px;
     flex-shrink: 0;
 
     // Font
@@ -31,6 +29,7 @@ $white: var(--background-white, #fff);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 30px;
     gap: 10px;
 
     &--logo {
@@ -73,6 +72,7 @@ $white: var(--background-white, #fff);
     align-items: center;
 
     width: 255px;
+    margin: 30px;
     gap: 10px;
 
     &--text1 {
@@ -88,15 +88,14 @@ $white: var(--background-white, #fff);
       font-size: 24px;
     }
   }
-
+  //////////////////////////////////////////////// CS 면접 연습하기
   &__practice {
     // Display
     display: inline-flex;
     flex-direction: column;
+    margin: 30px;
     gap: 20px;
-
     width: 78.7879vw;
-
     @include mixin-res--mobile {
       max-width: 500px;
     }
@@ -112,6 +111,10 @@ $white: var(--background-white, #fff);
       @include mixin-font-style;
       font-size: 20px;
       line-height: 24px; /* 120% */
+
+      &[data-aos="fade-up"] {
+        opacity: 0; // 스크롤 인터랙션에 의해 요소가 나타날 때 투명도를 조절
+      }
     }
 
     &--body {
@@ -164,19 +167,16 @@ $white: var(--background-white, #fff);
     flex-direction: column;
     align-items: center;
     width: 100vw;
+    @include mixin-res--mobile {
+      max-width: 500px;
+    }
     background-color: var(--material-theme-ref-primary-primary-95, #ecf3fe);
 
     &--section {
       display: flex;
       flex-direction: column;
-      margin-top: 38px;
+      margin: 30px;
       width: 78.7879vw;
-
-      @include mixin-res--mobile {
-        max-width: 500px;
-      }
-
-      gap: 10px;
 
       &-title {
         @include mixin-font-style;
@@ -242,7 +242,10 @@ $white: var(--background-white, #fff);
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100vw;
+      margin: 50px;
+      // 부모 scroll snap 컨테이너
+      overflow: auto;
+      scroll-snap-type: x mandatory;
       &-title {
         @include mixin-font-style;
         font-size: 20px;
@@ -258,9 +261,18 @@ $white: var(--background-white, #fff);
         overflow: auto;
         scroll-snap-type: x mandatory;
         &-box {
+          // Display
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           width: 230px;
           height: 230px;
-          margin: 10px;
+          margin: 50px;
+          gap: 80px;
+          cursor: pointer;
+
+          // Font
           background: $white;
           border-radius: 15px;
           border: 0.5px solid var(--secondary-default, #6b6b6b);
@@ -269,15 +281,28 @@ $white: var(--background-white, #fff);
           scroll-snap-align: center;
         }
         &-title {
+          display: flex;
           @include mixin-font-style;
           font-size: 20px;
           line-height: 24px;
         }
-        &-theme {
-          @include mixin-font-style;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 28px;
+        &-body {
+          display: flex;
+          flex-direction: column;
+          %-title {
+            display: flex;
+            @include mixin-font-style;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 28px;
+          }
+          &-theme {
+            display: flex;
+            @include mixin-font-style;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 28px;
+          }
         }
       }
     }

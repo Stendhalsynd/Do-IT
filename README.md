@@ -19,3 +19,4 @@
 - jsonwebtoken
 - sass
 - axios
+- aos
