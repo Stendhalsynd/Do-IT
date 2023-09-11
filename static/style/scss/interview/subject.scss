@@ -69,21 +69,21 @@
   }
   &__box {
     width: 255px;
-    height: 20vh;
+    height: 230px;
     border-radius: 20px;
     border: 1px solid var(--secondary-default, #6b6b6b);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px 0;
+    padding: 15px 0;
     cursor: pointer;
   }
   &__box::after {
     content: "";
     position: absolute;
     width: 255px;
-    height: 22.3vh;
+    height: 260px;
     border-radius: 20px;
     background: rgb(0 0 0 / 77%);
     z-index: 1;
