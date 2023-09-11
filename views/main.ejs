@@ -30,7 +30,7 @@
       <div class="modal__content">
         <span class="modal__close">&times;</span>
         <img
-          src="/static/images/Do-IT logo3.png"
+          src="/static/images/Do-IT logo.png"
           alt="Do-IT logo"
           class="modal__logo"
         />
@@ -75,7 +75,7 @@
       <div class="modal__content">
         <span class="modal__close">&times;</span>
         <img
-          src="/static/images/Do-IT logo3.png"
+          src="/static/images/Do-IT logo.png"
           alt="Do-IT logo"
           class="modal__logo"
         />
@@ -200,13 +200,13 @@
         </div>
         <div class="main__study--img">
           <div class="main__study--img-first">
-            <img src="/static/images/Frame1.svg" alt="Frame1" />
+            <img src="/static/images/frame1.png" alt="Frame1" />
           </div>
           <button class="main__study--button" data-aos="zoom-in">
             자세히 보기
           </button>
           <div class="main__study--img-second">
-            <img src="/static/images/Frame2.svg" alt="Frame1" />
+            <img src="/static/images/frame2.png" alt="Frame1" />
           </div>
         </div>
       </div>
@@ -225,14 +225,24 @@
                   <%= recentList[i].title %>
                 </div>
                 <div class="main__recent--section-list-body">
-                  <div class="main__recent--section-list-body-title">
-                    스터디 테마
+                  <div class="main__recent--section-list-body-intro">
+                    <div class="main__recent--section-list-body-intro-title">
+                      스터디 내용
+                    </div>
+                    <div class="main__recent--section-list-body-intro-content">
+                      <%= recentList[i].intro %>
+                    </div>
                   </div>
-                  <% recentList[i].category.forEach((elem)=> { %>
                   <div class="main__recent--section-list-body-theme">
-                    <%= elem %>
+                    <div class="main__recent--section-list-body-theme-title">
+                      스터디 테마
+                    </div>
+                    <% recentList[i].category.forEach((elem)=> { %>
+                    <div class="main__recent--section-list-body-theme-content">
+                      <%= elem %>
+                    </div>
+                    <% }) %>
                   </div>
-                  <% }) %>
                 </div>
               </div>
             </div>

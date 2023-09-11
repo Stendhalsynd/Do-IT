@@ -222,23 +222,40 @@ $white: var(--background-white, #fff);
       align-items: center;
       margin-top: 50px;
       margin-bottom: 50px;
+      width: 100vw;
+      // height: 600px;
       gap: 30px;
       overflow: hidden;
       &-first,
       &-second {
         display: flex;
+        position: relative;
+        align-items: center;
+        width: 100vw;
+        height: 68.18vw;
+        max-width: 100vw;
+        max-height: 400px;
+
         img {
-          transition: transform 500 linear;
-          width: 100vw;
-          height: 68.1818vw;
-          @include mixin-res--mobile {
-            max-width: 719.486px;
-            max-height: 350px;
-          }
-          @include mixin-res--web {
-            max-width: 719.486px;
-            max-height: 350px;
-          }
+          position: absolute;
+          transition: transform linear;
+          width: 211.28vw;
+          height: 68.18vw;
+          max-width: 1025.16px;
+          max-height: 350px;
+        }
+      }
+      &-first img {
+        left: 600px;
+        @include mixin-res--web {
+          left: 900px;
+        }
+      }
+
+      &-second img {
+        right: 600px;
+        @include mixin-res--web {
+          right: 900px;
         }
       }
     }
@@ -301,7 +318,7 @@ $white: var(--background-white, #fff);
           width: 230px;
           height: 230px;
           margin: 50px;
-          gap: 80px;
+
           cursor: pointer;
 
           // Font
@@ -314,6 +331,8 @@ $white: var(--background-white, #fff);
         }
         &-title {
           display: flex;
+          align-items: flex-start;
+          width: 200px;
           @include mixin-font-style;
           font-size: 20px;
           line-height: 24px;
@@ -321,6 +340,13 @@ $white: var(--background-white, #fff);
         &-body {
           display: flex;
           flex-direction: column;
+          width: 200px;
+
+          &-intro {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
           %-title {
             display: flex;
             @include mixin-font-style;
@@ -330,6 +356,7 @@ $white: var(--background-white, #fff);
           }
           &-theme {
             display: flex;
+            flex-direction: column;
             @include mixin-font-style;
             font-size: 16px;
             font-weight: 400;
