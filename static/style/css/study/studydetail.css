@@ -54,13 +54,6 @@
   border-radius: 25px;
   color: white;
   background: var(--figma-blue, #2f80ed);
-  text-align: center;
-  font-family: Roboto;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 20px;
-  color: var(--text-light-on-color, #fff);
 }
 .container__list--reject {
   display: flex;
@@ -73,6 +66,8 @@
   border-radius: 25px;
   color: white;
   background: var(--common-black, #000);
+}
+.container__list--approve, .container__list--reject {
   text-align: center;
   font-family: Roboto;
   font-size: 14px;
@@ -84,7 +79,7 @@
 .container__item {
   padding: 32px 28px;
   border-radius: 15px;
-  border: 0.5px solid var(--secondary-default, #6b6b6b);
+  border: 4px solid var(--secondary-default, #6b6b6b);
   background: var(--background-white, #fff);
   display: grid;
   gap: 6px;
@@ -96,7 +91,7 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  line-height: 24px; /* 120% */
+  line-height: 24px;
 }
 .container__item--nickname {
   display: flex;
@@ -120,7 +115,7 @@
 }
 @media (768px <= width) {
   .container__item {
-    width: calc(50% - 70px);
+    width: calc(50% - 75px);
   }
 }
 
