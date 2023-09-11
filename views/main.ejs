@@ -1,250 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="/static/style/css/common/header.css" />
-    <link rel="stylesheet" href="/static/style/css/common/modal.css" />
-    <link rel="stylesheet" href="/static/style/css/common/reset.css" />
-    <link rel="stylesheet" href="/static/style/css/main/main.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header class="header">
-      <img
-        src="/static/images/header-logo.svg"
-        alt="Do-IT logo"
-        class="header__logo"
-      />
-      <div class="header__button">
-        <button class="header__button--practice">연습하기</button>
-        <button class="header__button--study">스터디</button>
-        <button class="header__button--sign-in">로그인</button>
-      </div>
-    </header>
 
-    <div class="modal modal__sign-in">
-      <div class="modal__content">
-        <span class="modal__close">&times;</span>
-        <img
-          src="../static/images/Do-IT logo3.png"
-          alt="Do-IT logo"
-          class="modal__logo"
-        />
-        <h2 class="modal__h2">환영합니다!</h2>
-        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
-        <form class="modal__form--sign-in" name="modal__form--sign-in">
-          <label for="userIdForSignIn" class="modal__label">ID</label>
-          <input
-            class="modal__input"
-            id="userIdForSignIn"
-            type="text"
-            placeholder="아이디를 입력해주세요."
-            required
-          />
-          <label for="pwForSignIn" class="modal__label">Password</label>
-          <input
-            class="modal__input"
-            id="pwForSignIn"
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <button
-            class="modal__button--sign-in"
-            type="button"
-            onclick="signIn()"
-          >
-            로그인
-          </button>
-          <button
-            class="modal__button--sign-up"
-            type="button"
-            onclick="openSignUpModal()"
-          >
-            회원가입하기
-          </button>
-        </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="/static/style/css/common/header.css" />
+  <link rel="stylesheet" href="/static/style/css/common/modal.css" />
+  <link rel="stylesheet" href="/static/style/css/common/reset.css" />
+  <link rel="stylesheet" href="/static/style/css/main/main.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <img src="/static/images/header-logo.svg" alt="Do-IT logo" class="header__logo" />
+    <div class="header__button">
+      <button class="header__button--practice">연습하기</button>
+      <button class="header__button--study">스터디</button>
+      <button class="header__button--sign-in">로그인</button>
+    </div>
+  </header>
+
+  <div class="modal modal__sign-in">
+    <div class="modal__content">
+      <span class="modal__close">&times;</span>
+      <img src="/static/images/Do-IT logo3.png" alt="Do-IT logo" class="modal__logo" />
+      <h2 class="modal__h2">환영합니다!</h2>
+      <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+      <form class="modal__form--sign-in" name="modal__form--sign-in">
+        <label for="userIdForSignIn" class="modal__label">ID</label>
+        <input class="modal__input" id="userIdForSignIn" type="text" placeholder="아이디를 입력해주세요." required />
+        <label for="pwForSignIn" class="modal__label">Password</label>
+        <input class="modal__input" id="pwForSignIn" type="password" placeholder="비밀번호를 입력해주세요." required />
+        <button class="modal__button--sign-in" type="button" onclick="signIn()">
+          로그인
+        </button>
+        <button class="modal__button--sign-up" type="button" onclick="openSignUpModal()">
+          회원가입하기
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal modal__sign-up">
+    <div class="modal__content">
+      <span class="modal__close">&times;</span>
+      <img src="/static/images/Do-IT logo3.png" alt="Do-IT logo" class="modal__logo" />
+      <h2 class="modal__h2">환영합니다!</h2>
+      <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+      <form class="modal__form--sign-up" name="modal__form--sign-up">
+        <label for="userIdForSignUp" class="modal__label">ID</label>
+        <input class="modal__input" id="userIdForSignUp" type="text" placeholder="아이디를 입력해주세요." required />
+        <label for="nickname" class="modal__label">Nickname</label>
+        <input class="modal__input" id="nickname" type="text" placeholder="닉네임을 입력해주세요." required />
+        <label for="pwForSignUp" class="modal__label">Password</label>
+        <input class="modal__input" id="pwForSignUp" type="password" placeholder="비밀번호를 입력해주세요." required />
+        <label for="pwConfirmForSignUp" class="modal__label">Check Password</label>
+        <input class="modal__input" id="pwConfirmForSignUp" type="password" placeholder="입력한 비밀번호를 다시 입력해주세요." required />
+        <label for="link" class="modal__label">Link</label>
+        <input class="modal__input" id="link" type="text" placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요." required />
+        <button class="modal__button--sign-up" type="button" onclick="signUp()">
+          회원가입
+        </button>
+        <button class="modal__button--sign-in" type="button" onclick="openSignInModal()">
+          로그인하기
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="main__title" data-aos="fade-up">개발자 스터디 플랫폼</div>
+
+    <div class="main__img" data-aos="zoom-in">
+      <div class="main__img--logo">
+        <img src="/static/images/body-logo.svg" alt="Do-IT logo" />
+      </div>
+      <div class="main__img--phones">
+        <img src="/static/images/phones.svg" alt="Device Group" />
       </div>
     </div>
 
-    <div class="modal modal__sign-up">
-      <div class="modal__content">
-        <span class="modal__close">&times;</span>
-        <img
-          src="../static/images/Do-IT logo3.png"
-          alt="Do-IT logo"
-          class="modal__logo"
-        />
-        <h2 class="modal__h2">환영합니다!</h2>
-        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
-        <form class="modal__form--sign-up" name="modal__form--sign-up">
-          <label for="userIdForSignUp" class="modal__label">ID</label>
-          <input
-            class="modal__input"
-            id="userIdForSignUp"
-            type="text"
-            placeholder="아이디를 입력해주세요."
-            required
-          />
-          <label for="nickname" class="modal__label">Nickname</label>
-          <input
-            class="modal__input"
-            id="nickname"
-            type="text"
-            placeholder="닉네임을 입력해주세요."
-            required
-          />
-          <label for="pwForSignUp" class="modal__label">Password</label>
-          <input
-            class="modal__input"
-            id="pwForSignUp"
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <label for="pwConfirmForSignUp" class="modal__label"
-            >Check Password</label
-          >
-          <input
-            class="modal__input"
-            id="pwConfirmForSignUp"
-            type="password"
-            placeholder="입력한 비밀번호를 다시 입력해주세요."
-            required
-          />
-          <label for="link" class="modal__label">Link</label>
-          <input
-            class="modal__input"
-            id="link"
-            type="text"
-            placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요."
-            required
-          />
-          <button
-            class="modal__button--sign-up"
-            type="button"
-            onclick="signUp()"
-          >
-            회원가입
-          </button>
-          <button
-            class="modal__button--sign-in"
-            type="button"
-            onclick="openSignInModal()"
-          >
-            로그인하기
-          </button>
-        </form>
+    <div class="main__content">
+      <div class="main__content--text1" data-aos="fade-right">
+        혼자 고민하지 마세요.
+      </div>
+      <div class="main__content--text2" data-aos="fade-left">
+        다양한 스터디에 참여하고 함께 성장하세요.
       </div>
     </div>
 
-    <main class="main">
-      <div class="main__title" data-aos="fade-down">개발자 스터디 플랫폼</div>
+    <div class="main__practice">
+      <div class="main__practice--title" data-aos="fade-down">
+        CS 면접 연습하기
+      </div>
+      <div class="main__practice--body" data-aos="fade-down">
+        연습하고 싶은 CS 면접 주제를 선정 후, ChatGPT가 생성해준 면접 질문에
+        답변을 주시면 GPT로부터 평가받고 개선점을 알 수 있어요
+      </div>
+      <div class="main__practice--img">
+        <img src="/static/images/CS interview.svg" alt="CS interview" />
+      </div>
+      <button class="main__practice--button">CS 면접 연습하러 가기</button>
+    </div>
 
-      <div class="main__img">
-        <div class="main__img--logo">
-          <img src="/static/images/body-logo.svg" alt="Do-IT logo" />
+    <div class="main__study">
+      <div class="main__study--section">
+        <div class="main__study--section-title">스터디 참여하기</div>
+        <div class="main__study--section-body-first">
+          직접 다른 개발자들과 짧은 기간동안 집중적으로 스터디에 참여하세요!
         </div>
-        <div class="main__img--phones">
-          <img src="/static/images/phones.svg" alt="Device Group" />
+        <div class="main__study--section-body-second">
+          누구나 스터디를 개설할 수 있어요. 그러나 스터디 진행 계획, 개설
+          신청자의 깃허브 / 기술블로그 링크를 보고 개설 여부를 전달해
+          드릴게요.
+        </div>
+        <div class="main__study--section-body-third">
+          나의 관심사에 맞는 스터디에 신중하게 참여를 신청해보세요. 스터디
+          개설과 참여엔 Do IT 의 포인트가 필요해요. 포인트는 제출해주시는
+          CS면접 답안에 따라 차등 지급돼요.
         </div>
       </div>
-
-      <div class="main__content">
-        <div class="main__content--text1">혼자 고민하지 마세요.</div>
-        <div class="main__content--text2">
-          다양한 스터디에 참여하고 함께 성장하세요.
+      <div class="main__study--img">
+        <div class="main__study--img-first">
+          <img src="/static/images/Frame1.svg" alt="Frame1" />
+        </div>
+        <button class="main__study--button">자세히 보기</button>
+        <div class="main__study--img-second">
+          <img src="/static/images/Frame2.svg" alt="Frame1" />
         </div>
       </div>
+    </div>
 
-      <div class="main__practice">
-        <div class="main__practice--title" data-aos="fade-down">
-          CS 면접 연습하기
-        </div>
-        <div class="main__practice--body" data-aos="fade-down">
-          연습하고 싶은 CS 면접 주제를 선정 후, ChatGPT가 생성해준 면접 질문에
-          답변을 주시면 GPT로부터 평가받고 개선점을 알 수 있어요
-        </div>
-        <div class="main__practice--img">
-          <img src="/static/images/CS interview.svg" alt="CS interview" />
-        </div>
-        <button class="main__practice--button">CS 면접 연습하러 가기</button>
-      </div>
-
-      <div class="main__study">
-        <div class="main__study--section">
-          <div class="main__study--section-title">스터디 참여하기</div>
-          <div class="main__study--section-body-first">
-            직접 다른 개발자들과 짧은 기간동안 집중적으로 스터디에 참여하세요!
-          </div>
-          <div class="main__study--section-body-second">
-            누구나 스터디를 개설할 수 있어요. 그러나 스터디 진행 계획, 개설
-            신청자의 깃허브 / 기술블로그 링크를 보고 개설 여부를 전달해
-            드릴게요.
-          </div>
-          <div class="main__study--section-body-third">
-            나의 관심사에 맞는 스터디에 신중하게 참여를 신청해보세요. 스터디
-            개설과 참여엔 Do IT 의 포인트가 필요해요. 포인트는 제출해주시는
-            CS면접 답안에 따라 차등 지급돼요.
-          </div>
-        </div>
-        <div class="main__study--img">
-          <div class="main__study--img-first">
-            <img src="/static/images/Frame1.svg" alt="Frame1" />
-          </div>
-          <button class="main__study--button">자세히 보기</button>
-          <div class="main__study--img-second">
-            <img src="/static/images/Frame2.svg" alt="Frame1" />
-          </div>
-        </div>
-      </div>
-
-      <div class="main__recent">
-        <div class="main__recent--section">
-          <div class="main__recent--section-title">최근에 개설된 스터디</div>
-          <div class="main__recent--section-list">
-            <% for (let i = 0; i < recentList.length; i++) { %>
-            <div class="main__recent--section-list-<%= recentList[i].id %>">
-              <div
-                class="main__recent--section-list-box"
-                onclick="mainStudyDetail('<%= recentList[i].id %>')"
-              >
-                <div class="main__recent--section-list-title">
-                  <%= recentList[i].title %>
+    <div class="main__recent">
+      <div class="main__recent--section">
+        <div class="main__recent--section-title">최근에 개설된 스터디</div>
+        <div class="main__recent--section-list">
+          <% for (let i = 0; i < recentList.length; i++) { %>
+          <div class="main__recent--section-list-<%= recentList[i].id %>">
+            <div class="main__recent--section-list-box" onclick="mainStudyDetail('<%= recentList[i].id %>')">
+              <div class="main__recent--section-list-title">
+                <%= recentList[i].title %>
+              </div>
+              <div class="main__recent--section-list-body">
+                <div class="main__recent--section-list-body-title">
+                  스터디 테마
                 </div>
-                <div class="main__recent--section-list-body">
-                  <div class="main__recent--section-list-body-title">
-                    스터디 테마
-                  </div>
-                  <% recentList[i].category.forEach((elem)=> { %>
-                  <div class="main__recent--section-list-body-theme">
-                    <%= elem %>
-                  </div>
-                  <% }) %>
+                <% recentList[i].category.forEach((elem)=> { %>
+                <div class="main__recent--section-list-body-theme">
+                  <%= elem %>
                 </div>
+                <% }) %>
               </div>
             </div>
-            <% } %>
           </div>
+          <% } %>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <script src="/static/script/common/modal.js"></script>
-    <script src="/static/script/common/signIn.js"></script>
-    <script src="/static/script/common/signUp.js"></script>
-    <script src="/static/script/common/signOut.js"></script>
-    <script src="/static/script/common/studyList.js"></script>
-    <script src="/static/script/common/profile.js"></script>
-    <script src="/static/script/common/practice.js"></script>
-    <script src="/static/script/common/logo.js"></script>
-    <script src="/static/script/main/main.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({ duration: 1200 });
-    </script>
-  </body>
+  <script src="/static/script/common/modal.js"></script>
+  <script src="/static/script/common/signIn.js"></script>
+  <script src="/static/script/common/signUp.js"></script>
+  <script src="/static/script/common/signOut.js"></script>
+  <script src="/static/script/common/studyList.js"></script>
+  <script src="/static/script/common/profile.js"></script>
+  <script src="/static/script/common/practice.js"></script>
+  <script src="/static/script/common/logo.js"></script>
+  <script src="/static/script/main/main.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="/static/script/main/aos.js"></script>
+</body>
+
 </html>

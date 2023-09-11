@@ -1,6 +1,6 @@
 // 개설자 혹은 참여자 여부를 확인하기 위해 즉시 실행함수 생성
 (async function () {
-  const appliers = document.querySelector(".content__leader-list");
+  const appliers = document.querySelector(".content__leader");
 
   /** 버튼 및 컨테이너 생성 */
   // 지원하기 혹은 모집완료 버튼이 들어갈 컨테이너 생성
@@ -121,6 +121,8 @@
         break;
       case "LEADER": // 리더일때 크루 목록 조회
         appliers.style.display = "block";
+        break;
+      case "CREW":
         break;
       default: // 기본적으로 지원하기 / 모집완료 버튼 표시
         const innerBtn = isAccepting ? applyBtn : doneBtn;
