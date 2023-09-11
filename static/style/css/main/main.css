@@ -153,16 +153,12 @@
   width: 100vw;
   background-color: var(--material-theme-ref-primary-primary-95, #ecf3fe);
 }
-@media (width <= 767px) {
-  .main__study {
-    max-width: 500px;
-  }
-}
 .main__study--section {
   display: flex;
   flex-direction: column;
   margin: 30px;
   width: 78.7879vw;
+  gap: 10px;
 }
 .main__study--section-title {
   color: var(--common-black, #000);

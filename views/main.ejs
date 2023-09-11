@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="/static/style/css/common/header.css" />
     <link rel="stylesheet" href="/static/style/css/common/modal.css" />
     <link rel="stylesheet" href="/static/style/css/common/reset.css" />
@@ -13,7 +14,7 @@
   <body>
     <header class="header">
       <img
-        src="../static/images/Do-IT logo.png"
+        src="/static/images/header-logo.svg"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -141,11 +142,11 @@
     </div>
 
     <main class="main">
-      <div class="main__title">개발자 스터디 플랫폼</div>
+      <div class="main__title" data-aos="fade-down">개발자 스터디 플랫폼</div>
 
       <div class="main__img">
         <div class="main__img--logo">
-          <img src="/static/images/Do-IT logo2.svg" alt="Do-IT logo" />
+          <img src="/static/images/body-logo.svg" alt="Do-IT logo" />
         </div>
         <div class="main__img--phones">
           <img src="/static/images/phones.svg" alt="Device Group" />
@@ -163,7 +164,7 @@
         <div class="main__practice--title" data-aos="fade-down">
           CS 면접 연습하기
         </div>
-        <div class="main__practice--body">
+        <div class="main__practice--body" data-aos="fade-down">
           연습하고 싶은 CS 면접 주제를 선정 후, ChatGPT가 생성해준 면접 질문에
           답변을 주시면 GPT로부터 평가받고 개선점을 알 수 있어요
         </div>
@@ -241,7 +242,9 @@
     <script src="/static/script/common/practice.js"></script>
     <script src="/static/script/common/logo.js"></script>
     <script src="/static/script/main/main.js"></script>
-    <script type="module" src="/static/script/main/aos.js"></script>
-    <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200 });
+    </script>
   </body>
 </html>
