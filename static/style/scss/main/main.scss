@@ -167,9 +167,6 @@ $white: var(--background-white, #fff);
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    @include mixin-res--mobile {
-      max-width: 500px;
-    }
     background-color: var(--material-theme-ref-primary-primary-95, #ecf3fe);
 
     &--section {
@@ -177,7 +174,7 @@ $white: var(--background-white, #fff);
       flex-direction: column;
       margin: 30px;
       width: 78.7879vw;
-
+      gap: 10px;
       &-title {
         @include mixin-font-style;
         font-size: 20px;
