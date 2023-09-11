@@ -12,7 +12,7 @@
   <body>
     <header class="header">
       <img
-        src="../static/images/Do-IT logo.png"
+        src="/static/images/header-logo.svg"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -33,7 +33,13 @@
           <div class="content__name">알고리즘</div>
           <div class="content__hover">
             <div class="content__hover--name">알고리즘</div>
-            <div class="content__hover--description">부연 설명</div>
+            <div class="content__hover--description">
+              <li class="content__hover--list">탐색 알고리즘</li>
+              <li class="content__hover--list">정렬 알고리즘</li>
+              <li class="content__hover--list">그래프 알고리즘</li>
+              <li class="content__hover--list">해시 알고리즘</li>
+              <li class="content__hover--list">최적화 알고리즘</li>
+            </div>
           </div>
         </div>
         <div class="content__box" onclick="selectSubject('DataStructure')">
@@ -41,7 +47,13 @@
           <div class="content__name">자료구조</div>
           <div class="content__hover">
             <div class="content__hover--name">자료구조</div>
-            <div class="content__hover--description">부연 설명</div>
+            <div class="content__hover--description">
+              <li class="content__hover--list">배열 & 리스트</li>
+              <li class="content__hover--list">스택 & 큐</li>
+              <li class="content__hover--list">힙 & 트리</li>
+              <li class="content__hover--list">해시</li>
+              <li class="content__hover--list">트라이 (Trie)</li>
+            </div>
           </div>
         </div>
         <div class="content__box" onclick="selectSubject('Database')">
@@ -49,7 +61,13 @@
           <div class="content__name">데이터베이스</div>
           <div class="content__hover">
             <div class="content__hover--name">데이터베이스</div>
-            <div class="content__hover--description">부연 설명</div>
+            <div class="content__hover--description">
+              <li class="content__hover--list">키 (Key)</li>
+              <li class="content__hover--list">SQL & NoSQL</li>
+              <li class="content__hover--list">이상 (Anomaly)</li>
+              <li class="content__hover--list">정규화</li>
+              <li class="content__hover--list">트랜잭션</li>
+            </div>
           </div>
         </div>
         <div class="content__box" onclick="selectSubject('Network')">
@@ -57,7 +75,13 @@
           <div class="content__name">네트워크</div>
           <div class="content__hover">
             <div class="content__hover--name">네트워크</div>
-            <div class="content__hover--description">부연 설명</div>
+            <div class="content__hover--description">
+              <li class="content__hover--list">OSI 7계층</li>
+              <li class="content__hover--list">TCP/IP 흐름 & 혼잡 제어</li>
+              <li class="content__hover--list">UDP</li>
+              <li class="content__hover--list">HTTP & HTTPS</li>
+              <li class="content__hover--list">로드밸런싱</li>
+            </div>
           </div>
         </div>
         <div class="content__box" onclick="selectSubject('OS')">
@@ -65,19 +89,26 @@
           <div class="content__name">운영체제</div>
           <div class="content__hover">
             <div class="content__hover--name">운영체제</div>
-            <div class="content__hover--description">부연 설명</div>
+            <div class="content__hover--description">
+              <li class="content__hover--list">프로세스 & 스레드</li>
+              <li class="content__hover--list">PCB & Context Switching</li>
+              <li class="content__hover--list">CPU 스케줄링</li>
+              <li class="content__hover--list">데드락 (DeadLock)</li>
+              <li class="content__hover--list">메모리</li>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <script src="/static/script/common/modal.js"></script>
+    <script src="/static/script/common/signIn.js"></script>
+    <script src="/static/script/common/signUp.js"></script>
+    <script src="/static/script/common/signOut.js"></script>
+    <script src="/static/script/common/studyList.js"></script>
+    <script src="/static/script/common/profile.js"></script>
+    <script src="/static/script/common/practice.js"></script>
+    <script src="/static/script/common/logo.js"></script>
+    <script src="../static/script/interview/subject.js"></script>
   </body>
-  <script src="/static/script/common/modal.js"></script>
-  <script src="/static/script/common/signIn.js"></script>
-  <script src="/static/script/common/signUp.js"></script>
-  <script src="/static/script/common/signOut.js"></script>
-  <script src="/static/script/common/studyList.js"></script>
-  <script src="/static/script/common/profile.js"></script>
-  <script src="/static/script/common/practice.js"></script>
-  <script src="/static/script/common/logo.js"></script>
-  <script src="../static/script/interview/subject.js"></script>
 </html>
