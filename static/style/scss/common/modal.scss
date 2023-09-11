@@ -1,10 +1,25 @@
 @use "../helper/" as *;
 
+@media screen and (min-width: 330px) and (max-width: 505px) {
+  .modal {
+    &__textarea {
+      height: 38px;
+    }
+  }
+}
+
+@media screen and (min-width: 506px) and (max-width: 767px) {
+  .modal {
+    &__textarea {
+      height: 21px;
+    }
+  }
+}
+
 .modal {
   display: none;
   position: fixed;
   z-index: 10;
-  overflow: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -12,11 +27,13 @@
   background-color: rgba(0, 0, 0, 0.7);
   &__content {
     background-color: #fff;
-    margin: 10% auto;
+    margin: 7% auto;
     padding: 3% 7%;
     border-radius: 5px;
-    width: 80%;
+    width: 75%;
+
     max-width: 400px;
+
     animation-name: modal-animation;
     animation-duration: 0.3s;
     display: flex;
@@ -25,29 +42,29 @@
   &__close {
     font-size: 30px;
     width: 3%;
-    margin: 0px 0 10% 98%;
+    margin: -3% 0 4% 98%;
     cursor: pointer;
     &:hover {
-      color: #f44336;
+      color: #2f80ed;
     }
   }
   &__h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: 30px;
     display: flex;
     justify-content: center;
-    margin-top: 24%;
+    margin-top: 7%;
   }
   &__h3 {
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 14px;
     display: flex;
     justify-content: center;
-    margin: 5% 0 15% 0;
+    margin: 5% 0 4% 0;
   }
   &__label {
     font-size: 12px;
@@ -69,21 +86,46 @@
     padding: 5px;
     border: none;
     border-bottom: 1px solid #000;
+    outline: none;
+  }
+  &__textarea {
+    resize: none;
+    margin: 5px 0;
+    padding-left: 5px;
+    border: none;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+    outline: none;
+    &::placeholder {
+      color: gray;
+      font-family: Roboto;
+      font-style: 15px;
+      line-height: normal;
+    }
   }
 }
 
 .modal__sign-in {
+  .modal__content {
+    height: 66%;
+  }
   .modal__button--sign-up {
     @include mixin-modal-white-button;
   }
   .modal__button--sign-in {
     @include mixin-modal-black-button;
+    margin-top: 20%;
   }
 }
 
 .modal__sign-up {
+  .modal__content {
+    height: 88%;
+    max-height: 720px;
+  }
   .modal__button--sign-up {
     @include mixin-modal-black-button;
+    margin-top: 10%;
   }
   .modal__button--sign-in {
     @include mixin-modal-white-button;
