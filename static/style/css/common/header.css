@@ -28,3 +28,8 @@
   width: 24px;
   height: 24px;
 }
+@media (768px <= width) {
+  .header {
+    height: 70px;
+  }
+}

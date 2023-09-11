@@ -40,6 +40,12 @@
     max-height: 70px;
   }
 }
+@media (768px <= width) {
+  .main__img--logo img {
+    width: 269.419px;
+    height: 70px;
+  }
+}
 .main__img--phones {
   display: flex;
   justify-content: center;
@@ -49,6 +55,12 @@
   width: 90.9091vw;
 }
 @media (width <= 767px) {
+  .main__img--phones img {
+    max-width: 615.5px;
+    max-height: 603px;
+  }
+}
+@media (768px <= width) {
   .main__img--phones img {
     max-width: 615.5px;
     max-height: 603px;
@@ -91,10 +103,14 @@
     max-width: 500px;
   }
 }
+@media (768px <= width) {
+  .main__practice {
+    max-width: 700px;
+  }
+}
 .main__practice--title {
   display: flex;
   padding: 0px 5px;
-  align-items: flex-start;
   gap: 10px;
   color: var(--common-black, #000);
   font-family: Roboto;
@@ -120,6 +136,10 @@
   font-weight: 400;
   line-height: 28px; /* 175% */
 }
+.main__practice--img {
+  display: flex;
+  justify-content: center;
+}
 .main__practice--img img {
   width: 78.7879vw;
   height: 52.4242vw;
@@ -131,9 +151,16 @@
     max-height: 332.317px;
   }
 }
+@media (768px <= width) {
+  .main__practice--img img {
+    max-width: 500px;
+    max-height: 332.317px;
+  }
+}
 .main__practice--button {
   padding: 10px 20px;
   align-items: center;
+  width: 100%;
   background-color: white;
   border-radius: 12px;
   border: 0.5px solid var(--common-black, #000);
@@ -159,6 +186,16 @@
   margin: 30px;
   width: 78.7879vw;
   gap: 10px;
+}
+@media (width <= 767px) {
+  .main__study--section {
+    max-width: 500px;
+  }
+}
+@media (768px <= width) {
+  .main__study--section {
+    max-width: 700px;
+  }
 }
 .main__study--section-title {
   color: var(--common-black, #000);
@@ -187,15 +224,25 @@
   margin-top: 50px;
   margin-bottom: 50px;
   gap: 30px;
+  overflow: hidden;
 }
 .main__study--img-first, .main__study--img-second {
   display: flex;
+}
+.main__study--img-first img, .main__study--img-second img {
+  transition: transform 500 linear;
   width: 100vw;
   height: 68.1818vw;
 }
 @media (width <= 767px) {
-  .main__study--img-first, .main__study--img-second {
-    max-width: 218.02vw;
+  .main__study--img-first img, .main__study--img-second img {
+    max-width: 719.486px;
+    max-height: 350px;
+  }
+}
+@media (768px <= width) {
+  .main__study--img-first img, .main__study--img-second img {
+    max-width: 719.486px;
     max-height: 350px;
   }
 }
@@ -218,6 +265,11 @@
 @media (width <= 767px) {
   .main__study--button {
     max-width: 500px;
+  }
+}
+@media (768px <= width) {
+  .main__study--button {
+    max-width: 700px;
   }
 }
 .main__recent {

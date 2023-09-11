@@ -1,14 +1,4 @@
-// main__mobile
-@media screen and (min-width: 330px) and (max-width: 767px) {
-}
-
-// main__tablet
-@media screen and (min-width: 768px) and (max-width: 1011px) {
-}
-
-// main__desktop
-@media screen and (min-width: 1012px) {
-}
+@use "../helper/" as *;
 
 .header {
   height: 52px;
@@ -42,5 +32,9 @@
       width: 24px;
       height: 24px;
     }
+  }
+
+  @include mixin-res--web {
+    height: 70px;
   }
 }
