@@ -65,22 +65,23 @@ $tabletPlus: v.$tablet + 1;
 }
 // 모달창 검은색 버튼
 @mixin modal-black-button {
-  width: 220px;
-  padding: 10px 20px;
+  padding: 3%;
   border-radius: 25px;
   background-color: var(--other-dark-background-black, #161616);
   color: #fff;
   border: none;
+  margin-top: 20%;
   cursor: pointer;
-  &:hover {
-    background-color: #d32f2f;
-  }
 }
 //모달창 하얀색 버튼
 @mixin modal-white-button {
   background-color: white;
   border: none;
-  padding: 10px;
+  margin: 3% 0 15% 0;
+  cursor: pointer;
+  &:hover {
+    color: #f44336;
+  }
 }
 
 // 스터디 상세 페이지
