@@ -93,8 +93,6 @@ async function runApi(contentQ, contentA) {
   const replaceResult = pointStr.replace(regex, "");
   const currPoint = parseInt(replaceResult);
 
-  console.log("currPoint", currPoint);
-
   // 점수를 parsing하지 못한 경우, api 다시 호출
   if (isNaN(currPoint)) {
     const evalAgain = await runApi(contentQ, contentA);
@@ -134,8 +132,6 @@ async function eval() {
   const contentA = `답변은 다음과 같습니다. ${answerList[interviewCount]} 이 답변에 대해 10점 만점으로 점수를 주고, 그 이유를 알려주세요. 점수는 응답의 첫 문장으로 '점수: 점'의 형태로 알려주세요.`;
 
   const evaluation = await runApi(contentQ, contentA);
-
-  console.log("point:", point);
 
   // 마스크 & 로딩 이미지 사라짐
   closeLoadingWithMask();
