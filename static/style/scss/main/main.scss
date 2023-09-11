@@ -41,10 +41,13 @@ $white: var(--background-white, #fff);
       img {
         width: 50vw;
         height: 13.0303vw;
-
         @include mixin-res--mobile {
           max-width: 269.419px;
           max-height: 70px;
+        }
+        @include mixin-res--web {
+          width: 269.419px;
+          height: 70px;
         }
       }
     }
@@ -58,6 +61,10 @@ $white: var(--background-white, #fff);
         width: 90.9091vw;
 
         @include mixin-res--mobile {
+          max-width: 615.5px;
+          max-height: 603px;
+        }
+        @include mixin-res--web {
           max-width: 615.5px;
           max-height: 603px;
         }
@@ -99,12 +106,15 @@ $white: var(--background-white, #fff);
     @include mixin-res--mobile {
       max-width: 500px;
     }
+    @include mixin-res--web {
+      max-width: 700px;
+    }
 
     &--title {
       // Display
       display: flex;
       padding: 0px 5px;
-      align-items: flex-start;
+
       gap: 10px;
 
       // Font
@@ -131,16 +141,21 @@ $white: var(--background-white, #fff);
     }
 
     &--img {
+      display: flex;
+      justify-content: center;
       img {
         width: 78.7879vw;
         height: 52.4242vw;
+        border-radius: 15px;
 
         @include mixin-res--mobile {
           max-width: 500px;
           max-height: 332.317px;
         }
-
-        border-radius: 15px;
+        @include mixin-res--web {
+          max-width: 500px;
+          max-height: 332.317px;
+        }
       }
     }
 
@@ -149,6 +164,7 @@ $white: var(--background-white, #fff);
       padding: 10px 20px;
       align-items: center;
 
+      width: 100%;
       background-color: white;
       border-radius: 12px;
       border: 0.5px solid var(--common-black, #000);
@@ -175,6 +191,14 @@ $white: var(--background-white, #fff);
       margin: 30px;
       width: 78.7879vw;
       gap: 10px;
+
+      @include mixin-res--mobile {
+        max-width: 500px;
+      }
+      @include mixin-res--web {
+        max-width: 700px;
+      }
+
       &-title {
         @include mixin-font-style;
         font-size: 20px;
@@ -199,14 +223,22 @@ $white: var(--background-white, #fff);
       margin-top: 50px;
       margin-bottom: 50px;
       gap: 30px;
+      overflow: hidden;
       &-first,
       &-second {
         display: flex;
-        width: 100vw;
-        height: 68.1818vw;
-        @include mixin-res--mobile {
-          max-width: 218.02vw;
-          max-height: 350px;
+        img {
+          transition: transform 500 linear;
+          width: 100vw;
+          height: 68.1818vw;
+          @include mixin-res--mobile {
+            max-width: 719.486px;
+            max-height: 350px;
+          }
+          @include mixin-res--web {
+            max-width: 719.486px;
+            max-height: 350px;
+          }
         }
       }
     }
@@ -216,6 +248,9 @@ $white: var(--background-white, #fff);
       height: 40px;
       @include mixin-res--mobile {
         max-width: 500px;
+      }
+      @include mixin-res--web {
+        max-width: 700px;
       }
       border-radius: 12px;
       border: 0.5px solid var(--common-black, #000);
