@@ -1,4 +1,4 @@
-const { User, Study, StudyUser } = require("../models");
+const { User, Study, StudyUser, Theme, Sequelize } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -29,6 +29,9 @@ exports.postMyPage = async (req, res) => {
         model: StudyUser,
         include: {
           model: Study,
+          include: {
+            model: Theme,
+          },
         },
       },
     ],
@@ -37,6 +40,7 @@ exports.postMyPage = async (req, res) => {
     switch (userinfo.StudyUsers[i].status) {
       case "LEADER":
         asLeader.push(userinfo.StudyUsers[i].Study);
+        // asLeader.push(userinfo.StudyUsers[i].Study.Themes);
         break;
       case "CREW":
         asCrew.push(userinfo.StudyUsers[i].Study);
@@ -153,9 +157,22 @@ exports.tokenVerify = async (req, res) => {
   await tokenVerifier(req.headers.authorization);
   res.send({ result: true, nickname: verifiedNickname });
 };
-// 임시
-exports.getTemp = (req, res) => {
-  res.render("main_temp");
+
+// 프로필 수정
+exports.updateProfile = async (req, res) => {
+  try {
+    await User.update(
+      { nickname: req.body.nickname, link: req.body.link },
+      {
+        where: {
+          userId: req.body.userId,
+        },
+      }
+    );
+    res.json({ result: true });
+  } catch (error) {
+    res.json({ result: false });
+  }
 };
 
 ///////////////////////////////////

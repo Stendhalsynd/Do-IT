@@ -1,0 +1,218 @@
+.contents {
+  width: 100%;
+}
+
+.userdata {
+  width: 80%;
+  margin: 30px 10%;
+}
+.userdata__h4 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.userdata__title {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+.userdata__title p {
+  margin: 20px 0px 15px;
+}
+.userdata__title input {
+  width: 100%;
+  height: 40px;
+  line-height: 20px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+.userdata button {
+  margin-top: 30px;
+  padding: 10px 0px;
+  width: 100%;
+  border-radius: 25px;
+  border: none;
+  background: var(--figma-blue, #2f80ed);
+  color: var(--text-light-on-color, #fff);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 20px;
+}
+
+.studyList {
+  width: 80%;
+  margin: 30px 10%;
+}
+.studyList__h4 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.studyList__menu {
+  margin: 27px 0px;
+  display: flex;
+  height: 22px;
+}
+.studyList__menu--divider {
+  height: 22px;
+  width: 2px;
+  margin: 0px 5px;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+.studyList__menu button {
+  border: none;
+  background-color: transparent;
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  padding: 0px;
+}
+.studyList__lists {
+  width: 80%;
+  margin: 0px 10% 30px;
+}
+@media (768px <= width) {
+  .studyList__lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+  .studyList__lists[hidden] {
+    display: none;
+  }
+}
+.studyList__lists-divider {
+  width: 100%;
+  height: 6px;
+  background: #c6c6c6;
+  border-radius: 20px;
+}
+@media (768px <= width) {
+  .studyList__lists-divider {
+    display: none;
+  }
+}
+.studyList__lists-elem {
+  height: 250px;
+  width: 100%;
+  position: relative;
+}
+@media (768px <= width) {
+  .studyList__lists-elem {
+    box-sizing: border-box;
+    border: 4px solid var(--figma-black-3, #828282);
+    border-radius: 20px;
+    width: 48%;
+    padding: 15px 30px;
+    margin: 0% 2% 2% 0%;
+  }
+}
+.studyList__lists-elem:hover {
+  cursor: pointer;
+}
+.studyList__lists-elem--title {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 48px;
+  width: calc(100% - 90px);
+  font-size: 20px;
+  line-height: 24px;
+  padding: 10px 0px 5px;
+}
+.studyList__lists-elem--status {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-weight: 400;
+  font-size: 16px;
+  height: 24px;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  padding: 5px 10px;
+  border-radius: 25px;
+}
+@media (768px <= width) {
+  .studyList__lists-elem--status {
+    top: 20px;
+    right: 28px;
+  }
+}
+.studyList__lists-elem--status-waiting {
+  background: rgb(96, 185, 108);
+  color: var(--text-light-on-color, #fff);
+}
+.studyList__lists-elem--status-allowed {
+  background: var(--figma-blue, #2f80ed);
+  color: var(--text-light-on-color, #fff);
+}
+.studyList__lists-elem--status-rejected {
+  background: rgb(242, 100, 100);
+  color: var(--text-light-on-color, #fff);
+}
+.studyList__lists-elem--intro {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 40%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 28px;
+  overflow: hidden;
+}
+.studyList__lists-elem--category {
+  height: 42px;
+  display: flex;
+  overflow-x: auto;
+  margin: 10px 0px;
+}
+.studyList__lists-elem--category::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+  background-color: #ffffff;
+}
+.studyList__lists-elem--category::-webkit-scrollbar-thumb {
+  background: #6e6d6d;
+}
+.studyList__lists-elem--category::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+.studyList__lists-elem--category span {
+  border-radius: 20px;
+  background: var(--material-theme-ref-error-error-70, #ec928e);
+  color: var(--figma-black-6, #f2f2f2);
+  padding: 0 15px;
+  margin: 2px 2px;
+  line-height: 1.5;
+  display: inline-block;
+  margin: 0px 2px;
+  padding: 3px 10px;
+  height: 32px;
+  width: fit-content;
+  font-size: 16px;
+  line-height: 32px;
+  flex-shrink: 0;
+}

@@ -98,7 +98,7 @@ function checkForm() {
 
 function cancel() {
   if (confirm("취소하시겠습니까?")) {
-    document.location.href = "/main";
+    document.location.href = "/";
   } else {
     return;
   }

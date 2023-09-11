@@ -14,7 +14,7 @@
   <body>
     <header class="header">
       <img
-        src="../static/images/Do-IT logo.png"
+        src="/static/images/header-logo.svg"
         alt="Do-IT logo"
         class="header__logo"
       />
@@ -121,13 +121,14 @@
               placeholder="스터디명 (20자 이내)"
               class="study__registerform-content-input study__registerform-content-input--title"
             /><br />
-            소개 <br /><input
-              type="text"
+            소개 <br />
+            <textarea
               id="intro"
               style="height: 40vh"
               class="study__registerform-content-input study__registerform-content-input--intro"
               placeholder="어떤 방식으로 스터디를 진행할 것인지 소개해주세요."
-            /><br />
+            ></textarea>
+            <br />
           </fieldset>
           <div class="study__registerform-button">
             <button
@@ -155,5 +156,7 @@
     <script src="../static/script/common/signOut.js"></script>
     <script src="../static/script/common/studyList.js"></script>
     <script src="../static/script/common/profile.js"></script>
+    <script src="../static/script/common/logo.js"></script>
+    <script src="../static/script/common/practice.js"></script>
   </body>
 </html>
