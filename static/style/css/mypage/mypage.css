@@ -109,7 +109,7 @@
   }
 }
 .studyList__lists-elem {
-  height: 250px;
+  height: 350px;
   width: 100%;
   position: relative;
 }
@@ -121,6 +121,7 @@
     width: 48%;
     padding: 15px 30px;
     margin: 0% 2% 2% 0%;
+    height: 400px;
   }
 }
 .studyList__lists-elem:hover {
@@ -136,7 +137,7 @@
   width: calc(100% - 90px);
   font-size: 20px;
   line-height: 24px;
-  padding: 10px 0px 5px;
+  padding: 20px 0px 10px;
 }
 .studyList__lists-elem--status {
   color: var(--common-black, #000);
@@ -145,17 +146,17 @@
   font-weight: 700;
   line-height: normal;
   font-weight: 400;
-  font-size: 16px;
-  height: 24px;
+  font-size: 14px;
+  height: 20px;
   position: absolute;
-  top: 10px;
+  top: 28px;
   right: 0px;
-  padding: 5px 10px;
+  padding: 2px 10px;
   border-radius: 25px;
 }
 @media (768px <= width) {
   .studyList__lists-elem--status {
-    top: 20px;
+    top: 35px;
     right: 28px;
   }
 }
@@ -179,26 +180,21 @@
   line-height: normal;
   height: 40%;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 28px;
-  overflow: hidden;
+  overflow: auto;
 }
 .studyList__lists-elem--category {
-  height: 42px;
+  height: 90px;
   display: flex;
-  overflow-x: auto;
-  margin: 10px 0px;
+  flex-wrap: wrap;
+  align-content: end;
+  margin: 20px 0px 3px;
 }
-.studyList__lists-elem--category::-webkit-scrollbar {
-  width: 5px;
-  height: 4px;
-  background-color: #ffffff;
-}
-.studyList__lists-elem--category::-webkit-scrollbar-thumb {
-  background: #6e6d6d;
-}
-.studyList__lists-elem--category::-webkit-scrollbar-thumb:hover {
-  background: black;
+@media (768px <= width) {
+  .studyList__lists-elem--category {
+    height: 120px;
+  }
 }
 .studyList__lists-elem--category span {
   border-radius: 20px;
@@ -208,11 +204,21 @@
   margin: 2px 2px;
   line-height: 1.5;
   display: inline-block;
-  margin: 0px 2px;
-  padding: 3px 10px;
-  height: 32px;
+  margin: 2px;
+  padding: 2px 10px;
+  height: 25px;
   width: fit-content;
-  font-size: 16px;
-  line-height: 32px;
+  font-size: 14px;
+  line-height: 25px;
   flex-shrink: 0;
+}
+.studyList__lists-noContent {
+  text-align: center;
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 200px;
+  line-height: 100px;
 }

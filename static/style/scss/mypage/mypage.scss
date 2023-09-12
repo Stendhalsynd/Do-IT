@@ -102,7 +102,7 @@
       }
     }
     &-elem {
-      height: 250px;
+      height: 350px;
       width: 100%;
       position: relative;
       @include mixin-res--web {
@@ -112,6 +112,7 @@
         width: 48%;
         padding: 15px 30px;
         margin: 0% 2% 2% 0%;
+        height: 400px;
       }
       &:hover {
         cursor: pointer;
@@ -122,20 +123,20 @@
         width: calc(100% - 90px);
         font-size: 20px;
         line-height: 24px;
-        padding: 10px 0px 5px;
+        padding: 20px 0px 10px;
       }
       &--status {
         @include mixin-font-style;
         font-weight: 400;
-        font-size: 16px;
-        height: 24px;
+        font-size: 14px;
+        height: 20px;
         position: absolute;
-        top: 10px;
+        top: 28px;
         right: 0px;
-        padding: 5px 10px;
+        padding: 2px 10px;
         border-radius: 25px;
         @include mixin-res--web {
-          top: 20px;
+          top: 35px;
           right: 28px;
         }
         &-waiting {
@@ -155,37 +156,36 @@
         @include mixin-font-style;
         height: 40%;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 28px;
-        overflow: hidden;
+        overflow: auto;
       }
       &--category {
-        height: 42px;
+        height: 90px;
+        @include mixin-res--web {
+          height: 120px;
+        }
         display: flex;
-        overflow-x: auto;
-        margin: 10px 0px;
-        &::-webkit-scrollbar {
-          width: 5px;
-          height: 4px;
-          background-color: #ffffff;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: #6e6d6d;
-          &:hover {
-            background: black;
-          }
-        }
+        flex-wrap: wrap;
+        align-content: end;
+        margin: 20px 0px 3px;
         & span {
           @include mixin-theme("thin");
-          margin: 0px 2px;
-          padding: 3px 10px;
-          height: 32px;
+          margin: 2px;
+          padding: 2px 10px;
+          height: 25px;
           width: fit-content;
-          font-size: 16px;
-          line-height: 32px;
+          font-size: 14px;
+          line-height: 25px;
           flex-shrink: 0;
         }
       }
+    }
+    &-noContent {
+      text-align: center;
+      @include mixin-font-style;
+      height: 200px;
+      line-height: 100px;
     }
   }
 }
