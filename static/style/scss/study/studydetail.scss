@@ -34,11 +34,14 @@
 
     &--approve {
       @include mixin-btn-leader("approve");
-      @include mixin-font-button;
     }
 
     &--reject {
       @include mixin-btn-leader("reject");
+    }
+
+    &--approve,
+    &--reject {
       @include mixin-font-button;
     }
   }
@@ -60,7 +63,7 @@
     }
 
     @include mixin-res--web {
-      width: calc(50% - 70px);
+      width: calc(50% - 75px);
     }
   }
 }

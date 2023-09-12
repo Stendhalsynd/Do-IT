@@ -18,6 +18,46 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
+.modal__container {
+  display: none;
+}
+@media (768px <= width) {
+  .modal {
+    background: var(--figma-black-5, #e0e0e0);
+    justify-content: space-between;
+    z-index: 9999999;
+    position: fixed;
+    transform-origin: left;
+  }
+  .modal__container {
+    width: 52%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .modal__semicircle {
+    width: 24rem;
+    height: 12rem;
+    background-color: #3498db;
+    border-radius: 200px 200px 0 0;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease 0.8s forwards;
+    opacity: 0;
+    align-self: flex-end;
+    margin-bottom: 36%;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .modal__character--face, .modal__character--signup {
+    width: 32%;
+    height: 42%;
+    margin: 10% 12% 20% 0;
+    transform: translate(-30%, 11%);
+  }
+}
 .modal__content {
   background-color: #fff;
   margin: 7% auto;
@@ -29,6 +69,18 @@
   animation-duration: 0.3s;
   display: flex;
   flex-direction: column;
+}
+@media (768px <= width) {
+  .modal__content {
+    margin: 15px 3%;
+    padding: 30px 6%;
+    width: 35%;
+    animation: fadeIn 1s ease 0.2s forwards;
+    opacity: 0;
+    border-radius: 34px;
+    max-width: 300px;
+    justify-content: space-evenly;
+  }
 }
 .modal__close {
   font-size: 30px;
@@ -47,6 +99,12 @@
   display: flex;
   justify-content: center;
   margin-top: 7%;
+  margin-top: 24%;
+}
+@media (768px <= width) {
+  .modal__h2 {
+    margin-top: 20px;
+  }
 }
 .modal__h3 {
   font-size: 14px;
@@ -56,6 +114,12 @@
   display: flex;
   justify-content: center;
   margin: 5% 0 4% 0;
+  margin: 5% 0 15% 0;
+}
+@media (768px <= width) {
+  .modal__h3 {
+    margin: 10px 0 20px 0;
+  }
 }
 .modal__label {
   font-size: 12px;
@@ -93,10 +157,11 @@
   font-style: 15px;
   line-height: normal;
 }
-
-.modal__sign-in .modal__content {
-  height: 66%;
+.modal__logo {
+  width: 60%;
+  align-self: center;
 }
+
 .modal__sign-in .modal__button--sign-up {
   background-color: white;
   border: none;
@@ -119,10 +184,6 @@
   background-color: #2f80ed;
 }
 
-.modal__sign-up .modal__content {
-  height: 88%;
-  max-height: 720px;
-}
 .modal__sign-up .modal__button--sign-up {
   padding: 3%;
   border-radius: 25px;
@@ -131,9 +192,23 @@
   border: none;
   cursor: pointer;
   margin-top: 10%;
+  padding: 3%;
+  border-radius: 25px;
+  background-color: var(--other-dark-background-black, #161616);
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 .modal__sign-up .modal__button--sign-up:hover {
   background-color: #2f80ed;
+}
+.modal__sign-up .modal__button--sign-up:hover {
+  background-color: #2f80ed;
+}
+@media (768px <= width) {
+  .modal__sign-up .modal__button--sign-up {
+    margin-top: 40px;
+  }
 }
 .modal__sign-up .modal__button--sign-in {
   background-color: white;
@@ -153,5 +228,13 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
