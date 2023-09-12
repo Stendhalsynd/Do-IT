@@ -33,18 +33,8 @@
 .main__img--logo img {
   width: 50vw;
   height: 13.0303vw;
-}
-@media (width <= 767px) {
-  .main__img--logo img {
-    max-width: 269.419px;
-    max-height: 70px;
-  }
-}
-@media (768px <= width) {
-  .main__img--logo img {
-    width: 269.419px;
-    height: 70px;
-  }
+  max-width: 269.419px;
+  max-height: 70px;
 }
 .main__img--phones {
   display: flex;
@@ -53,18 +43,8 @@
 }
 .main__img--phones img {
   width: 90.9091vw;
-}
-@media (width <= 767px) {
-  .main__img--phones img {
-    max-width: 615.5px;
-    max-height: 603px;
-  }
-}
-@media (768px <= width) {
-  .main__img--phones img {
-    max-width: 615.5px;
-    max-height: 603px;
-  }
+  max-width: 615.5px;
+  max-height: 603px;
 }
 .main__content {
   display: inline-flex;
@@ -144,18 +124,8 @@
   width: 78.7879vw;
   height: 52.4242vw;
   border-radius: 15px;
-}
-@media (width <= 767px) {
-  .main__practice--img img {
-    max-width: 500px;
-    max-height: 332.317px;
-  }
-}
-@media (768px <= width) {
-  .main__practice--img img {
-    max-width: 500px;
-    max-height: 332.317px;
-  }
+  max-width: 500px;
+  max-height: 332.317px;
 }
 .main__practice--button {
   padding: 10px 20px;
@@ -249,7 +219,7 @@
 }
 @media (768px <= width) {
   .main__study--img-first img {
-    left: 900px;
+    left: 1200px;
   }
 }
 .main__study--img-second img {
@@ -257,7 +227,7 @@
 }
 @media (768px <= width) {
   .main__study--img-second img {
-    right: 900px;
+    right: 1200px;
   }
 }
 .main__study--button {
@@ -320,8 +290,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 230px;
-  height: 230px;
+  width: 220px;
+  height: 220px;
   margin: 50px;
   cursor: pointer;
   background: var(--background-white, #fff);

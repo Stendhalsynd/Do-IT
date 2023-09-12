@@ -41,14 +41,8 @@ $white: var(--background-white, #fff);
       img {
         width: 50vw;
         height: 13.0303vw;
-        @include mixin-res--mobile {
-          max-width: 269.419px;
-          max-height: 70px;
-        }
-        @include mixin-res--web {
-          width: 269.419px;
-          height: 70px;
-        }
+        max-width: 269.419px;
+        max-height: 70px;
       }
     }
 
@@ -59,15 +53,8 @@ $white: var(--background-white, #fff);
 
       img {
         width: 90.9091vw;
-
-        @include mixin-res--mobile {
-          max-width: 615.5px;
-          max-height: 603px;
-        }
-        @include mixin-res--web {
-          max-width: 615.5px;
-          max-height: 603px;
-        }
+        max-width: 615.5px;
+        max-height: 603px;
       }
     }
   }
@@ -147,15 +134,8 @@ $white: var(--background-white, #fff);
         width: 78.7879vw;
         height: 52.4242vw;
         border-radius: 15px;
-
-        @include mixin-res--mobile {
-          max-width: 500px;
-          max-height: 332.317px;
-        }
-        @include mixin-res--web {
-          max-width: 500px;
-          max-height: 332.317px;
-        }
+        max-width: 500px;
+        max-height: 332.317px;
       }
     }
 
@@ -223,7 +203,6 @@ $white: var(--background-white, #fff);
       margin-top: 50px;
       margin-bottom: 50px;
       width: 100vw;
-      // height: 600px;
       gap: 30px;
       overflow: hidden;
       &-first,
@@ -248,14 +227,14 @@ $white: var(--background-white, #fff);
       &-first img {
         left: 600px;
         @include mixin-res--web {
-          left: 900px;
+          left: 1200px;
         }
       }
 
       &-second img {
         right: 600px;
         @include mixin-res--web {
-          right: 900px;
+          right: 1200px;
         }
       }
     }
@@ -315,8 +294,8 @@ $white: var(--background-white, #fff);
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          width: 230px;
-          height: 230px;
+          width: 220px;
+          height: 220px;
           margin: 50px;
 
           cursor: pointer;
