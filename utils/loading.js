@@ -9,16 +9,17 @@ function LoadingWithMask() {
   // 마스크 div 생성
   const mask = document.createElement("div");
   mask.id = "mask";
-  mask.style.cssText = `position:absolute; background-color:#000000; display:none; left:0; top:0; width:${maskWidth}; height:${maskHeight}; opacity: 0.3`;
+  mask.style.cssText = `position:absolute; background-color:#000000; display:none; left:0; top:0; width:${maskWidth}; height:${maskHeight}; opacity: 0.7`;
 
   // 로딩 이미지 div 생성
   const loadingImg = document.createElement("div");
   loadingImg.id = "loadingImg";
   loadingImg.style.cssText =
-    "display: flex; margin: calc((100vh - 200px)/2) calc((100vw - 200px)/2);";
+    "display: flex; margin: calc((100vh - 160px)/2) calc((100vw - 330px)/2);";
 
   const gif = new Image();
-  gif.src = "../static/images/Spinner.gif";
+  gif.src = "../static/images/loading.gif";
+  gif.style.cssText = "width: 330px; height: 160px;";
 
   body.appendChild(mask);
   mask.appendChild(loadingImg);

@@ -150,6 +150,12 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.content__textarea::placeholder {
+  color: gray;
+  font-family: Roboto;
+  font-style: 15px;
+  line-height: normal;
+}
 .content__textarea:focus {
   outline: none;
 }

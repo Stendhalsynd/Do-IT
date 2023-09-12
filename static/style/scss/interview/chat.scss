@@ -129,12 +129,18 @@
     resize: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-  &__textarea:focus {
-    outline: none;
-  }
-  &__textarea::-webkit-scrollbar {
-    display: none;
+    &::placeholder {
+      color: gray;
+      font-family: Roboto;
+      font-style: 15px;
+      line-height: normal;
+    }
+    &:focus {
+      outline: none;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   &__send-button {
     display: flex;
