@@ -118,7 +118,7 @@
       }
     }
     &-element {
-      height: 300px;
+      height: 400px;
       width: 90%;
       margin: 0% 5%;
       @include mixin-res--web {
@@ -138,49 +138,50 @@
       height: 48px;
       font-size: 20px;
       line-height: 24px;
-      padding: 10px 0px 5px;
+      padding: 20px 0px 10px;
     }
     &-intro {
       @include mixin-font-style;
       height: 40%;
       font-weight: 400;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 28px;
-      overflow: hidden;
+      overflow: auto;
+      // overflow: hidden;
       // text-overflow: ellipsis;
     }
-    &-category {
-      height: 42px;
+    &-otherinfo {
       display: flex;
-      overflow-x: auto;
-      margin: 10px 0px;
-      &::-webkit-scrollbar {
-        width: 5px;
-        height: 4px;
-        background-color: #ffffff;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #6e6d6d;
-        &:hover {
-          background: black;
+      flex-direction: column;
+      height: 150px;
+      &--category {
+        height: 90px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: end;
+        margin: 10px 0px 3px;
+
+        &--elem {
+          @include mixin-theme("thin");
+          margin: 2px;
+          padding: 2px 10px;
+          height: 25px;
+          width: fit-content;
+          font-size: 14px;
+          line-height: 25px;
+          flex-shrink: 0;
         }
       }
-      &--elem {
-        @include mixin-theme("thin");
-        margin: 0px 2px;
-        padding: 3px 10px;
-        height: 32px;
-        width: fit-content;
+      &--status {
+        display: flex;
+        @include mixin-font-style;
+        font-weight: 400;
         font-size: 16px;
-        line-height: 32px;
-        flex-shrink: 0;
+        line-height: 28px;
+        &--member {
+          margin-left: 10px;
+        }
       }
-    }
-    &-status {
-      @include mixin-font-style;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 28px;
     }
   }
 }

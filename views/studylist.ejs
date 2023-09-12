@@ -164,27 +164,34 @@
             ></div>
             <h4 class="studypage__lists-title"><%= list[i].title%></h4>
             <div class="studypage__lists-intro"><%= list[i].intro %></div>
-
-            <div class="studypage__lists-category">
-              <% list[i].category.forEach((elem)=> { %>
-              <div class="studypage__lists-category--elem"><%= elem %></div>
-              <% }) %>
+            <div class="studypage__lists-otherinfo">
+              <div class="studypage__lists-otherinfo--category">
+                <% list[i].category.forEach((elem)=> { %>
+                <div class="studypage__lists-otherinfo--category--elem">
+                  <%= elem %>
+                </div>
+                <% }) %>
+              </div>
+              <div
+                class="studypage__lists-divider studypage__lists-divider--light"
+              ></div>
+              <div class="studypage__lists-otherinfo--status">
+                <% if (list[i].memCurr >= list[i].memTotal) { %>
+                <span
+                  class="studypage__lists-otherinfo--status studypage__lists-otherinfo--status--done"
+                  >모집완료</span
+                >
+                <% } else { %>
+                <span
+                  class="studypage__lists-status studypage__lists-otherinfo--status--ing"
+                  >모집중</span
+                >
+                <% } %>
+                <span class="studypage__lists-otherinfo--status--member"
+                  ><%= list[i].memCurr %> / <%= list[i].memTotal %></span
+                >
+              </div>
             </div>
-            <div
-              class="studypage__lists-divider studypage__lists-divider--light"
-            ></div>
-            <% if (list[i].memCurr >= list[i].memTotal) { %>
-            <span class="studypage__lists-status studypage__lists-status--done"
-              >모집완료</span
-            >
-            <% } else { %>
-            <span class="studypage__lists-status studypage__lists-status--ing"
-              >모집중</span
-            >
-            <% } %>
-            <span class="studypage__lists-member"
-              ><%= list[i].memCurr %> / <%= list[i].memTotal %></span
-            >
           </div>
           <% } %>
         </div>

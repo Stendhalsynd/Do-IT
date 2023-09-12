@@ -52,6 +52,14 @@
       const studyasLeaderList = document.createElement("div");
       studyasLeaderList.classList.add("studyList__lists");
       studyasLeaderList.classList.add("studyList__lists-leader");
+      // 개설한 목록이 없을 때
+      if (asLeader.length <= 0) {
+        const noContent = document.createElement("div");
+        noContent.classList.add("studyList__lists-noContent");
+        noContent.innerHTML = "<p>개설한 스터디가 아직 없습니다😢</p>";
+        studyasLeaderList.before(noContent);
+      }
+      // 개설한 목록이 있을 때
       for (let i = 0; i < asLeader.length; i++) {
         const studyAsLeader = document.createElement("div");
         studyAsLeader.addEventListener("click", () => {
@@ -73,6 +81,18 @@
       const studyasMembList = document.createElement("div");
       studyasMembList.classList.add("studyList__lists");
       studyasMembList.classList.add("studyList__lists-member");
+      // 지원한 목록이 없을 때
+      if (
+        asCrew.length <= 0 &&
+        asApplier.length <= 0 &&
+        asRejected.length <= 0
+      ) {
+        const noContent = document.createElement("div");
+        noContent.classList.add("studyList__lists-noContent");
+        noContent.innerHTML = "<p>지원한 스터디가 아직 없습니다😢</p>";
+        studyasMembList.before(noContent);
+      }
+      // 지원한 목록이 있을 때
       for (let i = 0; i < asCrew.length; i++) {
         const studyAsCrew = document.createElement("div");
         studyAsCrew.classList.add("studyList__lists-elem");
