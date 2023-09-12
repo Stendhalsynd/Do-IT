@@ -53,6 +53,15 @@ $tabletPlus: v.$tablet + 1;
   font-weight: 700;
   line-height: 24px; /* 120% */
 }
+// Headline 4
+@mixin headline4 {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 // 메인 페이지
 // 폰트 스타일
@@ -70,8 +79,11 @@ $tabletPlus: v.$tablet + 1;
   background-color: var(--other-dark-background-black, #161616);
   color: #fff;
   border: none;
-  margin-top: 20%;
+  // margin-top: 20%;
   cursor: pointer;
+  &:hover {
+    background-color: #2f80ed;
+  }
 }
 //모달창 하얀색 버튼
 @mixin modal-white-button {
@@ -80,7 +92,7 @@ $tabletPlus: v.$tablet + 1;
   margin: 3% 0 15% 0;
   cursor: pointer;
   &:hover {
-    color: #f44336;
+    color: #2f80ed;
   }
 }
 

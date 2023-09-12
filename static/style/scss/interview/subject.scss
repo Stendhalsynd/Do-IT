@@ -1,3 +1,5 @@
+@use "../helper/" as *;
+
 // box 1개, 2개, 3개
 @media screen and (min-width: 330px) and (max-width: 1581px) {
   .content {
@@ -39,18 +41,12 @@
   flex-direction: column;
   margin-bottom: 3vh;
   &__title {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 30px;
+    @include mixin-headline2;
     margin: 8vh 0vh 2vh 0vh;
     text-align: center;
   }
   &__description {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    @include mixin-headline4;
     margin: 3vh;
     text-align: center;
   }
@@ -137,10 +133,7 @@
     height: 125px;
   }
   &__name {
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
+    @include mixin-headline3;
     margin-top: 17px;
   }
 }

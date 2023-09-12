@@ -28,6 +28,8 @@
   margin-bottom: 3vh;
 }
 .content__title {
+  color: var(--common-black, #000);
+  font-family: Roboto;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -36,6 +38,8 @@
   text-align: center;
 }
 .content__description {
+  color: var(--common-black, #000);
+  font-family: Roboto;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -123,9 +127,11 @@
   height: 125px;
 }
 .content__name {
+  color: var(--common-black, #000);
+  font-family: Roboto;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 24px; /* 120% */
   margin-top: 17px;
 }
