@@ -65,9 +65,12 @@
     &--divider {
       height: 22px;
       width: 2px;
-      margin: 0px 5px;
+      margin: 0% 3%;
       background-color: lightgray;
       border-radius: 20px;
+      @include mixin-res--web {
+        margin: 0px 18.425px;
+      }
     }
     & button {
       border: none;
@@ -102,7 +105,7 @@
       }
     }
     &-elem {
-      height: 350px;
+      height: 420px;
       width: 100%;
       position: relative;
       @include mixin-res--web {
@@ -112,14 +115,14 @@
         width: 48%;
         padding: 15px 30px;
         margin: 0% 2% 2% 0%;
-        height: 400px;
+        // height: 420px;
       }
       &:hover {
         cursor: pointer;
       }
       &--title {
         @include mixin-font-style;
-        height: 48px;
+        height: 72px;
         width: calc(100% - 90px);
         font-size: 20px;
         line-height: 24px;
@@ -154,11 +157,18 @@
       }
       &--intro {
         @include mixin-font-style;
-        height: 40%;
+        // height: 40%;
+        height: 140px;
         font-weight: 400;
         font-size: 14px;
         line-height: 28px;
-        overflow: auto;
+        // overflow: auto;
+        overflow: hidden;
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
       }
       &--category {
         height: 90px;
@@ -188,4 +198,14 @@
       line-height: 100px;
     }
   }
+}
+
+.button-memb span,
+.button-leader span {
+  color: #6f7277;
+}
+.button-selected span {
+  color: #000;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
 }

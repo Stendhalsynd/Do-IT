@@ -46,7 +46,7 @@
       const studyListMenu = document.createElement("div");
       studyListMenu.classList.add("studyList__menu");
       studyListMenu.innerHTML =
-        "<button type='button' onclick='showAsLeader()'>내가 개설한 목록</button><div class='studyList__menu--divider'></div><button type='button' onclick='showAsMember()'>내가 지원한 목록</button>";
+        "<button type='button' onclick='showAsLeader()' class='button-leader button-selected'><span>내가 개설한 목록</span></button><div class='studyList__menu--divider'></div><button type='button' onclick='showAsMember()' class='button-memb'><span>내가 지원한 목록</span></button>";
       studyList.appendChild(studyListHeader);
       studyList.appendChild(studyListMenu);
       const studyasLeaderList = document.createElement("div");
@@ -56,8 +56,9 @@
       if (asLeader.length <= 0) {
         const noContent = document.createElement("div");
         noContent.classList.add("studyList__lists-noContent");
+        noContent.classList.add("studyList__lists-leader");
         noContent.innerHTML = "<p>개설한 스터디가 아직 없습니다😢</p>";
-        studyasLeaderList.before(noContent);
+        studyList.appendChild(noContent);
       }
       // 개설한 목록이 있을 때
       for (let i = 0; i < asLeader.length; i++) {
@@ -89,8 +90,10 @@
       ) {
         const noContent = document.createElement("div");
         noContent.classList.add("studyList__lists-noContent");
+        noContent.classList.add("studyList__lists-member");
         noContent.innerHTML = "<p>지원한 스터디가 아직 없습니다😢</p>";
-        studyasMembList.before(noContent);
+        studyList.appendChild(noContent);
+        noContent.hidden = true;
       }
       // 지원한 목록이 있을 때
       for (let i = 0; i < asCrew.length; i++) {
@@ -143,10 +146,14 @@ function showCategory(arrayName, num, divname) {
 function showAsLeader() {
   document.querySelector(".studyList__lists-member").hidden = true;
   document.querySelector(".studyList__lists-leader").hidden = false;
+  document.querySelector(".button-memb").classList.remove("button-selected");
+  document.querySelector(".button-leader").classList.add("button-selected");
 }
 function showAsMember() {
   document.querySelector(".studyList__lists-member").hidden = false;
   document.querySelector(".studyList__lists-leader").hidden = true;
+  document.querySelector(".button-leader").classList.remove("button-selected");
+  document.querySelector(".button-memb").classList.add("button-selected");
 }
 function studyDetail(studyid) {
   document.location.href = `/study/list/${studyid}`;
@@ -173,3 +180,5 @@ async function userdataEdit() {
     return;
   }
 }
+
+// '내가 개설한 목록', '내가 지원한 목록' 선택에 따라 css 설정

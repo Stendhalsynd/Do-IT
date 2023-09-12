@@ -68,9 +68,14 @@
 .studyList__menu--divider {
   height: 22px;
   width: 2px;
-  margin: 0px 5px;
+  margin: 0% 3%;
   background-color: lightgray;
   border-radius: 20px;
+}
+@media (768px <= width) {
+  .studyList__menu--divider {
+    margin: 0px 18.425px;
+  }
 }
 .studyList__menu button {
   border: none;
@@ -109,7 +114,7 @@
   }
 }
 .studyList__lists-elem {
-  height: 350px;
+  height: 420px;
   width: 100%;
   position: relative;
 }
@@ -121,7 +126,6 @@
     width: 48%;
     padding: 15px 30px;
     margin: 0% 2% 2% 0%;
-    height: 400px;
   }
 }
 .studyList__lists-elem:hover {
@@ -133,7 +137,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  height: 48px;
+  height: 72px;
   width: calc(100% - 90px);
   font-size: 20px;
   line-height: 24px;
@@ -178,11 +182,16 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  height: 40%;
+  height: 140px;
   font-weight: 400;
   font-size: 14px;
   line-height: 28px;
-  overflow: auto;
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 .studyList__lists-elem--category {
   height: 90px;
@@ -221,4 +230,15 @@
   line-height: normal;
   height: 200px;
   line-height: 100px;
+}
+
+.button-memb span,
+.button-leader span {
+  color: #6f7277;
+}
+
+.button-selected span {
+  color: #000;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
 }

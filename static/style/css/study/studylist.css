@@ -170,16 +170,16 @@
   padding: 20px 0px 10px;
 }
 .studypage__lists-intro {
-  color: var(--common-black, #000);
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  height: 40%;
+  height: 140px;
   font-weight: 400;
   font-size: 14px;
   line-height: 28px;
-  overflow: auto;
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 .studypage__lists-otherinfo {
   display: flex;
