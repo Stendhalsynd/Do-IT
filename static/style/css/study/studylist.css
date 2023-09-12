@@ -14,9 +14,6 @@
   background-color: aliceblue;
   align-items: center;
 }
-.studypage__register:hover {
-  cursor: pointer;
-}
 .studypage__register-text {
   color: var(--common-black, #000);
   font-family: Roboto;
@@ -33,9 +30,12 @@
   display: flex;
   flex-wrap: nowrap;
   padding-bottom: 10px;
+  cursor: pointer;
+}
+.studypage__register-go--button {
+  cursor: pointer;
 }
 .studypage__register-go:hover {
-  cursor: pointer;
   transform: scale(1.1);
 }
 @media (768px <= width) {
