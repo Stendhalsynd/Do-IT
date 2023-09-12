@@ -41,14 +41,8 @@ $white: var(--background-white, #fff);
       img {
         width: 50vw;
         height: 13.0303vw;
-        @include mixin-res--mobile {
-          max-width: 269.419px;
-          max-height: 70px;
-        }
-        @include mixin-res--web {
-          width: 269.419px;
-          height: 70px;
-        }
+        max-width: 269.419px;
+        max-height: 70px;
       }
     }
 
@@ -59,15 +53,8 @@ $white: var(--background-white, #fff);
 
       img {
         width: 90.9091vw;
-
-        @include mixin-res--mobile {
-          max-width: 615.5px;
-          max-height: 603px;
-        }
-        @include mixin-res--web {
-          max-width: 615.5px;
-          max-height: 603px;
-        }
+        max-width: 615.5px;
+        max-height: 603px;
       }
     }
   }
@@ -147,15 +134,8 @@ $white: var(--background-white, #fff);
         width: 78.7879vw;
         height: 52.4242vw;
         border-radius: 15px;
-
-        @include mixin-res--mobile {
-          max-width: 500px;
-          max-height: 332.317px;
-        }
-        @include mixin-res--web {
-          max-width: 500px;
-          max-height: 332.317px;
-        }
+        max-width: 500px;
+        max-height: 332.317px;
       }
     }
 
@@ -222,23 +202,39 @@ $white: var(--background-white, #fff);
       align-items: center;
       margin-top: 50px;
       margin-bottom: 50px;
+      width: 100vw;
       gap: 30px;
       overflow: hidden;
       &-first,
       &-second {
         display: flex;
+        position: relative;
+        align-items: center;
+        width: 100vw;
+        height: 68.18vw;
+        max-width: 100vw;
+        max-height: 400px;
+
         img {
-          transition: transform 500 linear;
-          width: 100vw;
-          height: 68.1818vw;
-          @include mixin-res--mobile {
-            max-width: 719.486px;
-            max-height: 350px;
-          }
-          @include mixin-res--web {
-            max-width: 719.486px;
-            max-height: 350px;
-          }
+          position: absolute;
+          transition: transform linear;
+          width: 211.28vw;
+          height: 68.18vw;
+          max-width: 1025.16px;
+          max-height: 350px;
+        }
+      }
+      &-first img {
+        left: 600px;
+        @include mixin-res--web {
+          left: 1200px;
+        }
+      }
+
+      &-second img {
+        right: 600px;
+        @include mixin-res--web {
+          right: 1200px;
         }
       }
     }
@@ -298,10 +294,10 @@ $white: var(--background-white, #fff);
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          width: 230px;
-          height: 230px;
+          width: 220px;
+          height: 220px;
           margin: 50px;
-          gap: 80px;
+
           cursor: pointer;
 
           // Font
@@ -314,6 +310,8 @@ $white: var(--background-white, #fff);
         }
         &-title {
           display: flex;
+          align-items: flex-start;
+          width: 200px;
           @include mixin-font-style;
           font-size: 20px;
           line-height: 24px;
@@ -321,6 +319,13 @@ $white: var(--background-white, #fff);
         &-body {
           display: flex;
           flex-direction: column;
+          width: 200px;
+
+          &-intro {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
           %-title {
             display: flex;
             @include mixin-font-style;
@@ -330,6 +335,7 @@ $white: var(--background-white, #fff);
           }
           &-theme {
             display: flex;
+            flex-direction: column;
             @include mixin-font-style;
             font-size: 16px;
             font-weight: 400;
