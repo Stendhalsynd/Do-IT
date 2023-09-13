@@ -139,6 +139,7 @@ exports.postRegister = async (req, res) => {
         blocks,
         text: "스터디 개설 요청",
       });
+
       res.json({ result: true });
     } else {
       res.json({ result: false, message: "포인트가 부족합니다." });

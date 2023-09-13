@@ -18,24 +18,33 @@ const boltApp = new App({
 });
 
 boltApp.action("approve", async ({ ack, body }) => {
-  ack();
+  await ack();
 
-  await Study.update(
-    {
-      status: "ALLOWED",
-    },
-    {
-      where: {
-        id: body.actions[0].value,
+  console.log("승인됨");
+
+  try {
+    const res = await Study.update(
+      {
+        status: "ALLOWED",
       },
+      {
+        where: {
+          id: body.actions[0].value,
+        },
+      }
+    );
+    if (res) {
+      postMessage("[수정됨] 스터디 개설을 승낙했습니다.", body);
     }
-  );
-
-  await postMessage("스터디 개설을 승낙했습니다.", body);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 boltApp.action("reject", async ({ ack, body }) => {
-  ack();
+  await ack();
+
+  console.log("거절됨");
 
   await Study.update(
     {
@@ -47,7 +56,8 @@ boltApp.action("reject", async ({ ack, body }) => {
       },
     }
   );
-  await postMessage("스터디 개설을 거절했습니다.", body);
+
+  postMessage("[수정됨] 스터디 개설을 거절했습니다.", body);
 });
 
 boltApp.command("/approve", async ({ command, ack, say }) => {
