@@ -58,14 +58,18 @@
   width: 24px;
   height: 24px;
 }
-.header__button--profile:hover img {
-  filter: invert(100%);
+@media (768px <= width) {
+  .header__button--profile:hover img {
+    filter: invert(100%);
+  }
 }
-.header__button--practice:hover, .header__button--study:hover, .header__button--sign-in:hover, .header__button--sign-out:hover, .header__button--profile:hover {
-  color: white;
-}
-.header__button--practice:hover span, .header__button--study:hover span, .header__button--sign-in:hover span, .header__button--sign-out:hover span, .header__button--profile:hover span {
-  transform: translateY(0) scale(2);
+@media (768px <= width) {
+  .header__button--practice:hover, .header__button--study:hover, .header__button--sign-in:hover, .header__button--sign-out:hover, .header__button--profile:hover {
+    color: white;
+  }
+  .header__button--practice:hover span, .header__button--study:hover span, .header__button--sign-in:hover span, .header__button--sign-out:hover span, .header__button--profile:hover span {
+    transform: translateY(0) scale(2);
+  }
 }
 @media (768px <= width) {
   .header {

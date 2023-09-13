@@ -102,8 +102,11 @@
     width: 3%;
     margin: -3% 0 4% 98%;
     cursor: pointer;
-    &:hover {
-      color: #2f80ed;
+
+    @include mixin-res--web {
+      &:hover {
+        color: #2f80ed;
+      }
     }
   }
   &__h2 {

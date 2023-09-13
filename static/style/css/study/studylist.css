@@ -35,13 +35,12 @@
 .studypage__register-go--button {
   cursor: pointer;
 }
-.studypage__register-go:hover {
-  transform: scale(1.1);
-}
 @media (768px <= width) {
   .studypage__register-go:hover {
     position: relative;
     left: 10px;
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
   }
 }
 .studypage__register-go--header {

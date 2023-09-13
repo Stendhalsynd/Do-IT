@@ -88,8 +88,10 @@
   margin: -3% 0 4% 98%;
   cursor: pointer;
 }
-.modal__close:hover {
-  color: #2f80ed;
+@media (768px <= width) {
+  .modal__close:hover {
+    color: #2f80ed;
+  }
 }
 .modal__h2 {
   font-size: 24px;
@@ -168,8 +170,10 @@
   margin: 3% 0 15% 0;
   cursor: pointer;
 }
-.modal__sign-in .modal__button--sign-up:hover {
-  color: #2f80ed;
+@media (768px <= width) {
+  .modal__sign-in .modal__button--sign-up:hover {
+    color: #2f80ed;
+  }
 }
 .modal__sign-in .modal__button--sign-in {
   padding: 3%;
@@ -180,8 +184,10 @@
   cursor: pointer;
   margin-top: 20%;
 }
-.modal__sign-in .modal__button--sign-in:hover {
-  background-color: #2f80ed;
+@media (768px <= width) {
+  .modal__sign-in .modal__button--sign-in:hover {
+    background-color: #2f80ed;
+  }
 }
 
 .modal__sign-up .modal__button--sign-up {
@@ -199,11 +205,15 @@
   border: none;
   cursor: pointer;
 }
-.modal__sign-up .modal__button--sign-up:hover {
-  background-color: #2f80ed;
+@media (768px <= width) {
+  .modal__sign-up .modal__button--sign-up:hover {
+    background-color: #2f80ed;
+  }
 }
-.modal__sign-up .modal__button--sign-up:hover {
-  background-color: #2f80ed;
+@media (768px <= width) {
+  .modal__sign-up .modal__button--sign-up:hover {
+    background-color: #2f80ed;
+  }
 }
 @media (768px <= width) {
   .modal__sign-up .modal__button--sign-up {
@@ -216,8 +226,10 @@
   margin: 3% 0 15% 0;
   cursor: pointer;
 }
-.modal__sign-up .modal__button--sign-in:hover {
-  color: #2f80ed;
+@media (768px <= width) {
+  .modal__sign-up .modal__button--sign-in:hover {
+    color: #2f80ed;
+  }
 }
 
 @keyframes modal-animation {
