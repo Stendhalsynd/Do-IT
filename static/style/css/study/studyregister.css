@@ -133,6 +133,7 @@
   margin-bottom: 30px;
 }
 .study__registerform-button button {
+  cursor: pointer;
   width: 20%;
   height: 3.8vh;
   margin-left: 10px;

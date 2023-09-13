@@ -20,10 +20,10 @@
         url: `/user/mypage/${res.data.nickname}`,
       });
       const { userinfo, asLeader, asCrew, asApplier, asRejected } = mypage.data;
-      const header = document.querySelector("header");
+      const mypageheader = document.querySelector("#mypage_header");
       const contents = document.createElement("div");
       contents.classList.add("contents");
-      header.after(contents);
+      mypageheader.after(contents);
       const userdata = document.createElement("div");
       userdata.classList.add("userdata");
       userdata.innerHTML = `<div>
@@ -141,7 +141,11 @@ function showCategory(arrayName, num, divname) {
     studyCategoryElem.innerHTML = `${arrayName[num].Themes[j].category}`;
     studyCategories.appendChild(studyCategoryElem);
   }
+  const divider_light = document.createElement("div");
+  divider_light.classList.add("studyList__lists-divider");
+  divider_light.classList.add("studyList__lists-divider--light");
   divname.appendChild(studyCategories);
+  studyCategories.after(divider_light);
 }
 function showAsLeader() {
   document.querySelector(".studyList__lists-member").hidden = true;

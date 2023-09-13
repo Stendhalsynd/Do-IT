@@ -1,3 +1,58 @@
+@keyframes mypagelogo {
+  0% {
+    top: 70px;
+  }
+  50% {
+    top: 60px;
+  }
+  100% {
+    top: 70px;
+  }
+}
+.mypage-title {
+  width: 80%;
+  margin: 30px 10%;
+  text-align: center;
+}
+.mypage-title__image {
+  position: relative;
+}
+@media (width <= 767px) {
+  .mypage-title__image {
+    display: none;
+  }
+}
+.mypage-title__image--face {
+  position: absolute;
+  z-index: 10;
+  top: 70px;
+  left: calc(50% - 32px);
+  animation-name: mypagelogo;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+.mypage-title__divider {
+  width: 100%;
+  height: 6px;
+  background: #c6c6c6;
+  border-radius: 20px;
+  margin: 26px 0px;
+}
+@media (width <= 767px) {
+  .mypage-title__divider {
+    display: none;
+  }
+}
+.mypage-title__text {
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+}
+
 .contents {
   width: 100%;
 }
@@ -46,6 +101,7 @@
   font-style: normal;
   font-weight: 800;
   line-height: 20px;
+  cursor: pointer;
 }
 
 .studyList {
@@ -78,6 +134,7 @@
   }
 }
 .studyList__menu button {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   color: var(--common-black, #000);
@@ -87,6 +144,11 @@
   font-weight: 700;
   line-height: 22px;
   padding: 0px;
+}
+@media (768px <= width) {
+  .studyList__menu button:hover {
+    transform: scale(1.05);
+  }
 }
 .studyList__lists {
   width: 80%;
@@ -113,23 +175,25 @@
     display: none;
   }
 }
+.studyList__lists-divider--light {
+  height: 2px;
+}
 .studyList__lists-elem {
-  height: 420px;
+  height: 370px;
   width: 100%;
   position: relative;
+  cursor: pointer;
 }
 @media (768px <= width) {
   .studyList__lists-elem {
+    height: 420px;
     box-sizing: border-box;
-    border: 4px solid var(--figma-black-3, #828282);
+    border: 2px solid var(--figma-black-3, #828282);
     border-radius: 20px;
     width: 48%;
     padding: 15px 30px;
     margin: 0% 2% 2% 0%;
   }
-}
-.studyList__lists-elem:hover {
-  cursor: pointer;
 }
 .studyList__lists-elem--title {
   color: var(--common-black, #000);
@@ -142,6 +206,7 @@
   font-size: 20px;
   line-height: 24px;
   padding: 20px 0px 10px;
+  word-break: keep-all;
 }
 .studyList__lists-elem--status {
   color: var(--common-black, #000);
