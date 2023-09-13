@@ -169,7 +169,7 @@
           <img src="/static/images/body-logo.svg" alt="Do-IT logo" />
         </div>
         <div class="main__img--phones">
-          <img src="/static/images/phones.svg" alt="Device Group" />
+          <img src="/static/images/phones.png" alt="Device Group" />
         </div>
       </div>
 
@@ -235,34 +235,22 @@
           <div class="main__recent--section-title">최근에 개설된 스터디</div>
           <div class="main__recent--section-list">
             <% for (let i = 0; i < recentList.length; i++) { %>
-            <div class="main__recent--section-list-<%= recentList[i].id %>">
-              <div
-                class="main__recent--section-list-box"
-                onclick="mainStudyDetail('<%= recentList[i].id %>')"
-              >
-                <div class="main__recent--section-list-title">
-                  <%= recentList[i].title %>
+            <div
+              onclick="mainStudyDetail('<%= recentList[i].id %>')"
+              class="main__recent--section-list-box"
+            >
+              <div class="main__recent--section-list-title">
+                <%= recentList[i].title%>
+              </div>
+              <p class="main__recent--section-list-intro">
+                <%= recentList[i].intro %>
+              </p>
+              <div class="main__recent--section-list-category">
+                <% recentList[i].category.forEach((elem)=> { %>
+                <div class="main__recent--section-list-category-element">
+                  <%= elem %>
                 </div>
-                <div class="main__recent--section-list-body">
-                  <div class="main__recent--section-list-body-intro">
-                    <div class="main__recent--section-list-body-intro-title">
-                      스터디 내용
-                    </div>
-                    <div class="main__recent--section-list-body-intro-content">
-                      <%= recentList[i].intro %>
-                    </div>
-                  </div>
-                  <div class="main__recent--section-list-body-theme">
-                    <div class="main__recent--section-list-body-theme-title">
-                      스터디 테마
-                    </div>
-                    <% recentList[i].category.forEach((elem)=> { %>
-                    <div class="main__recent--section-list-body-theme-content">
-                      <%= elem %>
-                    </div>
-                    <% }) %>
-                  </div>
-                </div>
+                <% }) %>
               </div>
             </div>
             <% } %>
