@@ -139,13 +139,14 @@
 .content__form {
   display: flex;
   justify-content: center;
-  margin: 1.7vh 4.5vw 0 4.5vw;
+  margin: 0 4.5vw;
 }
 .content__textarea {
   width: 98.5%;
   height: 6vh;
   border: 0;
   padding: 0;
+  margin-top: 1.7vh;
   resize: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -164,20 +165,52 @@
 }
 .content__send-button {
   display: flex;
-  align-items: flex-start;
-  padding: 0;
+  height: 33px;
+  padding-top: 7px;
+  border-radius: 10px;
   border: none;
+  margin-top: 1.2vh;
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   cursor: pointer;
+}
+.content__send-button span {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  background-color: #2f80ed;
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+.content__send-button span:nth-child(1) {
+  --n: 1;
+}
+.content__send-button span:nth-child(2) {
+  --n: 2;
+}
+.content__send-button span:nth-child(3) {
+  --n: 3;
+}
+.content__send-button span:nth-child(4) {
+  --n: 4;
 }
 .content__send-button i {
   font-size: 20px;
   color: black;
 }
-.content__send-button:hover i {
-  color: #2f80ed;
+.content__send-button i:hover {
+  color: white;
+}
+.content__send-button i:hover span {
+  transform: translateY(0) scale(2);
 }
 .content__chat-divider {
   height: 1.5px;

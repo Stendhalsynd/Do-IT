@@ -8,6 +8,7 @@
   &__logo {
     width: 80px;
     margin: 16px 15px;
+    cursor: pointer;
   }
   &__button {
     display: flex;
@@ -20,6 +21,7 @@
       padding-top: 10px;
       padding-bottom: 10px;
       border: none;
+      border-radius: 15px;
       background-color: white;
       font-family: Roboto;
       font-size: 14px;
@@ -27,10 +29,25 @@
       font-weight: 700;
       line-height: 18px;
       display: block;
+      @include mixin-button-animation-style;
     }
     &--profile img {
       width: 24px;
       height: 24px;
+    }
+
+    &--profile:hover {
+      img {
+        filter: invert(100%);
+      }
+    }
+
+    &--practice:hover,
+    &--study:hover,
+    &--sign-in:hover,
+    &--sign-out:hover,
+    &--profile:hover {
+      @include mixin-button-hover-animation-style;
     }
   }
 

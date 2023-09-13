@@ -7,6 +7,7 @@
 .header__logo {
   width: 80px;
   margin: 16px 15px;
+  cursor: pointer;
 }
 .header__button {
   display: flex;
@@ -16,6 +17,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   border: none;
+  border-radius: 15px;
   background-color: white;
   font-family: Roboto;
   font-size: 14px;
@@ -23,10 +25,47 @@
   font-weight: 700;
   line-height: 18px;
   display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+}
+.header__button--practice span, .header__button--study span, .header__button--sign-in span, .header__button--profile span, .header__button--sign-out span {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  background-color: #2f80ed;
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+.header__button--practice span:nth-child(1), .header__button--study span:nth-child(1), .header__button--sign-in span:nth-child(1), .header__button--profile span:nth-child(1), .header__button--sign-out span:nth-child(1) {
+  --n: 1;
+}
+.header__button--practice span:nth-child(2), .header__button--study span:nth-child(2), .header__button--sign-in span:nth-child(2), .header__button--profile span:nth-child(2), .header__button--sign-out span:nth-child(2) {
+  --n: 2;
+}
+.header__button--practice span:nth-child(3), .header__button--study span:nth-child(3), .header__button--sign-in span:nth-child(3), .header__button--profile span:nth-child(3), .header__button--sign-out span:nth-child(3) {
+  --n: 3;
+}
+.header__button--practice span:nth-child(4), .header__button--study span:nth-child(4), .header__button--sign-in span:nth-child(4), .header__button--profile span:nth-child(4), .header__button--sign-out span:nth-child(4) {
+  --n: 4;
 }
 .header__button--profile img {
   width: 24px;
   height: 24px;
+}
+.header__button--profile:hover img {
+  filter: invert(100%);
+}
+.header__button--practice:hover, .header__button--study:hover, .header__button--sign-in:hover, .header__button--sign-out:hover, .header__button--profile:hover {
+  color: white;
+}
+.header__button--practice:hover span, .header__button--study:hover span, .header__button--sign-in:hover span, .header__button--sign-out:hover span, .header__button--profile:hover span {
+  transform: translateY(0) scale(2);
 }
 @media (768px <= width) {
   .header {

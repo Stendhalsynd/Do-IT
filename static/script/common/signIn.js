@@ -6,13 +6,13 @@ if (token) {
   // 로그아웃 버튼 추가
   const signOutButton = document.createElement("button");
   signOutButton.classList.add("header__button--sign-out");
-  signOutButton.innerText = "로그아웃";
+  signOutButton.innerHTML = "로그아웃 <span></span><span></span><span>";
   headerButton.appendChild(signOutButton);
   // 프로필 버튼 추가
   const profileButton = document.createElement("button");
   profileButton.classList.add("header__button--profile");
   profileButton.innerHTML =
-    '<img src="/static/images/person-circle.svg" alt="프로필 아이콘">';
+    '<img src="/static/images/person-circle.svg" alt="프로필 아이콘"> <span></span><span></span><span></span>';
   headerButton.appendChild(profileButton);
 
   // 로그인 성공 시 로그인 버튼 없애기

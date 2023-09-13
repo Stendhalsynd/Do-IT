@@ -56,6 +56,48 @@ $tabletPlus: v.$tablet + 1;
   @include headline(16px, 400, normal);
 }
 
+// 버튼 animation
+@mixin button-animation-style {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background-color: #2f80ed;
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+
+    &:nth-child(1) {
+      --n: 1;
+    }
+    &:nth-child(2) {
+      --n: 2;
+    }
+    &:nth-child(3) {
+      --n: 3;
+    }
+    &:nth-child(4) {
+      --n: 4;
+    }
+  }
+}
+
+@mixin button-hover-animation-style {
+  color: white;
+
+  span {
+    transform: translateY(0) scale(2);
+  }
+}
+
 // 메인 페이지
 // 폰트 스타일
 @mixin font-style {
