@@ -278,6 +278,7 @@
   margin: 2px 2px;
   line-height: 1.5;
   display: inline-block;
+  background: var(--figma-light-blue, #2d9cdb);
   margin: 2px;
   padding: 2px 10px;
   height: 25px;
