@@ -4,9 +4,9 @@ const { Study } = require("./models");
 let logLevel = LogLevel.INFO;
 
 const {
-  SLACK_BOT_TOKEN: token,
-  SLACK_APP_TOKEN: appToken,
-  SLACK_SIGNING_SECRET: signingSecret,
+  SLACK_BOT_TOKEN2: token,
+  SLACK_APP_TOKEN2: appToken,
+  SLACK_SIGNING_SECRET2: signingSecret,
 } = process.env;
 
 const boltApp = new App({
@@ -33,12 +33,10 @@ boltApp.action("approve", async ({ ack, body }) => {
         },
       }
     );
-    if (res) {
-      postMessage("[수정됨] 스터디 개설을 승낙했습니다.", body);
-    }
   } catch (error) {
     console.error(error);
   }
+  postMessage("[수정됨] 스터디 개설을 승낙했습니다.", body);
 });
 
 boltApp.action("reject", async ({ ack, body }) => {
@@ -46,17 +44,20 @@ boltApp.action("reject", async ({ ack, body }) => {
 
   console.log("거절됨");
 
-  await Study.update(
-    {
-      status: "REJECTED",
-    },
-    {
-      where: {
-        id: body.actions[0].value,
+  try {
+    await Study.update(
+      {
+        status: "REJECTED",
       },
-    }
-  );
-
+      {
+        where: {
+          id: body.actions[0].value,
+        },
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
   postMessage("[수정됨] 스터디 개설을 거절했습니다.", body);
 });
 
