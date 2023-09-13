@@ -12,11 +12,13 @@
   margin: 16px 15px;
   cursor: pointer;
 }
-.header__logo:hover {
-  animation-name: logohover;
-  animation-iteration-count: infinite;
-  animation-duration: 1s;
-  animation-timing-function: ease-in;
+@media (768px <= width) {
+  .header__logo:hover {
+    animation-name: logohover;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+  }
 }
 .header__button {
   display: flex;
