@@ -134,7 +134,7 @@ exports.postRegister = async (req, res) => {
 
       // slack team2-week4-bot 채널로 스터디 생성 요청 알림
       await boltApp.client.chat.postMessage({
-        token: process.env.SLACK_BOT_TOKEN,
+        token: process.env.SLACK_BOT_TOKEN2,
         channel: process.env.CHANNEL_ID,
         blocks,
         text: "스터디 개설 요청",
