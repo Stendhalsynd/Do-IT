@@ -67,6 +67,7 @@
   appearance: none;
   background: url("/static/images/studyform_select.svg") no-repeat 95% 50%;
   color: lightgray;
+  cursor: pointer;
 }
 .study__registerform-content-input--memb option:not(:first-of-type) {
   color: black;
@@ -92,6 +93,7 @@
   line-height: 20px;
   box-sizing: border-box;
   padding-left: 15px;
+  cursor: pointer;
 }
 .study__registerform-content-input--date::-webkit-calendar-picker-indicator {
   position: absolute;
@@ -152,4 +154,10 @@
 }
 .study__registerform-button--submit {
   background: var(--figma-blue, #2f80ed);
+}
+@media (768px <= width) {
+  .study__registerform-button--cancel:hover, .study__registerform-button--submit:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
 }

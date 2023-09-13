@@ -139,9 +139,17 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 900;
   line-height: 20px;
+  cursor: pointer;
+}
+@media (768px <= width) {
+  .main__practice--button:hover {
+    border: none;
+    background-color: var(--figma-blue, #2f80ed);
+    color: white;
+  }
 }
 .main__study {
   display: inline-flex;
@@ -245,6 +253,7 @@
   font-size: 16px;
   font-weight: 900;
   line-height: 20px;
+  cursor: pointer;
 }
 @media (width <= 767px) {
   .main__study--button {
@@ -254,6 +263,10 @@
 @media (768px <= width) {
   .main__study--button {
     max-width: 700px;
+  }
+  .main__study--button:hover {
+    border: none;
+    background-color: var(--figma-blue, #2f80ed);
   }
 }
 .main__recent {

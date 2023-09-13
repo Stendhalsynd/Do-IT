@@ -83,20 +83,22 @@
   opacity: 0;
   transition: all 0.35s;
 }
-.content__box:hover::after {
-  opacity: 1.5;
-}
-.content__box:hover .content__hover--name {
-  bottom: 2vh;
-  opacity: 1;
-}
-.content__box:hover .content__hover--description {
-  top: 2vh;
-  opacity: 1;
-}
-.content__box:hover .content__hover--list {
-  margin: 5px;
-  opacity: 1;
+@media (768px <= width) {
+  .content__box:hover::after {
+    opacity: 1.5;
+  }
+  .content__box:hover .content__hover--name {
+    bottom: 2vh;
+    opacity: 1;
+  }
+  .content__box:hover .content__hover--description {
+    top: 2vh;
+    opacity: 1;
+  }
+  .content__box:hover .content__hover--list {
+    margin: 5px;
+    opacity: 1;
+  }
 }
 .content__hover {
   position: absolute;

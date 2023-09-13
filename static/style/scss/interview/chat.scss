@@ -108,6 +108,13 @@
       line-height: 20px;
       margin: 2vw;
       cursor: pointer;
+
+      &:hover {
+        @include mixin-res--web {
+          transform: scale(1.05);
+          transition: transform 0.5s ease;
+        }
+      }
     }
     &--end {
       background: var(--common-black, #000);

@@ -91,10 +91,12 @@ $tabletPlus: v.$tablet + 1;
 }
 
 @mixin button-hover-animation-style {
-  color: white;
+  @include res--web {
+    color: white;
 
-  span {
-    transform: translateY(0) scale(2);
+    span {
+      transform: translateY(0) scale(2);
+    }
   }
 }
 
@@ -116,9 +118,13 @@ $tabletPlus: v.$tablet + 1;
   border: none;
   // margin-top: 20%;
   cursor: pointer;
-  &:hover {
-    background-color: #2f80ed;
+
+  @include res--web {
+    &:hover {
+      background-color: #2f80ed;
+    }
   }
+
   @content;
 }
 //모달창 하얀색 버튼
@@ -127,8 +133,11 @@ $tabletPlus: v.$tablet + 1;
   border: none;
   margin: 3% 0 15% 0;
   cursor: pointer;
-  &:hover {
-    color: #2f80ed;
+
+  @include res--web {
+    &:hover {
+      color: #2f80ed;
+    }
   }
   @content;
 }
@@ -192,6 +201,13 @@ $tabletPlus: v.$tablet + 1;
   flex: 1 0 0;
   border-radius: 25px;
   color: white;
+
+  @include res--web {
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+  }
 
   @if $status == approve {
     background: var(--figma-blue, #2f80ed);

@@ -87,21 +87,23 @@
     transition: all 0.35s;
   }
   &__box:hover {
-    &::after {
-      opacity: 1.5;
-    }
+    @include mixin-res--web {
+      &::after {
+        opacity: 1.5;
+      }
 
-    .content__hover--name {
-      bottom: 2vh;
-      opacity: 1;
-    }
-    .content__hover--description {
-      top: 2vh;
-      opacity: 1;
-    }
-    .content__hover--list {
-      margin: 5px;
-      opacity: 1;
+      .content__hover--name {
+        bottom: 2vh;
+        opacity: 1;
+      }
+      .content__hover--description {
+        top: 2vh;
+        opacity: 1;
+      }
+      .content__hover--list {
+        margin: 5px;
+        opacity: 1;
+      }
     }
   }
   &__hover {

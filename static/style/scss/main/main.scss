@@ -151,9 +151,18 @@ $white: var(--background-white, #fff);
 
       // Font
       @include mixin-font-style;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 16px;
+      font-weight: 900;
       line-height: 20px;
+      cursor: pointer;
+
+      @include mixin-res--web {
+        &:hover {
+          border: none;
+          background-color: var(--figma-blue, #2f80ed);
+          color: white;
+        }
+      }
     }
   }
 
@@ -247,6 +256,10 @@ $white: var(--background-white, #fff);
       }
       @include mixin-res--web {
         max-width: 700px;
+        &:hover {
+          border: none;
+          background-color: var(--figma-blue, #2f80ed);
+        }
       }
       border-radius: 12px;
       border: 0.5px solid var(--common-black, #000);
@@ -256,6 +269,7 @@ $white: var(--background-white, #fff);
       font-size: 16px;
       font-weight: 900;
       line-height: 20px;
+      cursor: pointer;
     }
   }
 

@@ -37,8 +37,10 @@
     }
 
     &--profile:hover {
-      img {
-        filter: invert(100%);
+      @include mixin-res--web {
+        img {
+          filter: invert(100%);
+        }
       }
     }
 

@@ -130,6 +130,12 @@
   margin: 2vw;
   cursor: pointer;
 }
+@media (768px <= width) {
+  .content__button--end:hover, .content__button--one-more:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+  }
+}
 .content__button--end {
   background: var(--common-black, #000);
 }
@@ -206,11 +212,13 @@
   font-size: 20px;
   color: black;
 }
-.content__send-button i:hover {
-  color: white;
-}
-.content__send-button i:hover span {
-  transform: translateY(0) scale(2);
+@media (768px <= width) {
+  .content__send-button i:hover {
+    color: white;
+  }
+  .content__send-button i:hover span {
+    transform: translateY(0) scale(2);
+  }
 }
 .content__chat-divider {
   height: 1.5px;
