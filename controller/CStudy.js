@@ -92,6 +92,8 @@ exports.postRegister = async (req, res) => {
     });
     // 사용자 포인트 차감
     const user = await User.findOne({ where: { id: leaderId } });
+    console.log("user : ", user);
+
     if (user.point >= 100) {
       await user.update({ point: user.point - 100 });
       const { memTotal, category, startDate, endDate, title, intro } = req.body;
@@ -118,6 +120,7 @@ exports.postRegister = async (req, res) => {
       );
 
       const studyId = result.id;
+      const link = user.link;
 
       const categoryStr = category.reduce((tot, item) => tot + ", " + item);
 
@@ -129,12 +132,13 @@ exports.postRegister = async (req, res) => {
         title,
         intro,
         categoryStr,
-        studyId
+        studyId,
+        link
       ).blocks;
 
       // slack team2-week4-bot 채널로 스터디 생성 요청 알림
       await boltApp.client.chat.postMessage({
-        token: process.env.SLACK_BOT_TOKEN2,
+        token: process.env.SLACK_BOT_TOKEN3,
         channel: process.env.CHANNEL_ID,
         blocks,
         text: "스터디 개설 요청",

@@ -5,7 +5,8 @@ function definePayload(
   title,
   intro,
   category,
-  studyId
+  studyId,
+  link
 ) {
   return {
     blocks: [
@@ -25,7 +26,7 @@ function definePayload(
           },
           {
             type: "mrkdwn",
-            text: `*소개글:*\n${intro}`,
+            text: `*링크:*\n${link}`,
           },
           {
             type: "mrkdwn",
@@ -44,6 +45,14 @@ function definePayload(
             text: `*카테고리:*\n${category}`,
           },
         ],
+      },
+      {
+        type: "section",
+        text: {
+          type: "plain_text",
+          text: `소개글:\n${intro}`,
+          emoji: true,
+        },
       },
       {
         type: "actions",
@@ -67,6 +76,14 @@ function definePayload(
             action_id: "reject",
             style: "danger",
             value: `${studyId}`,
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "개설자의 링크 확인하기",
+            },
+            url: `${link}`,
           },
         ],
       },

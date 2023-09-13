@@ -4,9 +4,9 @@ const { Study } = require("./models");
 let logLevel = LogLevel.INFO;
 
 const {
-  SLACK_BOT_TOKEN2: token,
-  SLACK_APP_TOKEN2: appToken,
-  SLACK_SIGNING_SECRET2: signingSecret,
+  SLACK_BOT_TOKEN3: token,
+  SLACK_APP_TOKEN3: appToken,
+  SLACK_SIGNING_SECRET3: signingSecret,
 } = process.env;
 
 const boltApp = new App({
