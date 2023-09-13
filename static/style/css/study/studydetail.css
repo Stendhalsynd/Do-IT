@@ -152,7 +152,6 @@
 }
 
 .content {
-  min-width: 295px;
   min-height: 1132px;
   display: flex;
   flex-direction: column;
