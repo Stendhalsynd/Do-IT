@@ -14,8 +14,6 @@ let point = 0;
 // 페이지 로드되자마자 면접 질문을 보여줄 수 있도록 즉시 실행 함수 호출
 (async function () {
   if (!userToken) {
-    // alert("로그인이 필요합니다.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
