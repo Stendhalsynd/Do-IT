@@ -2,7 +2,24 @@
   const nickname = document.querySelector("#nicknameHidden").textContent;
   const userToken = localStorage.getItem("userToken");
   if (!userToken) {
-    alert("로그인이 필요합니다.");
+    // alert("로그인이 필요합니다.");
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "로그인이 필요합니다.",
+    });
+
     document.location.href = "/";
   } else {
     const res = await axios({
@@ -176,9 +193,39 @@ async function userdataEdit() {
       },
     });
     if (res.data.result) {
-      alert("프로필 수정이 완료되었습니다.");
+      // alert("프로필 수정이 완료되었습니다.");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        customClass: {
+          container: "custom-swal-container",
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "프로필 수정이 완료되었습니다.",
+      });
     } else {
-      alert("프로필 수정에 실패하였습니다.");
+      // alert("프로필 수정에 실패하였습니다.");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        customClass: {
+          container: "custom-swal-container",
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: "프로필 수정에 실패하였습니다.",
+      });
     }
   } else {
     return;

@@ -4,7 +4,23 @@ profileButton?.addEventListener("click", async () => {
   // 마이페이지로 이동하기
   const userToken = localStorage.getItem("userToken");
   if (!userToken) {
-    alert("로그인이 필요합니다.");
+    // alert("로그인이 필요합니다.");
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "로그인이 필요합니다.",
+    });
   } else {
     const res = await axios({
       method: "POST",
@@ -16,7 +32,23 @@ profileButton?.addEventListener("click", async () => {
     if (res.data.result) {
       document.location.href = `/user/mypage/${res.data.nickname}`;
     } else {
-      alert(res.data.message);
+      // alert(res.data.message);
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        customClass: {
+          container: "custom-swal-container",
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: `${res.data.message}`,
+      });
       return;
     }
   }
