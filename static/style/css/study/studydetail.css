@@ -79,7 +79,7 @@
 .container__item {
   padding: 32px 28px;
   border-radius: 15px;
-  border: 4px solid var(--secondary-default, #6b6b6b);
+  border: 2px solid var(--secondary-default, #6b6b6b);
   background: var(--background-white, #fff);
   display: grid;
   gap: 6px;
@@ -102,6 +102,8 @@
   border-radius: 30px;
   padding: 0px 10px;
   background: var(--figma-light-green, #6fcf97);
+  color: white;
+  margin-top: 10px;
 }
 .container__item--link {
   display: flex;
@@ -112,6 +114,7 @@
   border-radius: 30px;
   padding: 0px 10px;
   background: var(--figma-blue, #2f80ed);
+  color: white;
 }
 @media (768px <= width) {
   .container__item {
@@ -135,7 +138,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 0 18px;
+  padding: 0 10%;
+  padding-bottom: 30px;
   top: 46px;
 }
 .content__title {
@@ -173,13 +177,12 @@
 }
 .content__info .section__item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.3rem 0;
+  flex-direction: column;
+  padding: 0.9rem 0;
 }
 .content__info .section__item--theme {
   border-radius: 20px;
-  background: var(--material-theme-ref-error-error-70, #ec928e);
+  background: var(--figma-light-blue, #2d9cdb);
   color: var(--figma-black-6, #f2f2f2);
   padding: 0 15px;
   margin: 2px 2px;
@@ -188,21 +191,28 @@
 }
 .content__info .section__item--sub {
   flex-shrink: 0;
+  color: var(--common-black, #000);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 20px;
 }
 .content__info .section__item--intro {
   display: flex;
   flex-direction: column;
-  padding: 0.3rem 0;
+  padding: 0.7rem 0;
 }
 .content__info .section__item--detail {
-  padding: 0.3rem 0;
+  padding: 0.7rem 0;
+  min-height: 200px;
 }
 .content__leader {
   display: none;
 }
 .content__list {
-  top: 44px;
-  margin-top: 74px;
+  margin-top: 43px;
 }
 
 .content__leader > .container__list {
@@ -214,6 +224,7 @@
   align-items: flex-start;
   gap: 14px;
   align-self: stretch;
+  margin-top: 20px;
 }
 
 .logo--default {

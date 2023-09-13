@@ -82,8 +82,8 @@ function handleParallax(e) {
     elem.style.transform = `translate(${newX}px, ${newY}px)`;
   }
 
-  updateElementPosition(elem, deltaX, deltaY);
-  updateElementPosition(elem2, deltaX, deltaY);
+  if (elem) updateElementPosition(elem, deltaX, deltaY);
+  if (elem2) updateElementPosition(elem2, deltaX, deltaY);
 }
 
 document.addEventListener("mousemove", handleParallax);
@@ -132,9 +132,14 @@ function setFacePos(elementId) {
 // 입력창이 focus 를 잃을때 캐릭터의 얼굴 위치를 초기화하는 함수
 function resetFacePos(elementId) {
   const modalCharacterFace = document.querySelector(`.${elementId}`);
-  modalCharacterFace.style.transition = "";
+  modalCharacterFace.style.transition = "transform 0.5s ease";
   modalCharacterFace.style.transform = "translate(-30%, 11%)";
   modalCharacterFace.src = "/static/images/face.png";
+
+  // After a short delay, remove the transition
+  setTimeout(() => {
+    modalCharacterFace.style.transition = "";
+  }, 500);
 }
 
 // .pwForSignIn 요소에 포커스가 들어가면 .modal__character--face의 위치를 고정

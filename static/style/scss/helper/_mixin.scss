@@ -163,7 +163,7 @@ $tabletPlus: v.$tablet + 1;
 // 테마
 @mixin theme($status) {
   border-radius: 20px;
-  background: var(--material-theme-ref-error-error-70, #ec928e);
+  background: var(--figma-light-blue, #2d9cdb);
   color: var(--figma-black-6, #f2f2f2);
 
   @if $status == thin {
@@ -186,11 +186,14 @@ $tabletPlus: v.$tablet + 1;
   @if $status == nickname {
     padding: 0px 10px;
     background: var(--figma-light-green, #6fcf97);
+    color: white;
+    margin-top: 10px;
   }
 
   @if $status == link {
     padding: 0px 10px;
     background: var(--figma-blue, #2f80ed);
+    color: white;
   }
 
   @if $status == empty {
@@ -202,7 +205,7 @@ $tabletPlus: v.$tablet + 1;
 @mixin area {
   padding: 32px 28px;
   border-radius: 15px;
-  border: 4px solid var(--secondary-default, #6b6b6b);
+  border: 2px solid var(--secondary-default, #6b6b6b);
   background: var(--background-white, #fff);
   display: grid;
   gap: 6px;
