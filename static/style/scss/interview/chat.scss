@@ -119,13 +119,14 @@
   &__form {
     display: flex;
     justify-content: center;
-    margin: 1.7vh 4.5vw 0 4.5vw;
+    margin: 0 4.5vw;
   }
   &__textarea {
     width: 98.5%;
     height: 6vh;
     border: 0;
     padding: 0;
+    margin-top: 1.7vh;
     resize: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -144,23 +145,23 @@
   }
   &__send-button {
     display: flex;
-    align-items: flex-start;
-    padding: 0;
+    height: 33px;
+    padding-top: 7px;
+    border-radius: 10px;
     border: none;
+    margin-top: 1.2vh;
     -moz-appearance: none;
     appearance: none;
     background-color: transparent;
-    cursor: pointer;
+    @include mixin-button-animation-style;
 
     i {
       font-size: 20px;
       color: black;
     }
 
-    &:hover {
-      i {
-        color: #2f80ed;
-      }
+    i:hover {
+      @include mixin-button-hover-animation-style;
     }
   }
   &__chat-divider {
