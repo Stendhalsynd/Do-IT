@@ -4,8 +4,6 @@ profileButton?.addEventListener("click", async () => {
   // 마이페이지로 이동하기
   const userToken = localStorage.getItem("userToken");
   if (!userToken) {
-    // alert("로그인이 필요합니다.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -32,8 +30,6 @@ profileButton?.addEventListener("click", async () => {
     if (res.data.result) {
       document.location.href = `/user/mypage/${res.data.nickname}`;
     } else {
-      // alert(res.data.message);
-
       const Toast = Swal.mixin({
         toast: true,
         position: "center",

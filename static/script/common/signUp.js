@@ -11,8 +11,6 @@ async function signUp() {
   const link = signUpForm.link.value;
 
   if (!userId.trim()) {
-    // alert("아이디를 입력하세요.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -33,8 +31,6 @@ async function signUp() {
   }
 
   if (!nickname.trim()) {
-    // alert("닉네임을 입력하세요.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -55,8 +51,6 @@ async function signUp() {
   }
 
   if (!pw.trim()) {
-    // alert("비밀번호를 입력하세요.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -76,8 +70,6 @@ async function signUp() {
   }
 
   if (!link.trim()) {
-    // alert("링크를 입력하세요.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -99,8 +91,6 @@ async function signUp() {
 
   // 비밀번호와 비밀번호 확인이 일치하는지 검사한다.
   if (pw !== confirmPw) {
-    // alert("입력한 비밀번호가 서로 일치하지 않습니다.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -137,8 +127,6 @@ async function signUp() {
       },
     });
     if (res.data.result) {
-      // alert("회원가입을 축하드립니다.");
-
       const Toast = Swal.mixin({
         toast: true,
         position: "center",
@@ -161,8 +149,6 @@ async function signUp() {
       openSignInModal();
     } else {
       // 회원가입을 실패했을 경우,
-      // alert(`${res.data.message}`);
-
       const Toast = Swal.mixin({
         toast: true,
         position: "center",

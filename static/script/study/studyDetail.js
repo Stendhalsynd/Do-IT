@@ -41,8 +41,6 @@
       });
 
       if (!res.data.result) {
-        // alert("충분한 포인트가 없습니다.");
-
         const Toast = Swal.mixin({
           toast: true,
           position: "center",
@@ -60,7 +58,6 @@
         });
       }
       if (res.data.result) {
-        // alert("스터디에 지원했습니다.");
         const Toast = Swal.mixin({
           toast: true,
           position: "center",

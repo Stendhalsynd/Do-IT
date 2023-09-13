@@ -39,8 +39,6 @@ async function signIn() {
 
   // 입력 필드 중 아이디의 필드가 빈 값인 경우 알림 표시
   if (!userId) {
-    // alert("아이디를 입력해주세요.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -61,8 +59,6 @@ async function signIn() {
   }
   // 입력 필드 중 비밀번호의 필드가 빈 값인 경우 알림 표시
   if (!pw) {
-    // alert("비밀번호를 입력해주세요.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -94,8 +90,6 @@ async function signIn() {
     });
     if (res.data.result) {
       localStorage.setItem("userToken", res.data.token);
-      // alert(`${res.data.data.nickname}님 로그인을 성공했습니다.`);
-
       const Toast = Swal.mixin({
         toast: true,
         position: "center",
@@ -114,8 +108,6 @@ async function signIn() {
 
       document.location.reload();
     } else {
-      // alert(`${res.data.message}`);
-
       const Toast = Swal.mixin({
         toast: true,
         position: "center",

@@ -6,8 +6,6 @@ const userToken = localStorage.getItem("userToken");
 const studyRegister = document.querySelector("#studyRegister");
 studyRegister.addEventListener("click", () => {
   if (!userToken) {
-    // alert("로그인이 필요합니다.");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",

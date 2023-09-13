@@ -3,8 +3,6 @@ const userToken = localStorage.getItem("userToken");
 
 if (!userToken) {
   // document.querySelector(".study").style.visibility = "hidden";
-  // alert("로그인이 필요한 페이지입니다.");
-
   const Toast = Swal.mixin({
     toast: true,
     position: "center",
@@ -59,8 +57,6 @@ function checkForm() {
   let mem, cat, date, title, intro;
   // 1) 모집인원 선택해야함
   if (memTotal == 0) {
-    // alert("모집인원을 선택해주세요");
-
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -85,7 +81,6 @@ function checkForm() {
   if (categoryChecked.length > 0) {
     cat = true;
   } else {
-    // alert("하나 이상의 관심IT 분야를 선택해주세요.");
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -111,7 +106,6 @@ function checkForm() {
   ) {
     date = true;
   } else {
-    // alert("시작일과 종료일을 모두 선택해주세요.");
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -132,7 +126,6 @@ function checkForm() {
   }
   // 4) 제목 글자수 제한
   if (document.querySelector("#title").value == "") {
-    // alert("제목을 입력하세요");
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -155,7 +148,6 @@ function checkForm() {
   }
   // 5) 소개 글자수 제한
   if (document.querySelector("#intro").value == "") {
-    // alert("스터디를 소개해주세요");
     const Toast = Swal.mixin({
       toast: true,
       position: "center",
@@ -212,7 +204,6 @@ async function register() {
       headers: { Authorization: `Bearer ${userToken}` },
     });
     if (res.data.result) {
-      // alert("신규 스터디 개설 신청이 완료되었습니다.");
       const Toast = Swal.mixin({
         toast: true,
         position: "center",
@@ -230,7 +221,6 @@ async function register() {
       });
       document.location.href = "/study/list";
     } else {
-      // alert(res.data.message);
       const Toast = Swal.mixin({
         toast: true,
         position: "center",
