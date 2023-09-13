@@ -226,6 +226,8 @@
 .content__info .section__item--detail {
   padding: 0.7rem 0;
   min-height: 200px;
+  white-space: break-spaces;
+  line-height: 25px;
 }
 .content__leader {
   display: none;
