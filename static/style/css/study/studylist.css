@@ -195,7 +195,7 @@
 }
 .studypage__lists-otherinfo--category--elem {
   border-radius: 20px;
-  background: var(--material-theme-ref-error-error-70, #ec928e);
+  background: var(--figma-light-blue, #2d9cdb);
   color: var(--figma-black-6, #f2f2f2);
   padding: 0 15px;
   margin: 2px 2px;

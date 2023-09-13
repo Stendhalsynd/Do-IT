@@ -90,12 +90,12 @@
       <div class="section__btn-container"></div>
       <div class="section__info-container">
         <div class="section__item">
-          <span class="section__item--sub">모집현황 :</span>
+          <span class="section__item--sub">모집현황</span>
           <span class="section__member--detail"><%= data.memCurr%>/<%= data.memTotal %></span>
         </div>
         <div class="section__divider--thin"></div>
         <div class="section__item">
-          <span class="section__item--sub">관심 IT 분야 :</span>
+          <span class="section__item--sub">관심 IT 분야</span>
           <span>
             <% data.Themes.forEach(theme => { %>
             <div class="section__item--theme"><%= theme.dataValues.category %></div>
@@ -104,12 +104,12 @@
         </div>
         <div class="section__divider--thin"></div>
         <div class="section__item">
-          <span class="section__item--sub">스터디 기간 :</span>
+          <span class="section__item--sub">스터디 기간</span>
           <span><%= startDate %> ~ <%= endDate %></span>
         </div>
         <div class="section__divider--thin"></div>
         <div class="section__item--intro">
-          <div class="section__item--sub">스터디 소개 :</div>
+          <div class="section__item--sub">스터디 소개</div>
           <span class="section__item--detail"><%= data.intro %></span>
           <div class="section__divider--thin"></div>
         </div>
