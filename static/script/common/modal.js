@@ -116,7 +116,7 @@ window.addEventListener("resize", function () {
   let modals = document.querySelectorAll(".modal");
   modals.forEach(function (modal) {
     // 모달이 켜져있을때 모바일이면 block, 웹이면 flex
-    if (modal.style.display !== "none")
+    if (modal.style.display && modal.style.display !== "none")
       modal.style.display = isMobile ? "block" : "flex";
   });
 });
