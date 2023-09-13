@@ -1,3 +1,8 @@
+@media screen and (min-width: 330px) and (max-width: 861px) {
+  .study__registerform-content-input--category div {
+    margin: 0px 5%;
+  }
+}
 .study__menu {
   width: 90%;
   margin: 0 5%;
@@ -73,6 +78,7 @@
   justify-content: start;
 }
 .study__registerform-content-input--category div {
+  width: 140px;
   padding: 10px 0px 10px 15px;
 }
 .study__registerform-content-input--date {
