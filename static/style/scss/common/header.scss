@@ -23,17 +23,20 @@
       border: none;
       border-radius: 15px;
       background-color: transparent;
-      font-family: Roboto;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 18px;
+      @include mixin-title2;
+      @include mixin-res--web {
+        @include mixin-title1;
+      }
       display: block;
       @include mixin-button-animation-style;
     }
     &--profile img {
       width: 24px;
       height: 24px;
+      @include mixin-res--web {
+        width: 26px;
+        height: 26px;
+      }
     }
 
     &--profile:hover {
