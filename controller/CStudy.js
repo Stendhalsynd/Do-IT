@@ -11,7 +11,7 @@ exports.getRegister = (req, res) => {
   res.render("studyregister");
 };
 exports.getList = async (req, res) => {
-  const list = await Study.findAll({ where: { status: "WAITING" } });
+  const list = await Study.findAll({ where: { status: "ALLOWED" } });
   for (let i = 0; i < list.length; i++) {
     const theme = await Theme.findAll({ where: { StudyId: list[i].id } });
     const arr = [];
