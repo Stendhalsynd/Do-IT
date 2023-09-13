@@ -1,76 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="../static/style/css/common/reset.css" />
-    <link rel="stylesheet" href="../static/style/css/common/header.css" />
-    <link rel="stylesheet" href="../static/style/css/interview/chat.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <header class="header">
-      <img
-        src="/static/images/header-logo.svg"
-        alt="Do-IT logo"
-        class="header__logo"
-      />
-      <div class="header__button">
-        <button class="header__button--practice">
-          연습하기 <span></span><span></span><span>
-        </button>
-        <button class="header__button--study">
-          스터디<span></span><span></span><span>
-        </button>
-        <button class="header__button--sign-in">
-          로그인 <span></span><span></span><span>
-        </button>
-      </div>
-    </header>
 
-    <div class="content">
-      <div class="content__msg">
-        <div class="content__notice-title">
-          <p class="content__notice-title--text">
-            면접을 시작하겠습니다.<br />
-          </p>
-        </div>
-        <div class="content__notice-description">
-          <p class="content__notice-description--text">
-            면접은 총 3개의 질문으로 구성됩니다.<br />
-          </p>
-        </div>
-        <div class="content__divider"></div>
-      </div>
-      <form class="content__form" id="chat">
-        <textarea
-          class="content__textarea"
-          id="message"
-          placeholder="답변을 입력해주세요"
-        ></textarea>
-        <button class="content__send-button">
-          <i class="fa-solid fa-paper-plane"><span></span><span></span><span></span></i>
-        </button>
-      </form>
-      <div class="content__chat-divider"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="../static/style/css/common/reset.css" />
+  <link rel="stylesheet" href="../static/style/css/common/header.css" />
+  <link rel="stylesheet" href="../static/style/css/interview/chat.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <img src="/static/images/header-logo.svg" alt="Do-IT logo" class="header__logo" />
+    <div class="header__button">
+      <button class="header__button--practice">
+        연습하기 <span></span><span></span><span>
+      </button>
+      <button class="header__button--study">
+        스터디<span></span><span></span><span>
+      </button>
+      <button class="header__button--sign-in">
+        로그인 <span></span><span></span><span>
+      </button>
     </div>
+  </header>
 
-    <script src="/static/script/common/modal.js"></script>
-    <script src="/static/script/common/signIn.js"></script>
-    <script src="/static/script/common/signUp.js"></script>
-    <script src="/static/script/common/signOut.js"></script>
-    <script src="/static/script/common/studyList.js"></script>
-    <script src="/static/script/common/profile.js"></script>
-    <script src="/static/script/common/practice.js"></script>
-    <script src="/static/script/common/logo.js"></script>
-    <script src="../utils/loading.js"></script>
-    <script src="../static/script/interview/chat.js"></script>
-  </body>
+  <div class="content">
+    <div class="content__msg">
+      <div class="content__notice-title">
+        <p class="content__notice-title--text">
+          면접을 시작하겠습니다.<br />
+        </p>
+      </div>
+      <div class="content__notice-description">
+        <p class="content__notice-description--text">
+          면접은 총 3개의 질문으로 구성됩니다.<br />
+        </p>
+      </div>
+      <div class="content__divider"></div>
+    </div>
+    <form class="content__form" id="chat">
+      <textarea class="content__textarea" id="message" placeholder="답변을 입력해주세요"></textarea>
+      <button class="content__send-button">
+        <i class="fa-solid fa-paper-plane"><span></span><span></span><span></span></i>
+      </button>
+    </form>
+    <div class="content__chat-divider"></div>
+  </div>
+  </header>
+
+  <div class="content">
+    <div class="content__msg">
+      <div class="content__notice-title">
+        <p class="content__notice-title--text">
+          면접을 시작하겠습니다.<br />
+        </p>
+      </div>
+      <div class="content__notice-description">
+        <p class="content__notice-description--text">
+          면접은 총 3개의 질문으로 구성됩니다.<br />
+        </p>
+      </div>
+      <div class="content__divider"></div>
+    </div>
+    <form class="content__form" id="chat">
+      <textarea class="content__textarea" id="message" placeholder="답변을 입력해주세요"></textarea>
+      <button class="content__send-button">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+    <div class="content__chat-divider"></div>
+  </div>
+
+  <script src="/static/script/common/modal.js"></script>
+  <script src="/static/script/common/signIn.js"></script>
+  <script src="/static/script/common/signUp.js"></script>
+  <script src="/static/script/common/signOut.js"></script>
+  <script src="/static/script/common/studyList.js"></script>
+  <script src="/static/script/common/profile.js"></script>
+  <script src="/static/script/common/practice.js"></script>
+  <script src="/static/script/common/logo.js"></script>
+  <script src="../utils/loading.js"></script>
+  <script src="../static/script/interview/chat.js"></script>
+
+</body>
+
 </html>

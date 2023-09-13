@@ -3,7 +3,23 @@ const userToken = localStorage.getItem("userToken");
 
 if (!userToken) {
   // document.querySelector(".study").style.visibility = "hidden";
-  alert("로그인이 필요한 페이지입니다.");
+  // alert("로그인이 필요한 페이지입니다.");
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "center",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    customClass: {
+      container: "custom-swal-container",
+    },
+  });
+
+  Toast.fire({
+    icon: "warning",
+    title: "로그인이 필요한 페이지입니다.",
+  });
   document.location.href = "/";
 } else {
   document.querySelector(".study").hidden = false;
@@ -43,7 +59,23 @@ function checkForm() {
   let mem, cat, date, title, intro;
   // 1) 모집인원 선택해야함
   if (memTotal == 0) {
-    alert("모집인원을 선택해주세요");
+    // alert("모집인원을 선택해주세요");
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "모집인원을 선택해주세요.",
+    });
     mem = false;
     return;
   } else {
@@ -53,7 +85,22 @@ function checkForm() {
   if (categoryChecked.length > 0) {
     cat = true;
   } else {
-    alert("하나 이상의 관심IT 분야를 선택해주세요.");
+    // alert("하나 이상의 관심IT 분야를 선택해주세요.");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "하나 이상의 관심IT 분야를 선택해주세요.",
+    });
     cat = false;
     return;
   }
@@ -64,13 +111,43 @@ function checkForm() {
   ) {
     date = true;
   } else {
-    alert("시작일과 종료일을 모두 선택해주세요.");
+    // alert("시작일과 종료일을 모두 선택해주세요.");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "시작일과 종료일을 모두 선택해주세요.",
+    });
     date = false;
     return;
   }
   // 4) 제목 글자수 제한
   if (document.querySelector("#title").value == "") {
-    alert("제목을 입력하세요");
+    // alert("제목을 입력하세요");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "제목을 입력하세요.",
+    });
     title = false;
     return;
   } else {
@@ -78,7 +155,22 @@ function checkForm() {
   }
   // 5) 소개 글자수 제한
   if (document.querySelector("#intro").value == "") {
-    alert("스터디를 소개해주세요");
+    // alert("스터디를 소개해주세요");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      customClass: {
+        container: "custom-swal-container",
+      },
+    });
+
+    Toast.fire({
+      icon: "warning",
+      title: "스터디를 소개해주세요.",
+    });
     intro = false;
     return;
   } else {
@@ -120,10 +212,40 @@ async function register() {
       headers: { Authorization: `Bearer ${userToken}` },
     });
     if (res.data.result) {
-      alert("신규 스터디 개설 신청이 완료되었습니다.");
+      // alert("신규 스터디 개설 신청이 완료되었습니다.");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        customClass: {
+          container: "custom-swal-container",
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "신규 스터디 개설 신청이 완료되었습니다.",
+      });
       document.location.href = "/study/list";
     } else {
-      alert(res.data.message);
+      // alert(res.data.message);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        customClass: {
+          container: "custom-swal-container",
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: `${res.data.message}`,
+      });
     }
     console.log(res.data.result);
   } else {

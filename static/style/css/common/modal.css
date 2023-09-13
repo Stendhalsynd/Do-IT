@@ -25,7 +25,7 @@
   .modal {
     background: var(--figma-black-5, #e0e0e0);
     justify-content: space-between;
-    z-index: 9999999;
+    z-index: 100;
     position: fixed;
     transform-origin: left;
   }
@@ -230,6 +230,10 @@
   .modal__sign-up .modal__button--sign-in:hover {
     color: #2f80ed;
   }
+}
+
+.custom-swal-container {
+  z-index: 200;
 }
 
 @keyframes modal-animation {

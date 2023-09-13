@@ -1,7 +1,24 @@
 const userToken = localStorage.getItem("userToken");
 
 if (!userToken) {
-  alert("로그인이 필요합니다.");
+  // alert("로그인이 필요합니다.");
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "center",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    customClass: {
+      container: "custom-swal-container",
+    },
+  });
+
+  Toast.fire({
+    icon: "warning",
+    title: "로그인이 필요합니다.",
+  });
+
   location.href = "/";
 }
 

@@ -41,10 +41,41 @@
       });
 
       if (!res.data.result) {
-        alert("충분한 포인트가 없습니다.");
+        // alert("충분한 포인트가 없습니다.");
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          customClass: {
+            container: "custom-swal-container",
+          },
+        });
+
+        Toast.fire({
+          icon: "error",
+          title: "충분한 포인트가 없습니다.",
+        });
       }
       if (res.data.result) {
-        alert("스터디에 지원했습니다.");
+        // alert("스터디에 지원했습니다.");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          customClass: {
+            container: "custom-swal-container",
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "스터디에 지원했습니다.",
+        });
         btnContainer.removeChild(applyBtn);
         btnContainer.appendChild(waitingBtn);
       }

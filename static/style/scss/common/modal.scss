@@ -33,7 +33,7 @@
     background: var(--figma-black-5, #e0e0e0);
     justify-content: space-between;
 
-    z-index: 9999999;
+    z-index: 100;
     position: fixed;
     transform-origin: left;
 
@@ -201,6 +201,10 @@
   .modal__button--sign-in {
     @include mixin-modal-white-button;
   }
+}
+
+.custom-swal-container {
+  z-index: 200;
 }
 
 // 모달 애니메이션
