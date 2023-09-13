@@ -7,7 +7,6 @@ $white: var(--background-white, #fff);
 .main {
   // Display
   display: flex;
-  width: 100vw;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
@@ -163,7 +162,7 @@ $white: var(--background-white, #fff);
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: calc(100vw - (100vw - 100%));
     background-color: var(--material-theme-ref-primary-primary-95, #ecf3fe);
 
     &--section {
@@ -203,7 +202,7 @@ $white: var(--background-white, #fff);
       align-items: center;
       margin-top: 50px;
       margin-bottom: 50px;
-      width: 100vw;
+      width: calc(100vw - (100vw - 100%));
       gap: 30px;
       overflow: hidden;
       &-first,
@@ -262,7 +261,7 @@ $white: var(--background-white, #fff);
 
   //////////////////////////////////////////////// 최근에 개설된 스터디
   &__recent {
-    width: 100vw;
+    width: calc(100vw - (100vw - 100%));
     background-color: var(
       --material-theme-sys-light-primary-container,
       #d3e3fd
@@ -293,11 +292,11 @@ $white: var(--background-white, #fff);
           // Display
           // 세로 방향 중앙 정렬
           @include mixin-flex-column-center;
-          width: 220px;
+          width: 210px;
           height: 220px;
           margin: 50px;
           padding: 20px;
-          gap: 20px;
+          gap: 5px;
           cursor: pointer;
 
           // Style
@@ -314,7 +313,7 @@ $white: var(--background-white, #fff);
           justify-content: center;
           align-items: center;
           width: 200px;
-          // height: 60px;
+          height: 48px;
 
           // Font
           @include mixin-font-style;
@@ -323,17 +322,6 @@ $white: var(--background-white, #fff);
         }
         // 스터디 내용
         &-intro {
-          // // Display
-          // display: block;
-          // width: 200px;
-          // height: 80px;
-          // overflow: hidden;
-          // white-space: nowrap;
-          // text-overflow: ellipsis;
-
-          // //Font
-          // font-weight: 400;
-          // font-size: 14px;
           @include mixin-font-style;
           width: 200px;
           height: 80px;
@@ -351,9 +339,9 @@ $white: var(--background-white, #fff);
         &-category {
           display: flex;
           flex-wrap: wrap;
-          align-content: flex-start;
+          align-content: end;
           width: 230px;
-          height: 125px;
+          height: 143px;
           &-element {
             @include mixin-theme("thin");
             margin: 3px;
