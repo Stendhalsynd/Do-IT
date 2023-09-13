@@ -15,7 +15,7 @@ const StudyModel = (sequelize) => {
         allowNull: false,
       },
       intro: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(2500),
         allowNull: false,
       },
       startDate: {
