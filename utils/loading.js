@@ -9,7 +9,7 @@ function LoadingWithMask() {
   // 마스크 div 생성
   const mask = document.createElement("div");
   mask.id = "mask";
-  mask.style.cssText = `position:absolute; background-color:#000000; display:none; left:0; top:0; width:${maskWidth}; height:${maskHeight}; opacity: 0.7`;
+  mask.style.cssText = `position:absolute; background-color:#000000; display:none; left:0; top:0; width:${maskWidth}; height:${maskHeight}; opacity: 0.8`;
 
   // 로딩 이미지 div 생성
   const loadingImg = document.createElement("div");

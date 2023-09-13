@@ -1,23 +1,16 @@
 // 관심 분야 1-3개
-@media screen and (min-width: 330px) and (max-width: 619px) {
+@media screen and (min-width: 330px) and (max-width: 861px) {
   .study__registerform {
     &-content {
       &-input {
         &--category {
           & div {
+            margin: 0px 5%;
           }
         }
       }
     }
   }
-}
-
-// 관심 분야 4개
-@media screen and (min-width: 620px) {
-}
-
-// 관심 분야 5개
-@media screen and (min-width: 750px) {
 }
 
 .study__menu {
@@ -90,6 +83,7 @@
         flex-wrap: wrap;
         justify-content: start;
         & div {
+          width: 140px;
           padding: 10px 0px 10px 15px;
         }
       }
