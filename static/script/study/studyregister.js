@@ -41,8 +41,9 @@ function limitEndDate(target) {
   document.getElementById("endDate").setAttribute("min", target.value);
 }
 // 카테고리 배열 생성
-const categoryChecked = [];
+let categoryChecked = [];
 function getCategory() {
+  categoryChecked = [];
   const category = document.getElementsByName("category");
   for (let i = 0; i < category.length; i++) {
     if (category[i].checked == true) {
