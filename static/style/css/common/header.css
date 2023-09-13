@@ -9,6 +9,12 @@
   margin: 16px 15px;
   cursor: pointer;
 }
+.header__logo:hover {
+  animation-name: logohover;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
 .header__button {
   display: flex;
   justify-content: space-between;
@@ -89,5 +95,23 @@
 @media (768px <= width) {
   .header {
     height: 70px;
+  }
+}
+
+@keyframes logohover {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
