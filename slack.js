@@ -20,8 +20,6 @@ const boltApp = new App({
 boltApp.action("approve", async ({ ack, body }) => {
   ack();
 
-  console.log();
-
   await Study.update(
     {
       status: "ALLOWED",
@@ -33,7 +31,7 @@ boltApp.action("approve", async ({ ack, body }) => {
     }
   );
 
-  postMessage("스터디 개설을 승낙했습니다.", body);
+  await postMessage("스터디 개설을 승낙했습니다.", body);
 });
 
 boltApp.action("reject", async ({ ack, body }) => {
@@ -49,7 +47,7 @@ boltApp.action("reject", async ({ ack, body }) => {
       },
     }
   );
-  postMessage("스터디 개설을 거절했습니다.", body);
+  await postMessage("스터디 개설을 거절했습니다.", body);
 });
 
 boltApp.command("/approve", async ({ command, ack, say }) => {
