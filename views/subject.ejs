@@ -1,121 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../static/style/css/common/reset.css" />
-    <link rel="stylesheet" href="../static/style/css/common/header.css" />
-    <link rel="stylesheet" href="../static/style/css/interview/subject.css" />
-    <title>CS 과목 선택</title>
-  </head>
 
-  <body>
-    <header class="header">
-      <img
-        src="/static/images/Do-IT logo.png"
-        alt="Do-IT logo"
-        class="header__logo"
-      />
-      <div class="header__button">
-        <button class="header__button--practice">
-          연습하기 <span></span><span></span><span></span>
-        </button>
-        <button class="header__button--study">
-          스터디<span></span><span></span><span></span>
-        </button>
-        <button class="header__button--sign-in">
-          로그인 <span></span><span></span><span></span>
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="../static/style/css/common/reset.css" />
+  <link rel="stylesheet" href="../static/style/css/common/header.css" />
+  <link rel="stylesheet" href="../static/style/css/interview/subject.css" />
+  <title>CS 과목 선택</title>
+</head>
+
+<body>
+  <header class="header">
+    <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="header__logo" />
+    <div class="header__button">
+      <button class="header__button--practice">
+        연습하기 <span></span><span></span><span></span>
+      </button>
+      <button class="header__button--study">
+        스터디<span></span><span></span><span></span>
+      </button>
+      <button class="header__button--sign-in">
+        로그인 <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="content__title">CS 면접 연습</div>
+    <div class="content__description">면접 주제를 선택해주세요.</div>
+    <div class="content__divider"></div>
+    <div class="content__subject">
+      <div class="content__box" onclick="selectSubject('Algorithm')">
+        <img class="content__icon" src="../static/images/algorithm.png" />
+        <div class="content__name">알고리즘</div>
+        <div class="content__hover">
+          <div class="content__hover--name">알고리즘</div>
+          <div class="content__hover--description">
+            <li class="content__hover--list">탐색 알고리즘</li>
+            <li class="content__hover--list">정렬 알고리즘</li>
+            <li class="content__hover--list">그래프 알고리즘</li>
+            <li class="content__hover--list">해시 알고리즘</li>
+            <li class="content__hover--list">최적화 알고리즘</li>
+          </div>
+        </div>
       </div>
-    </header>
-
-    <div class="content">
-      <div class="content__title">CS 면접 연습</div>
-      <div class="content__description">면접 주제를 선택해주세요.</div>
-      <div class="content__divider"></div>
-      <div class="content__subject">
-        <div class="content__box" onclick="selectSubject('Algorithm')">
-          <img class="content__icon" src="../static/images/algorithm.png" />
-          <div class="content__name">알고리즘</div>
-          <div class="content__hover">
-            <div class="content__hover--name">알고리즘</div>
-            <div class="content__hover--description">
-              <li class="content__hover--list">탐색 알고리즘</li>
-              <li class="content__hover--list">정렬 알고리즘</li>
-              <li class="content__hover--list">그래프 알고리즘</li>
-              <li class="content__hover--list">해시 알고리즘</li>
-              <li class="content__hover--list">최적화 알고리즘</li>
-            </div>
+      <div class="content__box" onclick="selectSubject('DataStructure')">
+        <img class="content__icon" src="../static/images/datastructure.png" />
+        <div class="content__name">자료구조</div>
+        <div class="content__hover">
+          <div class="content__hover--name">자료구조</div>
+          <div class="content__hover--description">
+            <li class="content__hover--list">배열 & 리스트</li>
+            <li class="content__hover--list">스택 & 큐</li>
+            <li class="content__hover--list">힙 & 트리</li>
+            <li class="content__hover--list">해시</li>
+            <li class="content__hover--list">트라이 (Trie)</li>
           </div>
         </div>
-        <div class="content__box" onclick="selectSubject('DataStructure')">
-          <img class="content__icon" src="../static/images/datastructure.png" />
-          <div class="content__name">자료구조</div>
-          <div class="content__hover">
-            <div class="content__hover--name">자료구조</div>
-            <div class="content__hover--description">
-              <li class="content__hover--list">배열 & 리스트</li>
-              <li class="content__hover--list">스택 & 큐</li>
-              <li class="content__hover--list">힙 & 트리</li>
-              <li class="content__hover--list">해시</li>
-              <li class="content__hover--list">트라이 (Trie)</li>
-            </div>
+      </div>
+      <div class="content__box" onclick="selectSubject('Database')">
+        <img class="content__icon" src="../static/images/database.png" />
+        <div class="content__name">데이터베이스</div>
+        <div class="content__hover">
+          <div class="content__hover--name">데이터베이스</div>
+          <div class="content__hover--description">
+            <li class="content__hover--list">키 (Key)</li>
+            <li class="content__hover--list">SQL & NoSQL</li>
+            <li class="content__hover--list">이상 (Anomaly)</li>
+            <li class="content__hover--list">정규화</li>
+            <li class="content__hover--list">트랜잭션</li>
           </div>
         </div>
-        <div class="content__box" onclick="selectSubject('Database')">
-          <img class="content__icon" src="../static/images/database.png" />
-          <div class="content__name">데이터베이스</div>
-          <div class="content__hover">
-            <div class="content__hover--name">데이터베이스</div>
-            <div class="content__hover--description">
-              <li class="content__hover--list">키 (Key)</li>
-              <li class="content__hover--list">SQL & NoSQL</li>
-              <li class="content__hover--list">이상 (Anomaly)</li>
-              <li class="content__hover--list">정규화</li>
-              <li class="content__hover--list">트랜잭션</li>
-            </div>
+      </div>
+      <div class="content__box" onclick="selectSubject('Network')">
+        <img class="content__icon" src="../static/images/network.png" />
+        <div class="content__name">네트워크</div>
+        <div class="content__hover">
+          <div class="content__hover--name">네트워크</div>
+          <div class="content__hover--description">
+            <li class="content__hover--list">OSI 7계층</li>
+            <li class="content__hover--list">TCP/IP 흐름 & 혼잡 제어</li>
+            <li class="content__hover--list">UDP</li>
+            <li class="content__hover--list">HTTP & HTTPS</li>
+            <li class="content__hover--list">로드밸런싱</li>
           </div>
         </div>
-        <div class="content__box" onclick="selectSubject('Network')">
-          <img class="content__icon" src="../static/images/network.png" />
-          <div class="content__name">네트워크</div>
-          <div class="content__hover">
-            <div class="content__hover--name">네트워크</div>
-            <div class="content__hover--description">
-              <li class="content__hover--list">OSI 7계층</li>
-              <li class="content__hover--list">TCP/IP 흐름 & 혼잡 제어</li>
-              <li class="content__hover--list">UDP</li>
-              <li class="content__hover--list">HTTP & HTTPS</li>
-              <li class="content__hover--list">로드밸런싱</li>
-            </div>
-          </div>
-        </div>
-        <div class="content__box" onclick="selectSubject('OS')">
-          <img class="content__icon" src="../static/images/OS.png" />
-          <div class="content__name">운영체제</div>
-          <div class="content__hover">
-            <div class="content__hover--name">운영체제</div>
-            <div class="content__hover--description">
-              <li class="content__hover--list">프로세스 & 스레드</li>
-              <li class="content__hover--list">PCB & Context Switching</li>
-              <li class="content__hover--list">CPU 스케줄링</li>
-              <li class="content__hover--list">데드락 (DeadLock)</li>
-              <li class="content__hover--list">메모리</li>
-            </div>
+      </div>
+      <div class="content__box" onclick="selectSubject('OS')">
+        <img class="content__icon" src="../static/images/OS.png" />
+        <div class="content__name">운영체제</div>
+        <div class="content__hover">
+          <div class="content__hover--name">운영체제</div>
+          <div class="content__hover--description">
+            <li class="content__hover--list">프로세스 & 스레드</li>
+            <li class="content__hover--list">PCB & Context Switching</li>
+            <li class="content__hover--list">CPU 스케줄링</li>
+            <li class="content__hover--list">데드락 (DeadLock)</li>
+            <li class="content__hover--list">메모리</li>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="/static/script/common/modal.js"></script>
-    <script src="/static/script/common/signIn.js"></script>
-    <script src="/static/script/common/signUp.js"></script>
-    <script src="/static/script/common/signOut.js"></script>
-    <script src="/static/script/common/studyList.js"></script>
-    <script src="/static/script/common/profile.js"></script>
-    <script src="/static/script/common/practice.js"></script>
-    <script src="/static/script/common/logo.js"></script>
-    <script src="../static/script/interview/subject.js"></script>
-  </body>
+  <script src="/static/script/common/modal.js"></script>
+  <script src="/static/script/common/signIn.js"></script>
+  <script src="/static/script/common/signUp.js"></script>
+  <script src="/static/script/common/signOut.js"></script>
+  <script src="/static/script/common/studyList.js"></script>
+  <script src="/static/script/common/profile.js"></script>
+  <script src="/static/script/common/practice.js"></script>
+  <script src="/static/script/common/logo.js"></script>
+  <script src="../static/script/interview/subject.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</body>
+
 </html>

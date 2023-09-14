@@ -182,66 +182,77 @@ function checkForm() {
 }
 
 function cancel() {
-  if (confirm("취소하시겠습니까?")) {
-    document.location.href = "/";
-  } else {
-    return;
-  }
+  Swal.fire({
+    title: "취소하시겠습니까?",
+    showCancelButton: true,
+    confirmButtonText: "취소하기",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = "/";
+    }
+  });
 }
 async function register() {
   const studyform = document.forms["study-form"];
-  if (confirm("제출하시겠습니까?")) {
-    const res = await axios({
-      method: "POST",
-      url: "/study",
-      data: {
-        memTotal,
-        category: categoryChecked,
-        startDate: studyform.startDate.value,
-        endDate: studyform.endDate.value,
-        title: studyform.title.value,
-        intro: studyform.intro.value,
-      },
-      headers: { Authorization: `Bearer ${userToken}` },
-    });
-    if (res.data.result) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "center",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        customClass: {
-          container: "custom-swal-container",
+  Swal.fire({
+    title: "제출하시겠습니까?",
+    showCancelButton: true,
+    confirmButtonText: "제출하기",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      const res = await axios({
+        method: "POST",
+        url: "/study",
+        data: {
+          memTotal,
+          category: categoryChecked,
+          startDate: studyform.startDate.value,
+          endDate: studyform.endDate.value,
+          title: studyform.title.value,
+          intro: studyform.intro.value,
         },
+        headers: { Authorization: `Bearer ${userToken}` },
       });
+      if (res.data.result) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          customClass: {
+            container: "custom-swal-container",
+          },
+        });
 
-      Toast.fire({
-        icon: "success",
-        title: "신규 스터디 개설 신청이 완료되었습니다.",
-      });
-      document.location.href = "/study/list";
-    } else {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "center",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        customClass: {
-          container: "custom-swal-container",
-        },
-      });
+        Toast.fire({
+          icon: "success",
+          title: "신규 스터디 개설 신청이 완료되었습니다.",
+        });
 
-      Toast.fire({
-        icon: "error",
-        title: `${res.data.message}`,
-      });
+        setTimeout(() => {
+          document.location.href = "/study/list";
+        }, 1000);
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          customClass: {
+            container: "custom-swal-container",
+          },
+        });
+
+        Toast.fire({
+          icon: "error",
+          title: `${res.data.message}`,
+        });
+      }
+      console.log(res.data.result);
     }
-    console.log(res.data.result);
-  } else {
-    return;
-  }
+  });
 }
 
 function multiSelect(value) {

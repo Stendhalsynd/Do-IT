@@ -179,53 +179,57 @@ function studyDetail(studyid) {
 }
 
 async function userdataEdit() {
-  if (confirm("프로필을 수정하시겠습니까?")) {
-    const userdataform = document.forms["userdata-form"];
-    const res = await axios({
-      url: "/user/update",
-      method: "PATCH",
-      data: {
-        userId: userdataform.userId.value,
-        nickname: userdataform.nickname.value,
-        link: userdataform.link.value,
-      },
-    });
-    if (res.data.result) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "center",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        customClass: {
-          container: "custom-swal-container",
+  Swal.fire({
+    title: "프로필을 수정하시겠습니까?",
+    showCancelButton: true,
+    confirmButtonText: "프로필 수정하기",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      const userdataform = document.forms["userdata-form"];
+      const res = await axios({
+        url: "/user/update",
+        method: "PATCH",
+        data: {
+          userId: userdataform.userId.value,
+          nickname: userdataform.nickname.value,
+          link: userdataform.link.value,
         },
       });
+      if (res.data.result) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          customClass: {
+            container: "custom-swal-container",
+          },
+        });
 
-      Toast.fire({
-        icon: "success",
-        title: "프로필 수정이 완료되었습니다.",
-      });
-    } else {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "center",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        customClass: {
-          container: "custom-swal-container",
-        },
-      });
+        Toast.fire({
+          icon: "success",
+          title: "프로필 수정이 완료되었습니다.",
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          customClass: {
+            container: "custom-swal-container",
+          },
+        });
 
-      Toast.fire({
-        icon: "error",
-        title: "프로필 수정에 실패하였습니다.",
-      });
+        Toast.fire({
+          icon: "error",
+          title: "프로필 수정에 실패하였습니다.",
+        });
+      }
     }
-  } else {
-    return;
-  }
+  });
 }
 
 // '내가 개설한 목록', '내가 지원한 목록' 선택에 따라 css 설정
