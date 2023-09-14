@@ -1,277 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="/static/style/css/common/header.css" />
-    <link rel="stylesheet" href="/static/style/css/common/modal.css" />
-    <link rel="stylesheet" href="/static/style/css/common/reset.css" />
-    <link rel="stylesheet" href="/static/style/css/study/studydetail.css" />
-    <title>스터디 상세보기</title>
-  </head>
 
-  <body>
-    <header class="header">
-      <img
-        src="/static/images/Do-IT logo.png"
-        alt="Do-IT logo"
-        class="header__logo"
-      />
-      <div class="header__button">
-        <button class="header__button--practice">
-          연습하기 <span></span><span></span><span></span>
-        </button>
-        <button class="header__button--study">
-          스터디<span></span><span></span><span></span>
-        </button>
-        <button class="header__button--sign-in">
-          로그인 <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="/static/style/css/common/header.css" />
+  <link rel="stylesheet" href="/static/style/css/common/modal.css" />
+  <link rel="stylesheet" href="/static/style/css/common/reset.css" />
+  <link rel="stylesheet" href="/static/style/css/study/studydetail.css" />
+  <title>스터디 상세보기</title>
+</head>
 
-    <div class="modal modal__sign-in">
-      <div class="modal__container">
-        <div class="modal__semicircle">
-          <img
-            src="/static/images/face.png"
-            alt="face"
-            class="modal__character--face"
-          />
-        </div>
-      </div>
-      <div class="modal__content">
-        <span class="modal__close">&times;</span>
-        <img
-          src="/static/images/Do-IT logo.png"
-          alt="Do-IT logo"
-          class="modal__logo"
-        />
-        <h2 class="modal__h2">환영합니다!</h2>
-        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
-        <form class="modal__form--sign-in" name="modal__form--sign-in">
-          <label for="userIdForSignIn" class="modal__label">ID</label>
-          <input
-            class="modal__input"
-            id="userIdForSignIn"
-            type="text"
-            placeholder="아이디를 입력해주세요."
-            required
-          />
-          <label for="pwForSignIn" class="modal__label">Password</label>
-          <input
-            class="modal__input"
-            id="pwForSignIn"
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <button
-            class="modal__button--sign-in"
-            type="button"
-            onclick="signIn()"
-          >
-            로그인
-          </button>
-          <button
-            class="modal__button--sign-up"
-            type="button"
-            onclick="openSignUpModal()"
-          >
-            회원가입하기
-          </button>
-        </form>
+<body>
+  <header class="header">
+    <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="header__logo" />
+    <div class="header__button">
+      <button class="header__button--practice">
+        연습하기 <span></span><span></span><span></span>
+      </button>
+      <button class="header__button--study">
+        스터디<span></span><span></span><span></span>
+      </button>
+      <button class="header__button--sign-in">
+        로그인 <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="modal modal__sign-in">
+    <div class="modal__container">
+      <div class="modal__semicircle">
+        <img src="/static/images/face.png" alt="face" class="modal__character--face" />
       </div>
     </div>
+    <div class="modal__content">
+      <span class="modal__close">&times;</span>
+      <img src="/static/images/Do-IT logo.png" alt="Do-IT logo" class="modal__logo" />
+      <h2 class="modal__h2">환영합니다!</h2>
+      <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+      <form class="modal__form--sign-in" name="modal__form--sign-in">
+        <label for="userIdForSignIn" class="modal__label">ID</label>
+        <input class="modal__input" id="userIdForSignIn" type="text" placeholder="아이디를 입력해주세요." required />
+        <label for="pwForSignIn" class="modal__label">Password</label>
+        <input class="modal__input" id="pwForSignIn" type="password" placeholder="비밀번호를 입력해주세요." required />
+        <button class="modal__button--sign-in" type="button" onclick="signIn()">
+          로그인
+        </button>
+        <button class="modal__button--sign-up" type="button" onclick="openSignUpModal()">
+          회원가입하기
+        </button>
+      </form>
+    </div>
+  </div>
 
-    <div class="modal modal__sign-up">
-      <div class="modal__container">
-        <div class="modal__semicircle">
-          <img
-            src="/static/images/face.png"
-            alt="face"
-            class="modal__character--signup"
-          />
-        </div>
-      </div>
-      <div class="modal__content">
-        <span class="modal__close">&times;</span>
-        <h2 class="modal__h2">환영합니다!</h2>
-        <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
-        <form class="modal__form--sign-up" name="modal__form--sign-up">
-          <label for="userIdForSignUp" class="modal__label">ID</label>
-          <input
-            class="modal__input"
-            id="userIdForSignUp"
-            type="text"
-            placeholder="아이디를 입력해주세요."
-            required
-          />
-          <label for="nickname" class="modal__label">Nickname</label>
-          <input
-            class="modal__input"
-            id="nickname"
-            type="text"
-            placeholder="닉네임을 입력해주세요."
-            required
-          />
-          <label for="pwForSignUp" class="modal__label">Password</label>
-          <input
-            class="modal__input"
-            id="pwForSignUp"
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <label for="pwConfirmForSignUp" class="modal__label"
-            >Check Password</label
-          >
-          <input
-            class="modal__input"
-            id="pwConfirmForSignUp"
-            type="password"
-            placeholder="입력한 비밀번호를 다시 입력해주세요."
-            required
-          />
-          <label for="link" class="modal__label">Link</label>
-          <textarea
-            class="modal__textarea"
-            id="link"
-            type="text"
-            placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요."
-            required
-          ></textarea>
-          <button
-            class="modal__button--sign-up"
-            type="button"
-            onclick="signUp()"
-          >
-            회원가입
-          </button>
-          <button
-            class="modal__button--sign-in"
-            type="button"
-            onclick="openSignInModal()"
-          >
-            로그인하기
-          </button>
-        </form>
+  <div class="modal modal__sign-up">
+    <div class="modal__container">
+      <div class="modal__semicircle">
+        <img src="/static/images/face.png" alt="face" class="modal__character--signup" />
       </div>
     </div>
+    <div class="modal__content">
+      <span class="modal__close">&times;</span>
+      <h2 class="modal__h2">환영합니다!</h2>
+      <h3 class="modal__h3">세부 정보를 입력해주세요</h3>
+      <form class="modal__form--sign-up" name="modal__form--sign-up">
+        <label for="userIdForSignUp" class="modal__label">ID</label>
+        <input class="modal__input" id="userIdForSignUp" type="text" placeholder="아이디를 입력해주세요." required />
+        <label for="nickname" class="modal__label">Nickname</label>
+        <input class="modal__input" id="nickname" type="text" placeholder="닉네임을 입력해주세요." required />
+        <label for="pwForSignUp" class="modal__label">Password</label>
+        <input class="modal__input" id="pwForSignUp" type="password" placeholder="비밀번호를 입력해주세요." required />
+        <label for="pwConfirmForSignUp" class="modal__label">Check Password</label>
+        <input class="modal__input" id="pwConfirmForSignUp" type="password" placeholder="입력한 비밀번호를 다시 입력해주세요." required />
+        <label for="link" class="modal__label">Link</label>
+        <textarea class="modal__textarea" id="link" type="text" placeholder="두잇러들에게 공유할 깃허브나 블로그 링크를 입력해주세요." required></textarea>
+        <button class="modal__button--sign-up" type="button" onclick="signUp()">
+          회원가입
+        </button>
+        <button class="modal__button--sign-in" type="button" onclick="openSignInModal()">
+          로그인하기
+        </button>
+      </form>
+    </div>
+  </div>
 
-    <main class="content">
-      <section class="content__title">
-        <h2 class="section__title"><%= data.title %></h2>
-        <div class="section__divider--thick"></div>
-      </section>
+  <main class="content">
+    <section class="content__title">
+      <h2 class="section__title"><%= data.title %></h2>
+      <div class="section__divider--thick"></div>
+    </section>
 
-      <section class="content__info">
-        <div class="section__btn-container"></div>
-        <div class="section__info-container">
-          <div class="section__item">
-            <span class="section__item--sub">모집현황</span>
-            <span class="section__member--detail"
-              ><%= data.memCurr%>/<%= data.memTotal %></span
-            >
-          </div>
-          <div class="section__divider--thin"></div>
-          <div class="section__item">
-            <span class="section__item--sub">관심 IT 분야</span>
-            <span>
-              <% data.Themes.forEach(theme => { %>
-              <div class="section__item--theme">
-                <%= theme.dataValues.category %>
-              </div>
-              <% }); %>
-            </span>
-          </div>
-          <div class="section__divider--thin"></div>
-          <div class="section__item">
-            <span class="section__item--sub">스터디 기간</span>
-            <span><%= startDate %> ~ <%= endDate %></span>
-          </div>
-          <div class="section__divider--thin"></div>
-          <div class="section__item--intro">
-            <div class="section__item--sub">스터디 소개</div>
-            <span class="section__item--detail"><%= data.intro %></span>
-            <div class="section__divider--thin"></div>
-          </div>
+    <section class="content__info">
+      <div class="section__btn-container"></div>
+      <div class="section__info-container">
+        <div class="section__item">
+          <span class="section__item--sub">모집현황</span>
+          <span class="section__member--detail"><%= data.memCurr%>/<%= data.memTotal %></span>
         </div>
-      </section>
-
-      <section class="content__list">
-        <ul class="container__list">
-          <% members.forEach((member) => { %>
-          <li class="container__item">
-            <h2 class="container__item--status"><%= member.status %></h2>
-            <span class="container__item--nickname">
-              <img
-                src="/static/images/person.png"
-                alt="사람 이미지"
-                class="logo--default"
-              />
-              <%= member.nickname %>
-            </span>
-            <span class="container__item--link">
-              <img
-                src="/static/images/link.png"
-                alt="링크 이미지"
-                class="logo--default"
-              />
-              <a href="<%= member.link %>"><%= member.link %></a>
-            </span>
-          </li>
-          <% }); %>
-        </ul>
-      </section>
-
-      <section class="content__leader">
-        <div class="section__divider--thick"></div>
-        <ul class="container__list">
-          <% appliers.forEach((applier) => { %>
-          <li class="container__item">
-            <h2 class="container__item--status"><%= applier.status %></h2>
-            <span class="container__item--nickname">
-              <img
-                src="/static/images/person.png"
-                alt="사람 이미지"
-                class="logo--default"
-              />
-              <%= applier.nickname %>
-            </span>
-            <span class="container__item--link">
-              <img
-                src="/static/images/link.png"
-                alt="링크 이미지"
-                class="logo--default"
-              />
-              <a href="<%= applier.link %>"><%= applier.link %></a>
-            </span>
-            <div class="btn-container">
-              <button class="container__list--approve">수락</button>
-              <button class="container__list--reject">거절</button>
+        <div class="section__divider--thin"></div>
+        <div class="section__item">
+          <span class="section__item--sub">관심 IT 분야</span>
+          <span>
+            <% data.Themes.forEach(theme => { %>
+            <div class="section__item--theme">
+              <%= theme.dataValues.category %>
             </div>
-          </li>
-          <% }); %>
-        </ul>
-      </section>
-    </main>
-  </body>
+            <% }); %>
+          </span>
+        </div>
+        <div class="section__divider--thin"></div>
+        <div class="section__item">
+          <span class="section__item--sub">스터디 기간</span>
+          <span><%= startDate %> ~ <%= endDate %></span>
+        </div>
+        <div class="section__divider--thin"></div>
+        <div class="section__item--intro">
+          <div class="section__item--sub">스터디 소개</div>
+          <span class="section__item--detail"><%= data.intro %></span>
+          <div class="section__divider--thin"></div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    const studyId = "<%= data.id %>";
-  </script>
+    <section class="content__list">
+      <ul class="container__list">
+        <% members.forEach((member) => { %>
+        <li class="container__item">
+          <h2 class="container__item--status"><%= member.status %></h2>
+          <span class="container__item--nickname">
+            <img src="/static/images/person.png" alt="사람 이미지" class="logo--default" />
+            <%= member.nickname %>
+          </span>
+          <span class="container__item--link">
+            <img src="/static/images/link.png" alt="링크 이미지" class="logo--default" />
+            <a href="<%= member.link %>"><%= member.nickname %> 의 링크 확인하기</a>
+          </span>
+        </li>
+        <% }); %>
+      </ul>
+    </section>
 
-  <script src="/static/script/study/studyDetail.js"></script>
-  <script src="/static/script/common/modal.js"></script>
-  <script src="/static/script/common/signIn.js"></script>
-  <script src="/static/script/common/signUp.js"></script>
-  <script src="/static/script/common/signOut.js"></script>
-  <script src="/static/script/common/studyList.js"></script>
-  <script src="/static/script/common/profile.js"></script>
-  <script src="/static/script/common/practice.js"></script>
-  <script src="/static/script/common/logo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <section class="content__leader">
+      <div class="section__divider--thick"></div>
+      <ul class="container__list">
+        <% appliers.forEach((applier) => { %>
+        <li class="container__item">
+          <h2 class="container__item--status"><%= applier.status %></h2>
+          <span class="container__item--nickname">
+            <img src="/static/images/person.png" alt="사람 이미지" class="logo--default" />
+            <%= applier.nickname %>
+          </span>
+          <span class="container__item--link">
+            <img src="/static/images/link.png" alt="링크 이미지" class="logo--default" />
+            <a href="<%= applier.link %>"><%= applier.nickname %> 의 링크 확인하기</a>
+          </span>
+          <div class="btn-container">
+            <button class="container__list--approve">수락</button>
+            <button class="container__list--reject">거절</button>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </section>
+  </main>
+</body>
+
+<script>
+  const studyId = "<%= data.id %>";
+</script>
+
+<script src="/static/script/study/studyDetail.js"></script>
+<script src="/static/script/common/modal.js"></script>
+<script src="/static/script/common/signIn.js"></script>
+<script src="/static/script/common/signUp.js"></script>
+<script src="/static/script/common/signOut.js"></script>
+<script src="/static/script/common/studyList.js"></script>
+<script src="/static/script/common/profile.js"></script>
+<script src="/static/script/common/practice.js"></script>
+<script src="/static/script/common/logo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 </html>
