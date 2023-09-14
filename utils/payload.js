@@ -77,14 +77,6 @@ function definePayload(
             style: "danger",
             value: `${studyId}`,
           },
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "개설자의 링크 확인하기",
-            },
-            url: `${link}`,
-          },
         ],
       },
     ],

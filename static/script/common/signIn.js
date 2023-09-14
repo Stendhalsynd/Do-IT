@@ -90,22 +90,6 @@ async function signIn() {
     });
     if (res.data.result) {
       localStorage.setItem("userToken", res.data.token);
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "center",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        customClass: {
-          container: "custom-swal-container",
-        },
-      });
-
-      Toast.fire({
-        icon: "success",
-        title: `${res.data.data.nickname}님 로그인을 성공했습니다.`,
-      });
-
       document.location.reload();
     } else {
       const Toast = Swal.mixin({
