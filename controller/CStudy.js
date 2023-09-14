@@ -95,7 +95,6 @@ exports.postRegister = async (req, res) => {
     });
     // 사용자 포인트 차감
     const user = await User.findOne({ where: { id: leaderId } });
-    console.log("user : ", user);
 
     if (user.point >= 100) {
       await user.update({ point: user.point - 100 });
@@ -215,16 +214,11 @@ exports.postApplication = async (req, res) => {
         StudyId,
         UserId,
       };
-      // console.log("rejectedUser : ", rejectedUser);
 
       // 충분한 포인트가 있으면 30 포인트를 소모해서 스터디 지원
       if (!rejectedUser) {
-        console.log("test");
-
         await StudyUser.create(applierData);
       } else {
-        console.log("test2");
-
         await StudyUser.update(
           { status: "APPLIER" },
           { where: { StudyId, UserId } }

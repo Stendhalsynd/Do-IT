@@ -22,21 +22,27 @@ boltApp.action("approve", async ({ ack, body }) => {
 
   console.log("승인됨");
 
-  try {
-    const res = await Study.update(
-      {
-        status: "ALLOWED",
-      },
-      {
-        where: {
-          id: body.actions[0].value,
+  body.actions.forEach(async (action) => {
+    const id = action.value;
+
+    const beforeStudyStatus = (await Study.findByPk(id)).status;
+
+    try {
+      const res = await Study.update(
+        {
+          status: "ALLOWED",
         },
-      }
-    );
-    postMessage("스터디 개설을 승낙합니다.", body);
-  } catch (error) {
-    console.error(error);
-  }
+        { where: { id } }
+      );
+
+      const afterStudyStatus = (await Study.findByPk(id)).status;
+
+      if (beforeStudyStatus !== afterStudyStatus)
+        postMessage("스터디 개설을 승낙합니다.", body);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 });
 
 boltApp.action("reject", async ({ ack, body }) => {
@@ -44,31 +50,27 @@ boltApp.action("reject", async ({ ack, body }) => {
 
   console.log("거절됨");
 
-  try {
-    await Study.update(
-      {
-        status: "REJECTED",
-      },
-      {
-        where: {
-          id: body.actions[0].value,
-        },
-      }
-    );
-    postMessage("스터디 개설을 거절합니다.", body);
-  } catch (error) {
-    console.error(error);
-  }
-});
+  body.actions.forEach(async (action) => {
+    const id = action.value;
 
-boltApp.command("/approve", async ({ command, ack, say }) => {
-  try {
-    await ack();
-    say("승인하기 명령어가 인식되었습니다!");
-  } catch (error) {
-    console.log("err");
-    console.error(error);
-  }
+    const beforeStudyStatus = (await Study.findByPk(id)).status;
+
+    try {
+      const res = await Study.update(
+        {
+          status: "REJECTED",
+        },
+        { where: { id } }
+      );
+
+      const afterStudyStatus = (await Study.findByPk(id)).status;
+
+      if (beforeStudyStatus !== afterStudyStatus)
+        postMessage("스터디 개설을 거절합니다.", body);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 });
 
 const postMessage = async (text, body) => {
