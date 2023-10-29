@@ -158,7 +158,10 @@ exports.postRegister = async (req, res) => {
 
 exports.postDetail = async (req, res) => {
   const { studyId } = req.body;
-  const token = req.headers?.authorization.split(" ")[1];
+  const token =
+    req.headers &&
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[1];
 
   if (token !== "null") {
     try {
@@ -189,7 +192,10 @@ exports.postDetail = async (req, res) => {
 
 exports.postApplication = async (req, res) => {
   const { studyId: StudyId } = req.body;
-  const token = req.headers?.authorization.split(" ")[1];
+  const token =
+    req.headers &&
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[1];
 
   if (token !== "null") {
     try {
@@ -237,7 +243,10 @@ exports.postApplication = async (req, res) => {
 
 exports.postPermission = async (req, res) => {
   const { studyId, result: isApprove } = req.body;
-  const token = req.headers?.authorization.split(" ")[1];
+  const token =
+    req.headers &&
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[1];
 
   if (token !== "null") {
     try {
