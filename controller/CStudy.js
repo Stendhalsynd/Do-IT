@@ -173,14 +173,16 @@ exports.postDetail = async (req, res) => {
       const userId = jwt.verify(token, SECRET).id;
       let status;
 
-      status = (
-        await StudyUser.findOne({
-          where: {
-            UserId: userId,
-            StudyId: studyId,
-          },
-        })
-      )?.dataValues.status;
+      const foundUser = await StudyUser.findOne({
+        where: {
+          UserId: userId,
+          StudyId: studyId,
+        },
+      });
+
+      if (foundUser) {
+        status = foundUser.dataValues.status;
+      }
 
       res.json({ study: studyData, status });
     } catch (error) {

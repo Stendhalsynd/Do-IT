@@ -143,26 +143,32 @@ function resetFacePos(elementId) {
 }
 
 // .pwForSignIn 요소에 포커스가 들어가면 .modal__character--face의 위치를 고정
-document
-  .getElementById("pwForSignIn")
-  ?.addEventListener("focus", () => setFacePos("modal__character--face"));
+document.getElementById("pwForSignIn") &&
+  document
+    .getElementById("pwForSignIn")
+    .addEventListener("focus", () => setFacePos("modal__character--face"));
 
 // .pwForSignIn 요소에서 포커스가 빠져나가면 다시 마우스 움직임에 따라 위치가 변하도록 설정
-document
-  .getElementById("pwForSignIn")
-  ?.addEventListener("blur", () => resetFacePos("modal__character--face"));
+document.getElementById("pwForSignIn") &&
+  document
+    .getElementById("pwForSignIn")
+    .addEventListener("blur", () => resetFacePos("modal__character--face"));
 
 // .pwForSignUp 요소에 포커스가 들어가면 .modal__character--face의 위치를 고정
-document
-  .getElementById("pwForSignUp")
-  ?.addEventListener("focus", () => setFacePos("modal__character--signup"));
+document.getElementById("pwForSignUp") &&
+  document
+    .getElementById("pwForSignUp")
+    .addEventListener("focus", () => setFacePos("modal__character--signup"));
 
 // .pwForSignUp 요소에 포커스가 들어가면 .modal__character--face의 위치를 고정
-document
-  .getElementById("pwConfirmForSignUp")
-  ?.addEventListener("focus", () => setFacePos("modal__character--signup"));
+document.getElementById("pwConfirmForSignUp") &&
+  document
+    .getElementById("pwConfirmForSignUp")
+    .addEventListener("focus", () => setFacePos("modal__character--signup"));
 
 // .pwForSignUp 요소에서 포커스가 빠져나가면 다시 마우스 움직임에 따라 위치가 변하도록 설정
-document
-  .getElementById("pwConfirmForSignUp")
-  ?.addEventListener("blur", () => resetFacePos("modal__character--signup"));
+
+document.getElementById("pwConfirmForSignUp") &&
+  document
+    .getElementById("pwConfirmForSignUp")
+    .addEventListener("blur", () => resetFacePos("modal__character--signup"));
