@@ -256,7 +256,7 @@
 
 db 구조는 miro 를 통해 릴레이션의 어트리뷰트, 관계등을 논의후 바로 sequelize 를 사용하여 model 을 생성해줬다.
 
-## workflow
+## Workflow
 
 ![스크린샷 2023-12-13 오전 8 50 31](https://github.com/Stendhalsynd/Do-IT/assets/96957774/a6ec3053-4424-4d48-b7f5-fb3631ebc69b)
 
